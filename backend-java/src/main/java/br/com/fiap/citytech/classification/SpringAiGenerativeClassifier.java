@@ -4,11 +4,15 @@ import br.com.fiap.citytech.occurrence.Priority;
 import java.util.List;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnBean(ChatModel.class)
+@ConditionalOnProperty(
+    prefix = "spring.ai.model",
+    name = "chat",
+    havingValue = "google-genai"
+)
 public class SpringAiGenerativeClassifier implements GenerativeClassifier {
 
     private final ChatModel chatModel;
