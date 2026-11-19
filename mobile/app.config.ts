@@ -14,7 +14,12 @@ const config: ExpoConfig = {
     adaptiveIcon: { backgroundColor: '#145DA0' },
   },
   ios: { bundleIdentifier: 'br.com.fiap.citytech.mobile', supportsTablet: true },
-  extra: { commitHash: process.env.EXPO_PUBLIC_GIT_COMMIT_HASH ?? 'development' },
+  extra: {
+  commitHash: process.env.EXPO_PUBLIC_GIT_COMMIT_HASH ?? 'development',
+  eas: {
+    projectId: '7ae41363-57ce-4815-9ce4-b63451f0a96e',
+  },
+},
 };
 
 export default config;
