@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using System.Net.Mail;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using CityTech.Api.Contracts;
 using CityTech.Api.Security;
@@ -42,6 +43,7 @@ public static class AuthEndpoints
     private static async Task<IResult> RegisterAsync(
         RegisterRequest request,
         HttpContext context,
+        [FromHeader(Name = "Idempotency-Key")] string? idempotencyKey,
         CityTechDbContext db,
         PasswordService passwords,
         IdempotencyService idempotency,
@@ -57,7 +59,7 @@ public static class AuthEndpoints
         var normalizedEmail = request.Email!.Trim().ToLowerInvariant();
         var outcome = await idempotency.ExecuteAsync(
             $"register:{context.Connection.RemoteIpAddress}",
-            context.Request.Headers["Idempotency-Key"].FirstOrDefault(),
+            idempotencyKey,
             request,
             async token =>
             {

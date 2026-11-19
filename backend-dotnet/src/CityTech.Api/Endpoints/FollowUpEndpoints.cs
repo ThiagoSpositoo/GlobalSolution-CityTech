@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using CityTech.Api.Contracts;
 using CityTech.Api.Services;
+using Microsoft.AspNetCore.Mvc;
 using CityTech.Domain.Entities;
 using CityTech.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -102,6 +103,7 @@ public static class FollowUpEndpoints
         CreateFollowUpRequest request,
         ClaimsPrincipal principal,
         HttpContext context,
+	[FromHeader(Name = "Idempotency-Key")] string? idempotencyKey,
         CityTechDbContext db,
         OccurrenceClient occurrences,
         IdempotencyService idempotency,
@@ -124,7 +126,7 @@ public static class FollowUpEndpoints
             : string.Empty;
         var outcome = await idempotency.ExecuteAsync(
             $"followups:{userId}",
-            context.Request.Headers["Idempotency-Key"].FirstOrDefault(),
+            idempotencyKey,
             request,
             async token =>
             {
