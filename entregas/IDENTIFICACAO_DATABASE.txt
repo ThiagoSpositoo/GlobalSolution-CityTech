@@ -1,13 +1,11 @@
-Projeto: CityTech - Global Solution FIAP 2026/2
-Disciplina: Mastering Relational and Non-Relational Database
+﻿GLOBAL SOLUTION FIAP 2026/2 - CITIZENTECH
+DISCIPLINA: MASTERING RELATIONAL AND NON-RELATIONAL DATABASE
+PROJETO: CITYTECH
 
-Integrantes:
-- Thiago Sposito - RM 561694
-- Vitor Madrigrano - RM 564191
-- Lucas Lopes - RM 563544
+INTEGRANTES:
+Thiago Sposito - RM 561694 - Turma 2TDSR
+Vitor Madrigrano - RM 564191 - Turma 2TDSR
+Lucas Lopes - RM 563544 - Turma 2TDSA
 
-Turmas do grupo: 2TDSA / 2TDSR
-Observacao: a associacao individual entre integrante e turma deve ser conferida antes do envio.
-
-GitHub:
+REPOSITORIO GITHUB:
 https://github.com/ThiagoSpositoo/GlobalSolution-CityTech
