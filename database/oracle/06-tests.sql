@@ -5,6 +5,7 @@ SET DEFINE OFF
 DECLARE
     v_count NUMBER;
     v_before NUMBER;
+    v_expected NUMBER;
     v_total NUMBER;
     v_active NUMBER;
     v_pending NUMBER;
@@ -23,29 +24,61 @@ DECLARE
         DBMS_OUTPUT.PUT_LINE('OK - ' || p_label || ': ' || p_actual);
     END;
 BEGIN
-    SELECT COUNT(*) INTO v_count FROM categories;
+    SELECT COUNT(*) INTO v_count
+      FROM categories
+     WHERE RAWTOHEX(id) IN (
+         '11111111111111111111111111111111', '22222222222222222222222222222222',
+         '33333333333333333333333333333333', '44444444444444444444444444444444',
+         '55555555555555555555555555555555', '66666666666666666666666666666666'
+     );
     assert_number('categorias da amostra', 6, v_count);
 
-    SELECT COUNT(*) INTO v_count FROM occurrences;
+    SELECT COUNT(*) INTO v_count
+      FROM occurrences
+     WHERE RAWTOHEX(id) IN (
+         'A0000000000000000000000000000001', 'A0000000000000000000000000000002',
+         'A0000000000000000000000000000003', 'A0000000000000000000000000000004',
+         'A0000000000000000000000000000005', 'A0000000000000000000000000000006',
+         'A0000000000000000000000000000007', 'A0000000000000000000000000000008',
+         'A0000000000000000000000000000009', 'A000000000000000000000000000000A',
+         'A000000000000000000000000000000B', 'A000000000000000000000000000000C'
+     );
     assert_number('ocorrencias da amostra', 12, v_count);
 
-    assert_number('funcao total de ocorrencias', 12, pkg_citytech_reports.fn_occurrence_count());
-    assert_number('funcao ocorrencias abertas', 3, pkg_citytech_reports.fn_occurrence_count('ABERTA'));
+    SELECT COUNT(*) INTO v_expected FROM occurrences;
+    assert_number('funcao total de ocorrencias', v_expected, pkg_citytech_reports.fn_occurrence_count());
+
+    SELECT COUNT(*) INTO v_expected FROM occurrences WHERE status = 'ABERTA';
+    assert_number('funcao ocorrencias abertas', v_expected, pkg_citytech_reports.fn_occurrence_count('ABERTA'));
 
     pkg_citytech_reports.pr_category_summary(
         HEXTORAW('11111111111111111111111111111111'), v_total, v_active
     );
-    assert_number('procedure total da categoria VIAS', 2, v_total);
-    assert_number('procedure ativas da categoria VIAS', 2, v_active);
+    SELECT COUNT(*) INTO v_expected
+      FROM occurrences
+     WHERE category_id = HEXTORAW('11111111111111111111111111111111');
+    assert_number('procedure total da categoria VIAS', v_expected, v_total);
 
-    assert_number('funcao outbox pendente', 1, pkg_citytech_operations.fn_pending_outbox());
+    SELECT COUNT(*) INTO v_expected
+      FROM occurrences
+     WHERE category_id = HEXTORAW('11111111111111111111111111111111')
+       AND status IN ('ABERTA', 'EM_TRIAGEM', 'EM_ANDAMENTO');
+    assert_number('procedure ativas da categoria VIAS', v_expected, v_active);
+
+    SELECT COUNT(*) INTO v_expected FROM outbox_events WHERE published_at IS NULL;
+    assert_number('funcao outbox pendente', v_expected, pkg_citytech_operations.fn_pending_outbox());
     pkg_citytech_operations.pr_outbox_summary(v_pending, v_failed, v_oldest);
-    assert_number('procedure outbox pendente', 1, v_pending);
-    assert_number('procedure outbox com erro', 0, v_failed);
-    IF v_oldest IS NULL THEN
+    assert_number('procedure outbox pendente', v_expected, v_pending);
+
+    SELECT COUNT(*) INTO v_expected
+      FROM outbox_events
+     WHERE published_at IS NULL
+       AND last_error IS NOT NULL;
+    assert_number('procedure outbox com erro', v_expected, v_failed);
+    IF v_pending > 0 AND v_oldest IS NULL THEN
         RAISE_APPLICATION_ERROR(-20901, 'Data da outbox pendente nao retornada.');
     END IF;
-    DBMS_OUTPUT.PUT_LINE('OK - procedure retornou a data da outbox mais antiga.');
+    DBMS_OUTPUT.PUT_LINE('OK - procedure retornou resumo consistente da outbox.');
 
     SAVEPOINT before_audit_test;
     SELECT COUNT(*) INTO v_before
@@ -60,6 +93,18 @@ BEGIN
       FROM occurrence_audit
      WHERE occurrence_id = HEXTORAW('A0000000000000000000000000000001');
     assert_number('trigger de auditoria', 1, v_count - v_before);
+
+    SELECT COUNT(*) INTO v_count
+      FROM occurrence_audit
+     WHERE occurrence_id = HEXTORAW('A0000000000000000000000000000001')
+       AND operation = 'UPDATE'
+       AND old_priority = 'MEDIA'
+       AND new_priority = 'ALTA'
+       AND old_version = 0
+       AND new_version = 1
+       AND changed_at IS NOT NULL
+       AND changed_by IS NOT NULL;
+    assert_number('auditoria registra operacao, valores antigo/novo, data e usuario', 1, v_count);
     ROLLBACK TO before_audit_test;
 
     BEGIN

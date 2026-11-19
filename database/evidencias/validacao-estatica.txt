@@ -1,0 +1,24 @@
+﻿Validacao estatica da entrega Database CityTech - 2026-11-19
+
+OK - node --check database/mongodb/01-schema.js
+OK - node --check database/mongodb/02-seed.js
+OK - node --check database/mongodb/03-queries.js
+OK - node --check database/mongodb/04-tests.js
+OK - Oracle possui pelo menos duas tabelas
+OK - Oracle possui relacionamentos por chave estrangeira
+OK - Oracle possui dois blocos PL/SQL anonimos
+OK - Oracle possui duas package specifications
+OK - Oracle possui dois package bodies
+OK - Duas funcoes aparecem em specification e body
+OK - Dois procedures aparecem em specification e body
+OK - Oracle possui dois triggers
+OK - Trigger de auditoria registra operacao, data e valores antigos/novos
+OK - install.sql referencia scripts 01 a 05 na ordem correta
+OK - MongoDB seleciona database e usa createCollection
+OK - MongoDB usa insertMany
+OK - MongoDB possui consultas find
+OK - MongoDB possui pelo menos tres aggregation pipelines
+OK - Scripts da entrega nao executam DROP ou TRUNCATE
+OK - 18 arquivos Oracle/MongoDB usam UTF-8 valido
+OK - git diff --check sem erros
+LIMITACAO - Oracle revisado nao reexecutado: credenciais locais de bootstrap ausentes; nenhuma credencial criada ou alterada.

@@ -1,6 +1,6 @@
 # Progresso e retomada — CityTech
 
-Última atualização: **18/11/2026**.
+Última atualização: **19/11/2026**.
 
 ## 1. Ponto exato de retomada
 
@@ -10,7 +10,7 @@ Git em `main` com identidade local. A fundação 4A está em **`d4b9eea`** e a v
 
 A preparação documental para continuidade entre sessões está concluída. Leia o [manual permanente](../AGENTS.md) e confira o estado real dos arquivos antes de agir.
 
-**Próxima ação:** executar o roteiro manual no Mobile Web já servido e depois no Android; em paralelo, obter provedor/modelo IA autorizado, integrar o `ChatModel` real e medir a avaliação RAG. Executar os testes PL/SQL e relatórios no Oracle institucional somente se ainda não tiverem sido aplicados nesse schema. Depois, corrigir achados reais e somente com autorização gerar/assinar APK e publicar no Firebase App Distribution. Deploy e operações externas continuam fora do escopo. Relatório da infraestrutura: [verificação 3A](verificacao-etapa-3a.md).
+**Próxima ação:** conferir o formato exibido no Portal e enviar manualmente `entregas/Entrega_Database_CityTech.zip` antes do prazo; nenhuma publicação foi realizada pelo agente. Para a defesa de Banco, reexecutar `06-tests.sql` e `07-reports.sql` em schema Oracle vazio/autorizado e usar `database/ROTEIRO-DEMONSTRACAO.md`. Nas demais disciplinas, executar o roteiro Mobile Web/Android e concluir as pendências externas autorizadas. Deploy e operações externas continuam fora do escopo. Relatório da infraestrutura: [verificação 3A](verificacao-etapa-3a.md).
 
 ## 2. Etapas concluídas e etapa atual
 
@@ -301,6 +301,19 @@ Os resultados acima são deste complemento, separados das 26 referências verifi
 - Oracle XE ficou `healthy`, com 6 categorias ativas e massa local. O Java foi reiniciado contra `jdbc:oracle:thin:@localhost:1521/XEPDB1`. Um smoke real criou ocorrência com HTTP `201` e a cancelou com HTTP `204`, validando JWT, controller, serviço, Oracle, histórico e outbox.
 - `backend-java/run-local.sh` agora carrega `.env.local` depois de `.env` e usa o Maven Wrapper, tornando a seleção local reproduzível sem Maven global.
 
+### Finalização da entrega de Banco de Dados — 19/11/2026
+
+- Escopo explicitamente autorizado: auditar, corrigir, testar, documentar e empacotar **Mastering Relational and Non-Relational Database**, sem push ou envio ao Portal.
+- Auditoria confirmou 7 tabelas Oracle, FKs/checks, 6 categorias e 12 ocorrências determinísticas, 2 blocos PL/SQL, 2 functions, 2 procedures, 2 packages com specification/body, 2 triggers e auditoria com operação/data/usuário/valores antigos e novos.
+- `06-tests.sql` deixou de depender de um schema contendo somente a massa acadêmica: valida os 12 UUIDs determinísticos e calcula os valores esperados das funções/procedures a partir do estado real. A auditoria agora também confere valores antigo/novo, operação, data e usuário.
+- `07-reports.sql` passou a filtrar os 12 UUIDs da amostra, evitando que ocorrências adicionais da API contaminem a comparação Oracle↔MongoDB.
+- MongoDB 8.0.38 foi reexecutado no banco local `citytech_demo`: schema/validators, seed, 2 `find`, 6 agregações e **25/25 assertions** passaram. Saída real: `database/evidencias/mongodb-run.txt`.
+- Os quatro JavaScripts passaram em `node --check`. A validação estática confirmou ordem do `install.sql`, objetos mínimos, UTF-8, ausência de `DROP`/`TRUNCATE` executável e `git diff --check`; registro em `database/evidencias/validacao-estatica.txt`.
+- A tentativa de iniciar um Oracle XE novo foi bloqueada antes de criar container/volume porque `ORACLE_ADMIN_PASSWORD` e a senha local de aplicação não estavam preenchidos. Nenhuma credencial foi criada/alterada e o Oracle institucional não foi tocado. A validação Oracle XE 21 anterior permanece histórica; a versão revisada dos testes/relatórios precisa ser reexecutada em schema autorizado.
+- Documentação consolidada em `database/README.md`, READMEs Oracle/Mongo atualizados, roteiro de defesa criado e identificação dos três integrantes registrada. A associação individual às turmas 2TDSA/2TDSR continua pendente de conferência.
+- ZIP final criado e lido integralmente: **24 arquivos**, sem `.env`, chaves, dumps, `node_modules` ou `.git`; caminho `entregas/Entrega_Database_CityTech.zip`, tamanho 35.701 bytes, SHA-256 `B91CF4B4E15472FAD81EFCCA7412E2E9C565CC06A95AF2D79F289D9EF8CA4189`.
+- O arquivo não rastreado de nome anômalo já existente na raiz foi preservado e não entrou no ZIP. Nenhum commit, push, publicação ou envio externo foi executado.
+
 ### Testes ainda não executados
 
 Testes PL/SQL/relatórios completos no Oracle institucional, se ainda não aplicados; LLM/embeddings externos e avaliação RAG real; navegação E2E pelo Mobile e consumo em dispositivo; pipelines; Test Plans; APK/Firebase. O smoke de APIs comprovou a integração positiva .NET→Java e o Expo Web está servido, mas ainda não houve execução manual das telas nem Android/iOS.
@@ -321,7 +334,7 @@ Testes PL/SQL/relatórios completos no Oracle institucional, se ainda não aplic
 ### Acadêmicas e externas
 
 - Entrega oficial: **19/11/2026 às 23h55**. Cadastro encerrou em 13/11; situação do grupo não confirmada.
-- Obter integrantes/RMs/turmas/representante e contatos dos professores.
+- Integrantes e RMs foram informados; conferir a associação individual às turmas 2TDSA/2TDSR, o representante e os contatos dos professores.
 - Resolver dúvidas registradas na matriz: integração Mobile dupla, .NET online/presencial, formato Banco, padrões/licença Test Plans e CRUD de tabelas técnicas em DevOps.
 - Autorizar separadamente contas/operações GitHub, Azure e Firebase, convites/permissões, publicação, deploy e qualquer custo.
 - Definir provedor/modelos IA, orçamento e autorização; definir hospedagem acessível de Java/Oracle/RabbitMQ e .NET.
@@ -329,9 +342,9 @@ Testes PL/SQL/relatórios completos no Oracle institucional, se ainda não aplic
 
 ## 6. Próximas ações em ordem
 
-1. Executar manualmente o fluxo Mobile no Web já servido e depois no Android, preservando evidências dos resultados.
-2. Definir provedor/modelos/credenciais IA autorizados, adicionar o starter correspondente e executar avaliação RAG/LLM real.
-3. No Oracle institucional, executar `06-tests.sql` e `07-reports.sql`; executar `install.sql` somente se o schema estiver vazio.
+1. Conferir no Portal o formato da disciplina de Banco e enviar manualmente `entregas/Entrega_Database_CityTech.zip`; o formato ZIP+TXT é indicado como exemplo no PDF e ainda requer conferência.
+2. Para a defesa, executar `06-tests.sql` e `07-reports.sql` em schema Oracle vazio/autorizado; nunca aplicar `install.sql` sobre objetos existentes.
+3. Executar manualmente o fluxo Mobile no Web já servido e depois no Android, preservando evidências dos resultados.
 4. Confirmar build Android e acessos Azure/Firebase antes das etapas externas; não publicar nem provisionar recurso sem autorização específica.
 
 A 4A termina no commit local **`d4b9eea`** e a 5A em **`6bc996f`**. Nenhum push, deploy ou publicação foi autorizado.
@@ -372,6 +385,7 @@ Detalhes: [arquitetura/ADRs](arquitetura.md), [versões fixadas](versoes-e-fonte
 - **Etapa 7/Mobile autorizada e implementada:** Expo/TypeScript/Router, design system, sessão segura, duas APIs, ocorrências, acompanhamentos, gestão/IA e Sobre; dependências locais instaladas e verificações estáticas executadas. Não autoriza nem realizou APK, Firebase, deploy, push ou conta externa.
 - **Etapa 8/Oracle parcial autorizada e implementada:** DDL JPA, seed, PL/SQL acadêmico, Compose local e validação do backend Java. MongoDB foi excluído pelo usuário; nenhum recurso institucional foi alterado.
 - **P0.3/MongoDB autorizado e concluído:** validators, índices, snapshot comparável, consultas/agregações, testes e documentação executados no serviço local; nenhum volume removido, credencial alterada ou recurso externo acessado.
+- **Finalização da disciplina de Banco autorizada e empacotada:** scripts revisados, MongoDB revalidado, documentação/evidências/identificação organizadas e ZIP íntegro gerado. Oracle revisado aguarda reexecução por falta de credenciais locais de bootstrap; nenhuma credencial ou banco externo foi alterado.
 - Permanecem sem autorização: novas credenciais de contas externas, publicação/deploy ou implementação de funcionalidades além das etapas aprovadas. Testes PL/SQL completos no Oracle institucional ainda precisam ser confirmados.
 - Não há autorização registrada para publicação, deploy, recursos pagos, exclusão importante ou alteração administrativa.
 

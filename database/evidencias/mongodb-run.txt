@@ -1,0 +1,355 @@
+﻿Executando database/mongodb/01-schema.js
+Collection criada: categorias
+Collection criada: ocorrencias
+Collection criada: eventos_triagem
+Schema MongoDB aplicado em citytech_demo.
+Executando database/mongodb/02-seed.js
+categorias: 6 inseridos, 0 sincronizados.
+ocorrencias: 12 inseridos, 0 sincronizados.
+eventos_triagem: 12 inseridos, 0 sincronizados.
+Seed aplicado em citytech_demo: 6 categorias, 12 ocorrencias e 12 eventos de triagem.
+Executando database/mongodb/03-queries.js
+
+=== Consulta 1 - find: ocorrencias de iluminacao em aberto ===
+{
+  "oracleId": "a0000000-0000-0000-0000-000000000008",
+  "title": "Iluminacao intermitente",
+  "priority": "MEDIA",
+  "status": "ABERTA",
+  "address": {
+    "district": "Vila Madalena"
+  }
+}
+{
+  "oracleId": "a0000000-0000-0000-0000-000000000002",
+  "title": "Poste apagado na praca",
+  "priority": "ALTA",
+  "status": "EM_TRIAGEM",
+  "address": {
+    "district": "Se"
+  }
+}
+
+=== Consulta 2 - find: fila critica ou alta ===
+{
+  "title": "Entulho em area publica",
+  "category": {
+    "code": "DESCARTE"
+  },
+  "priority": "ALTA",
+  "status": "RESOLVIDA",
+  "address": {
+    "district": "Centro"
+  }
+}
+{
+  "title": "Sinalizacao horizontal apagada",
+  "category": {
+    "code": "VIAS"
+  },
+  "priority": "ALTA",
+  "status": "EM_ANDAMENTO",
+  "address": {
+    "district": "Itaim Bibi"
+  }
+}
+{
+  "title": "Poste apagado na praca",
+  "category": {
+    "code": "ILUMINACAO"
+  },
+  "priority": "ALTA",
+  "status": "EM_TRIAGEM",
+  "address": {
+    "district": "Se"
+  }
+}
+{
+  "title": "Bueiro transbordando",
+  "category": {
+    "code": "AGUA"
+  },
+  "priority": "ALTA",
+  "status": "ABERTA",
+  "address": {
+    "district": "Lapa"
+  }
+}
+{
+  "title": "Piso tatil danificado",
+  "category": {
+    "code": "ACESSIBILIDADE"
+  },
+  "priority": "CRITICA",
+  "status": "RESOLVIDA",
+  "address": {
+    "district": "Santana"
+  }
+}
+{
+  "title": "Rampa bloqueada",
+  "category": {
+    "code": "ACESSIBILIDADE"
+  },
+  "priority": "CRITICA",
+  "status": "EM_ANDAMENTO",
+  "address": {
+    "district": "Vila Mariana"
+  }
+}
+
+=== Agregacao 1 - ocorrencias por categoria (comparavel ao Oracle) ===
+{
+  "occurrenceCount": 2,
+  "categoryCode": "ACESSIBILIDADE",
+  "categoryName": "Acessibilidade"
+}
+{
+  "occurrenceCount": 2,
+  "categoryCode": "AGUA",
+  "categoryName": "Agua e vazamentos"
+}
+{
+  "occurrenceCount": 2,
+  "categoryCode": "DESCARTE",
+  "categoryName": "Descarte irregular"
+}
+{
+  "occurrenceCount": 2,
+  "categoryCode": "ILUMINACAO",
+  "categoryName": "Iluminacao publica"
+}
+{
+  "occurrenceCount": 2,
+  "categoryCode": "OUTROS",
+  "categoryName": "Outros servicos"
+}
+{
+  "occurrenceCount": 2,
+  "categoryCode": "VIAS",
+  "categoryName": "Vias e buracos"
+}
+
+=== Agregacao 2 - fila nao terminal por prioridade (comparavel ao Oracle) ===
+{
+  "occurrenceCount": 2,
+  "priority": "CRITICA"
+}
+{
+  "occurrenceCount": 4,
+  "priority": "ALTA"
+}
+{
+  "occurrenceCount": 3,
+  "priority": "MEDIA"
+}
+
+=== Agregacao 3 - categoria e status (comparavel ao Oracle) ===
+{
+  "occurrenceCount": 1,
+  "categoryCode": "ACESSIBILIDADE",
+  "status": "EM_ANDAMENTO"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "ACESSIBILIDADE",
+  "status": "RESOLVIDA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "AGUA",
+  "status": "ABERTA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "AGUA",
+  "status": "ENCERRADA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "DESCARTE",
+  "status": "EM_TRIAGEM"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "DESCARTE",
+  "status": "RESOLVIDA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "ILUMINACAO",
+  "status": "ABERTA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "ILUMINACAO",
+  "status": "EM_TRIAGEM"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "OUTROS",
+  "status": "CANCELADA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "OUTROS",
+  "status": "ENCERRADA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "VIAS",
+  "status": "ABERTA"
+}
+{
+  "occurrenceCount": 1,
+  "categoryCode": "VIAS",
+  "status": "EM_ANDAMENTO"
+}
+
+=== Agregacao 4 - distribuicao por bairro e status ===
+{
+  "occurrenceCount": 1,
+  "district": "Bela Vista",
+  "status": "ABERTA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Centro",
+  "status": "RESOLVIDA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Consolacao",
+  "status": "CANCELADA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Higienopolis",
+  "status": "ENCERRADA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Ipiranga",
+  "status": "ENCERRADA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Itaim Bibi",
+  "status": "EM_ANDAMENTO"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Lapa",
+  "status": "ABERTA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Santana",
+  "status": "RESOLVIDA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Saude",
+  "status": "EM_TRIAGEM"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Se",
+  "status": "EM_TRIAGEM"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Vila Madalena",
+  "status": "ABERTA"
+}
+{
+  "occurrenceCount": 1,
+  "district": "Vila Mariana",
+  "status": "EM_ANDAMENTO"
+}
+
+=== Agregacao 5 - situacao das sugestoes de IA ===
+{
+  "suggestionCount": 1,
+  "categories": [
+    "ILUMINACAO"
+  ],
+  "errorCodes": [
+    null
+  ],
+  "aiStatus": "ACEITA"
+}
+{
+  "suggestionCount": 1,
+  "categories": [
+    "AGUA"
+  ],
+  "errorCodes": [
+    "MODEL_NOT_CONFIGURED"
+  ],
+  "aiStatus": "FALHOU"
+}
+{
+  "suggestionCount": 1,
+  "categories": [
+    "VIAS"
+  ],
+  "errorCodes": [
+    null
+  ],
+  "aiStatus": "PRONTA"
+}
+
+=== Agregacao 6 - eventos operacionais por acao e papel ===
+{
+  "eventCount": 1,
+  "action": "CANCELAMENTO",
+  "actorRole": "CIDADAO"
+}
+{
+  "eventCount": 3,
+  "action": "CRIACAO",
+  "actorRole": "CIDADAO"
+}
+{
+  "eventCount": 2,
+  "action": "TRANSICAO",
+  "actorRole": "CIDADAO"
+}
+{
+  "eventCount": 4,
+  "action": "TRANSICAO",
+  "actorRole": "GESTOR"
+}
+{
+  "eventCount": 2,
+  "action": "TRIAGEM",
+  "actorRole": "GESTOR"
+}
+Executando database/mongodb/04-tests.js
+PASS 1: collection categorias existe
+PASS 2: collection ocorrencias existe
+PASS 3: collection eventos_triagem existe
+PASS 4: categorias usa validationLevel strict
+PASS 5: categorias rejeita documento invalido
+PASS 6: categorias possui $jsonSchema
+PASS 7: ocorrencias usa validationLevel strict
+PASS 8: ocorrencias rejeita documento invalido
+PASS 9: ocorrencias possui $jsonSchema
+PASS 10: eventos_triagem usa validationLevel strict
+PASS 11: eventos_triagem rejeita documento invalido
+PASS 12: eventos_triagem possui $jsonSchema
+PASS 13: seed possui as 6 categorias Oracle
+PASS 14: seed possui as 12 ocorrencias Oracle
+PASS 15: seed possui os 12 eventos equivalentes ao historico Oracle
+PASS 16: oracleId e origem preservam a rastreabilidade
+PASS 17: relatorio por categoria coincide com Oracle: 2 ocorrencias em cada categoria
+PASS 18: fila nao terminal coincide com Oracle: CRITICA=2, ALTA=4, MEDIA=3
+PASS 19: relatorio categoria/status coincide com as 12 combinacoes do Oracle
+PASS 20: historico incorporado preserva os 12 registros Oracle
+PASS 21: sugestoes de IA coincidem com Oracle: PRONTA=1, ACEITA=1, FALHOU=1
+PASS 22: categorias possui todos os indices planejados
+PASS 23: ocorrencias possui todos os indices planejados
+PASS 24: eventos_triagem possui todos os indices planejados
+PASS 25: $jsonSchema rejeita documento de categoria invalido
+MongoDB validado com 25 assertions em citytech_demo.

@@ -26,10 +26,10 @@ UUIDs usam `RAW(16)`, `Instant` usa `TIMESTAMP(6) WITH TIME ZONE`, enums usam `V
 | 3 | `03-blocks.sql` | dois blocos anonimos com decisao, cursor e repeticao |
 | 4 | `04-packages.sql` | dois packages, duas funcoes e dois procedures de relatorio/operacao |
 | 5 | `05-triggers.sql` | auditoria de ocorrencias e protecao append-only do historico |
-| 6 | `06-tests.sql` | assertions de dados, packages, constraints e triggers, com rollback |
+| 6 | `06-tests.sql` | assertions de dados, funcoes, procedures, packages, constraints e triggers, com rollback |
 | 7 | `07-reports.sql` | tres relatorios que serao comparados ao snapshot Mongo futuro |
 
-`install.sql` aplica os arquivos 01 a 05. O schema nao possui `DROP`; execute-o em um usuario vazio. Os testes nao alteram permanentemente a amostra.
+`install.sql` aplica os arquivos 01 a 05. O schema nao possui `DROP`; execute-o em um usuario vazio. Os testes nao alteram permanentemente a amostra e calculam os valores esperados das funcoes/procedures a partir do estado atual, para coexistirem com dados adicionais criados pela API. Os tres relatorios filtram os 12 UUIDs da amostra academica e, por isso, continuam comparaveis ao snapshot MongoDB.
 
 ## Oracle local com Compose
 
@@ -75,4 +75,4 @@ Configure o backend com a URL no formato fornecido pela instituicao, por exemplo
 
 O Java continua sendo o unico dono do CRUD e da maquina de estados. Os packages PL/SQL produzem contagens e diagnosticos de categoria/outbox; nao implementam uma segunda transicao de ocorrencia. Os triggers acrescentam auditoria fisica e imutabilidade ao historico, complementando as regras da aplicacao.
 
-MongoDB nao faz parte desta etapa. Os IDs e os tres relatorios foram mantidos deterministas para permitir o snapshot comparavel futuro.
+O snapshot MongoDB correspondente esta em `../mongodb/`. Os IDs deterministas e os tres relatorios permitem comparar os dois modelos sem sincronizacao automatica.

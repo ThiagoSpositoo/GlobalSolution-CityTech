@@ -147,9 +147,14 @@ Azul, branco e verde; estilo moderno, profissional e acessível. ODS principal p
 
 ## Integrantes e links
 
-Nome do grupo: CityTech. **RM, nome completo, turma e representante: pendentes de fornecimento.**
+Nome do grupo: CityTech.
 
-Links GitHub, Azure DevOps, deploy, Firebase e vídeos: ainda não criados. Os backends expõem localmente seus endpoints `/api/v1`, health e Swagger; não há usuário/senha versionados nem URL pública.
+- Thiago Sposito — RM 561694
+- Vitor Madrigrano — RM 564191
+- Lucas Lopes — RM 563544
+- Turmas do grupo: 2TDSA / 2TDSR
+
+A associação individual entre integrante e turma e o representante permanecem pendentes de conferência. GitHub: <https://github.com/ThiagoSpositoo/GlobalSolution-CityTech>. Links Azure DevOps, deploy, Firebase e vídeos ainda não foram registrados neste README. Os backends expõem localmente seus endpoints `/api/v1`, health e Swagger; não há usuário/senha versionados nem URL pública.
 
 ## Declaração de uso de IA
 
