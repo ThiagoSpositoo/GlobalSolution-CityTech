@@ -156,7 +156,4 @@ Nome do grupo: CityTech.
 
 A associação individual entre integrante e turma e o representante permanecem pendentes de conferência. GitHub: <https://github.com/ThiagoSpositoo/GlobalSolution-CityTech>. Links Azure DevOps, deploy, Firebase e vídeos ainda não foram registrados neste README. Os backends expõem localmente seus endpoints `/api/v1`, health e Swagger; não há usuário/senha versionados nem URL pública.
 
-## Declaração de uso de IA
-
-Na Etapa 1 foi utilizado OpenCode com apoio de modelo de linguagem para leitura do enunciado, diagnóstico, planejamento arquitetural e documentação/configuração inicial. Nas etapas seguintes, também apoiou ambiente e implementação/revisão dos backends .NET/Java, testes, RabbitMQ e estrutura Spring AI/RAG. Resultados foram separados entre testes controlados, SQL Server/RabbitMQ reais e bloqueios Oracle/LLM; nenhuma inferência externa foi alegada. A equipe deverá revisar, compreender e conseguir explicar as decisões e todo código antes da entrega.
 # GlobalSolution-CityTech
