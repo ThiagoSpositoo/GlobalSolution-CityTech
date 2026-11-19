@@ -1,0 +1,94 @@
+# Infraestrutura local da Etapa 3A; não é deploy nem aplicação pronta.
+# Imagens fixadas por digest após pull linux/amd64.
+# As variáveis obrigatórias são avaliadas mesmo ao selecionar um único profile.
+name: citytech
+
+services:
+  rabbitmq:
+    image: ${RABBITMQ_IMAGE:-rabbitmq@sha256:753099a19b577c322117f793f864b3129cbba96d40317221a69d73976e3c843c}
+    hostname: citytech-rabbitmq
+    profiles: ["java"]
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-citytech_local}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Preencha RABBITMQ_PASSWORD no .env}
+    ports:
+      - "127.0.0.1:${RABBITMQ_PORT:-5672}:5672"
+      - "127.0.0.1:${RABBITMQ_MANAGEMENT_PORT:-15672}:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  oracle:
+    image: ${ORACLE_IMAGE:-gvenzl/oracle-xe@sha256:f82bccdf6020d27373fdf0e93046b63eb3f777a0289e329d9839feebaf4555de}
+    platform: linux/amd64
+    profiles: ["java", "oracle"]
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_ADMIN_PASSWORD:?Preencha ORACLE_ADMIN_PASSWORD no .env}
+      APP_USER: ${ORACLE_USERNAME:-CITYTECH}
+      APP_USER_PASSWORD: ${ORACLE_PASSWORD:?Preencha ORACLE_PASSWORD no .env}
+    ports:
+      - "127.0.0.1:${ORACLE_PORT:-1521}:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - ./database/oracle:/opt/citytech/oracle:ro
+      - ./database/oracle/00-container-init.sh:/container-entrypoint-initdb.d/10-citytech.sh:ro
+    healthcheck:
+      test: ["CMD", "bash", "/opt/citytech/oracle/healthcheck-citytech.sh"]
+      interval: 20s
+      timeout: 10s
+      retries: 30
+      start_period: 120s
+
+  sqlserver:
+    image: ${SQLSERVER_IMAGE:-mcr.microsoft.com/mssql/server@sha256:4525e3efac9f3e241cb003bb2ff2a82818b502f37e12049d788b1a9fa7e13b7f}
+    profiles: ["dotnet"]
+    environment:
+      ACCEPT_EULA: ${MSSQL_ACCEPT_EULA:?Leia os termos e preencha MSSQL_ACCEPT_EULA}
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?Preencha MSSQL_SA_PASSWORD no .env}
+    ports:
+      - "127.0.0.1:${SQLSERVER_PORT:-1433}:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'SQLCMDPASSWORD="$${MSSQL_SA_PASSWORD}" /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -Q "SELECT 1" -o /dev/null'
+      interval: 15s
+      timeout: 10s
+      retries: 15
+      start_period: 60s
+
+  mongodb:
+    image: ${MONGODB_IMAGE:-mongo@sha256:bdc216e9d5a6ec2cfdac789b5832fdab64cd32055f59885cae918a92de63c361}
+    profiles: ["database"]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USER:-citytech_local_admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD:?Preencha MONGODB_ROOT_PASSWORD no .env}
+      MONGODB_DATABASE: ${MONGODB_DATABASE:-citytech_demo}
+    ports:
+      - "127.0.0.1:${MONGODB_PORT:-27017}:27017"
+    volumes:
+      - mongodb-data:/data/db
+    healthcheck:
+      test:
+        - CMD
+        - mongosh
+        - --quiet
+        - --eval
+        - "if (!db.getSiblingDB('admin').auth(process.env.MONGO_INITDB_ROOT_USERNAME, process.env.MONGO_INITDB_ROOT_PASSWORD)) { quit(1); } if (db.adminCommand({ping: 1}).ok !== 1) { quit(1); }"
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  rabbitmq-data:
+  oracle-data:
+  sqlserver-data:
+  mongodb-data:

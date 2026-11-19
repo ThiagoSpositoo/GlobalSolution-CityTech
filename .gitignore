@@ -1,0 +1,79 @@
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+**/appsettings.Local.json
+**/appsettings.*.Local.json
+**/application-local.properties
+**/application-local.yml
+**/application-local.yaml
+secrets/
+**/secrets/
+*.pem
+*.key
+*.pfx
+*.p12
+*.jks
+*.keystore
+**/service-account*.json
+**/serviceAccount*.json
+**/*.local.sql
+**/*.secret.sql
+**/*-local-secrets.sh
+
+# Material oficial preservado localmente; evitar publicação involuntária.
+/Enunciados/
+
+# Java / .NET
+**/target/
+**/.gradle/
+**/build/
+**/bin/
+**/obj/
+**/TestResults/
+*.user
+*.suo
+*.class
+# Wrappers futuros devem ser versionados.
+!**/gradle/wrapper/gradle-wrapper.jar
+!**/.mvn/wrapper/maven-wrapper.jar
+
+# Mobile / Node
+**/node_modules/
+**/.expo/
+**/dist/
+**/coverage/
+*.tsbuildinfo
+*.apk
+*.aab
+*.ipa
+# Lockfiles NÃO são ignorados.
+
+# Python opcional
+**/.venv/
+**/__pycache__/
+*.pyc
+
+# Editores / SO
+.idea/
+.vs/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Dados locais e arquivos gerados
+.local/
+.tmp/
+*.log
+*.bak
+*.dump
+*.dmp
+*.tmp
+*.swp
+*.swo
+**/.npmrc
+**/NuGet.Config.local
+/artifacts/
+/qa/evidencias/raw/
+/docs/entregas/gerados/

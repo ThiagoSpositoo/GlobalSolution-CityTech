@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CityTech.Api/CityTech.Api.csproj" />
+    <Project Path="src/CityTech.Domain/CityTech.Domain.csproj" />
+    <Project Path="src/CityTech.Infrastructure/CityTech.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CityTech.Tests/CityTech.Tests.csproj" />
+  </Folder>
+</Solution>

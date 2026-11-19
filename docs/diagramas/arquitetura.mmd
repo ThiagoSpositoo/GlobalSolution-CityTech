@@ -1,0 +1,20 @@
+flowchart LR
+    Citizen["Cidadão / Gestor"] --> Mobile["Mobile: React Native + Expo"]
+    Mobile -->|"HTTPS / JSON / JWT: ocorrências"| Java["Java: Spring Boot + JPA + Security"]
+    Mobile -->|"HTTPS / JSON: contas e acompanhamentos"| Net[".NET: Minimal API + EF Core + JWT"]
+    Net -->|"Consulta de referência / JWT"| Java
+    Net --> SQL[("SQL Server local / Azure SQL futuro")]
+    Java --> Oracle[("Oracle: dados urbanos")]
+    Java -->|"Publica evento"| MQ[("RabbitMQ")]
+    MQ -->|"Consumo assíncrono"| Worker["Worker Java: Spring AI + RAG"]
+    Corpus["Corpus versionado"] --> Worker
+    Worker -->|"Contexto recuperado"| LLM["Modelo generativo e embeddings"]
+    LLM -->|"Sugestão revisável"| Worker
+    Worker -->|"Persiste sugestão"| Oracle
+    Oracle -.->|"Snapshot por scripts; IDs preservados"| Mongo[("MongoDB: demonstração documental")]
+    Boards["Azure Boards / Test Plans"] -.->|"Work Items e PRs"| Repos["Azure Repos privado"]
+    Repos -.->|"Merge na main"| CI["CI: build + testes + artefato"]
+    CI -.->|"CD automático"| Azure["Azure App Service: API .NET"]
+    Azure --> SQL
+    CLI["Scripts Azure CLI"] -.->|"Provisionamento futuro"| Azure
+    CLI -.->|"Provisionamento futuro"| SQL
