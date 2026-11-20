@@ -154,6 +154,8 @@ stages:
     displayName: CD - banco e aplicação na Azure
     dependsOn: CI
     condition: succeeded()
+    pool:
+    	vmImage: 'windows-2022'
     jobs:
       - deployment: Deploy
         displayName: Aplicar banco e publicar App Service
@@ -193,7 +195,7 @@ stages:
 
                 - bash: |
                     set -euo pipefail
-                    url="https://$(webAppName).azurewebsites.net"
+                    url="https://citytech-app-czh6hcgudccneqg2.canadacentral-01.azurewebsites.net"
                     for attempt in {1..30}; do
                       if curl -fsS "$url/health/live" >/dev/null; then
                         echo "Aplicacao respondendo em $url"

@@ -246,4 +246,4 @@ SELECT COUNT(*) AS restantes FROM follow_ups;
 - [ ] CRUD e SELECT nas **duas** tabelas (`accounts` e `follow_ups`).
 - [ ] Task concluída com links de commit/PR.
 - [ ] Nenhum token, senha, connection string ou PEM aparece na tela.
-- [ ] Vídeo publicado no YouTube (não listado) e link inserido no PDF.
+- [x] Vídeo publicado no YouTube e link inserido no PDF: <https://youtu.be/ZeVsvk4luIM>.

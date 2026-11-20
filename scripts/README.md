@@ -5,7 +5,7 @@ Pasta exigida pelo enunciado (`/scripts`) para scripts de infraestrutura e o DDL
 | Arquivo | Papel | Estado |
 |---|---|---|
 | `provision-azure.ps1` | Provisiona Resource Group, App Service Linux B1, Azure SQL (servidor + banco Basic), firewall e variáveis de ambiente. Dry-run por padrão; cria somente com `-Approved`. Reexecutável após falha parcial. | Validado: 42 verificações com Azure CLI simulado + consultas reais de existência; criação real pendente de autorização de custo |
-| `tests/Invoke-ProvisionAzureMockTests.ps1` | Testes do provisionamento contra um `az` falso (recursos existentes, inexistentes e erros reais). Não toca no Azure | 42/42 aprovadas |
+| `tests/Invoke-ProvisionAzureMockTests.ps1` | Testes do provisionamento contra um `az` falso (recursos existentes, inexistentes, política regional e erros reais). Não toca no Azure | 48/48 aprovadas |
 | `tests/az-mock.ps1` | Azure CLI simulado usado apenas pelos testes | — |
 | `provision-azure.sh` | Equivalente para Bash/WSL/Linux (mesma configuração JSON): mesma classificação de "não existe" x falha real e confirmação final | Sintaxe validada (`bash -n`); não executado ponta a ponta aqui porque exige `jq` |
 | `azure-config.example.json` | Modelo da configuração (sem segredos). Copie para `azure-config.local.json`, que é ignorado pelo Git | — |
@@ -61,7 +61,7 @@ deploy é responsabilidade da pipeline.
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\tests\Invoke-ProvisionAzureMockTests.ps1
 ```
 
-Executa 12 cenários contra um `az` simulado: nenhum recurso, todos existentes, retomada após falha
+Executa 13 cenários contra um `az` simulado: nenhum recurso, todos existentes, retomada após falha
 parcial, aviso em stderr com sucesso, `AuthorizationFailed`, sem login, grupo ausente em recurso filho,
 dry-run, assinatura inexistente, firewall divergente e login admin divergente. Nenhum comando real do
 Azure é executado.

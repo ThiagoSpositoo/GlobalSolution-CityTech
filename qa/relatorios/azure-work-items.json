@@ -1,0 +1,1280 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-11-19T23:06:06.2321567Z",
+    "organization":  "RM561694",
+    "project":  "GlobalSolution-CityTech",
+    "projectUrl":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech",
+    "counts":  {
+                   "Epic":  5,
+                   "Feature":  12,
+                   "Product Backlog Item":  39
+               },
+    "items":  [
+                  {
+                      "id":  2,
+                      "type":  "Epic",
+                      "title":  "EPIC 01 - Gestão de Usuários",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir que cidadãos e gestores acessem a plataforma CityTech de forma segura, realizando cadastro, autenticação e gerenciamento básico da conta.\u003c/span\u003e \u003c/div\u003e\u003cdiv\u003e\u003cspan\u003e\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "",
+                      "tags":  "",
+                      "parentIds":  [
+
+                                    ],
+                      "childIds":  [
+                                       7,
+                                       8
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/2",
+                      "rev":  1
+                  },
+                  {
+                      "id":  3,
+                      "type":  "Epic",
+                      "title":  "Registro de Ocorrências Urbanas",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir que cidadãos registrem problemas urbanos com endereço, descrição e imagens opcionais.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "",
+                      "tags":  "",
+                      "parentIds":  [
+
+                                    ],
+                      "childIds":  [
+                                       9,
+                                       10,
+                                       11
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/3",
+                      "rev":  1
+                  },
+                  {
+                      "id":  4,
+                      "type":  "Epic",
+                      "title":  "Classificação Inteligente por IA",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003eUtilizar inteligência artificial para sugerir categoria, prioridade e resumo das ocorrências.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "",
+                      "tags":  "",
+                      "parentIds":  [
+
+                                    ],
+                      "childIds":  [
+                                       12,
+                                       13,
+                                       14
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/4",
+                      "rev":  1
+                  },
+                  {
+                      "id":  5,
+                      "type":  "Epic",
+                      "title":  "Gestão Operacional",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir que gestores consultem ocorrências e atualizem seus status.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "",
+                      "tags":  "",
+                      "parentIds":  [
+
+                                    ],
+                      "childIds":  [
+                                       15,
+                                       16
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/5",
+                      "rev":  1
+                  },
+                  {
+                      "id":  6,
+                      "type":  "Epic",
+                      "title":  "Indicadores e Relatórios",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003eDisponibilizar dashboards e métricas para apoio à tomada de decisão.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "",
+                      "tags":  "",
+                      "parentIds":  [
+
+                                    ],
+                      "childIds":  [
+                                       17,
+                                       18
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/6",
+                      "rev":  1
+                  },
+                  {
+                      "id":  7,
+                      "type":  "Feature",
+                      "title":  "FEA-01 Cadastro de Usuário",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir que cidadãos realizem cadastro na plataforma utilizando nome, e-mail e senha.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003eDado que o cidadão acessa a tela de cadastro\u003c/span\u003e \u003c/div\u003e\u003cdiv\u003e\u003cspan\u003eQuando preencher os dados corretamente\u003c/span\u003e \u003c/div\u003e\u003cdiv\u003e\u003cspan\u003eEntão a conta deve ser criada com sucesso\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        2
+                                    ],
+                      "childIds":  [
+                                       19,
+                                       20,
+                                       21,
+                                       22
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/7",
+                      "rev":  2
+                  },
+                  {
+                      "id":  8,
+                      "type":  "Feature",
+                      "title":  "FEA-02 Login e Autenticação",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir que usuários autenticados acessem a plataforma.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003eDado um usuário cadastrado\u003c/span\u003e \u003c/div\u003e\u003cdiv\u003e\u003cspan\u003eQuando informar credenciais válidas\u003c/span\u003e \u003c/div\u003e\u003cdiv\u003e\u003cspan\u003eEntão o acesso deve ser liberado\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        2
+                                    ],
+                      "childIds":  [
+                                       23,
+                                       24,
+                                       25,
+                                       26
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/8",
+                      "rev":  1
+                  },
+                  {
+                      "id":  9,
+                      "type":  "Feature",
+                      "title":  "FEA-03 Cadastro de Ocorrência",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir registrar problemas urbanos.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Payload válido retorna HTTP 201, Location, UUID, prioridade definida e status ABERTA. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Campos inválidos ou categoria inexistente/inativa retornam HTTP 400 ou 409 e não criam ocorrência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A ocorrência criada pertence ao sub do JWT, possui histórico CRIACAO e evento OccurrenceCreated.v1 no outbox. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        3
+                                    ],
+                      "childIds":  [
+                                       27,
+                                       28,
+                                       29,
+                                       30
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/9",
+                      "rev":  2
+                  },
+                  {
+                      "id":  10,
+                      "type":  "Feature",
+                      "title":  "FEA-04 Anexo de Imagens",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir envio opcional de fotografias.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- O cadastro de ocorrência continua funcional sem imagem, pois o anexo é opcional. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Antes da implementação, tentativas de upload não devem ser simuladas nem persistidas como se houvesse armazenamento. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementada, a solução deverá validar tipo, tamanho e vínculo, armazenar somente referência segura e rejeitar arquivo inválido sem criar associação. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        3
+                                    ],
+                      "childIds":  [
+                                       31,
+                                       32,
+                                       33
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/10",
+                      "rev":  2
+                  },
+                  {
+                      "id":  11,
+                      "type":  "Feature",
+                      "title":  "FEA-05 Geolocalização e Endereço",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cdiv\u003e\u003cspan\u003e\u003cdiv\u003e\u003cspan\u003ePermitir informar e validar localização da ocorrência.\u003c/span\u003e \u003c/div\u003e\u003c/span\u003e\u003cbr\u003e \u003c/div\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Endereço válido é aceito na criação e retornado no detalhe da ocorrência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- UF inválida, campos obrigatórios ausentes ou CEP informado fora do formato retornam HTTP 400. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A interface exibe o endereço textual persistido sem alegar coordenadas, mapa ou validação por serviço externo. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        3
+                                    ],
+                      "childIds":  [
+                                       34,
+                                       35,
+                                       36
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/11",
+                      "rev":  2
+                  },
+                  {
+                      "id":  12,
+                      "type":  "Feature",
+                      "title":  "FEA-06 Classificação Automática",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eAnalisar a descrição da ocorrência no consumidor assíncrono e sugerir uma categoria válida com apoio do corpus RAG. A sugestão é consultiva, registra fontes e somente altera a ocorrência após revisão humana; sem modelo externo, o estado FALHOU é explícito. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Evento consumido produz no máximo uma sugestão por eventId e a categoria sugerida pertence ao catálogo ativo. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Sugestão pronta registra fontes, modelo e versão do prompt e não altera automaticamente a ocorrência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Falha, timeout ou saída inválida gera estado FALHOU e mantém a classificação manual disponível. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        4
+                                    ],
+                      "childIds":  [
+                                       37,
+                                       38,
+                                       39
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/12",
+                      "rev":  2
+                  },
+                  {
+                      "id":  13,
+                      "type":  "Feature",
+                      "title":  "FEA-07 Priorização Automática",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eSugerir prioridade BAIXA, MEDIA, ALTA ou CRITICA com base na descrição e nos critérios versionados do corpus. A prioridade de IA permanece separada da prioridade efetiva até decisão humana. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Sugestão pronta contém somente prioridade permitida e justificativa rastreável. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Aceitar a sugestão aplica a prioridade com histórico e versionamento; rejeitar mantém o valor atual. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Saída fora do enum, sugestão já revisada ou versão concorrente é recusada sem alteração indevida. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        4
+                                    ],
+                      "childIds":  [
+                                       40,
+                                       41,
+                                       42
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/13",
+                      "rev":  2
+                  },
+                  {
+                      "id":  14,
+                      "type":  "Feature",
+                      "title":  "FEA-08 Resumo Automático",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eGerar e persistir resumo curto da ocorrência como parte da sugestão de IA, usando a descrição como dado não confiável e o contexto recuperado. O resumo auxilia a triagem, não substitui o relato original. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Sugestão pronta contém resumo dentro do limite do contrato e vinculado à ocorrência correta. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Resumo, justificativa, fontes, modelo e promptVersion são persistidos e retornados no detalhe. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Conteúdo malicioso, resposta inválida ou modelo indisponível não executa instruções e resulta em falha controlada. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        4
+                                    ],
+                      "childIds":  [
+                                       43,
+                                       44,
+                                       45
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/14",
+                      "rev":  2
+                  },
+                  {
+                      "id":  15,
+                      "type":  "Feature",
+                      "title":  "FEA-09 Consulta de Ocorrências",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003ePermitir consulta paginada, filtrada e detalhada das ocorrências. Cidadãos veem somente recursos próprios; gestores veem a fila completa. O detalhe reúne endereço, status, categoria, prioridade, versão e sugestão disponível. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Listagem válida retorna HTTP 200 com paginação, ordenação e filtros permitidos. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Cidadão recebe somente ocorrências cujo citizenId corresponde ao sub; tentativa de acessar ocorrência alheia retorna HTTP 404. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Detalhe válido retorna dados atuais e não expõe senha, token ou informação pessoal desnecessária. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        5
+                                    ],
+                      "childIds":  [
+                                       46,
+                                       47,
+                                       48
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/15",
+                      "rev":  2
+                  },
+                  {
+                      "id":  16,
+                      "type":  "Feature",
+                      "title":  "FEA-10 Atualização de Status",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003ePermitir ao gestor conduzir a ocorrência pelas transições autorizadas e ao cidadão confirmar ou reabrir quando a regra permitir. Cada alteração usa versão otimista e registra histórico. Notificação push não está implementada; a atualização fica visível nas consultas e no Mobile. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Transição permitida retorna HTTP 200, incrementa version e registra ator, estados, nota e instante no histórico. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Transição inválida retorna HTTP 409; papel insuficiente retorna HTTP 403; versão antiga retorna HTTP 409 sem alterar o estado. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- O status atualizado aparece na consulta e no Mobile; nenhuma notificação push é alegada no escopo atual. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        5
+                                    ],
+                      "childIds":  [
+                                       49,
+                                       50,
+                                       51
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/16",
+                      "rev":  2
+                  },
+                  {
+                      "id":  17,
+                      "type":  "Feature",
+                      "title":  "FEA-11 Dashboard Gerencial",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eDisponibilizar ao gestor indicadores agregados de ocorrências por status e categoria, tempo médio de triagem e estatísticas de IA. O Mobile atual apresenta indicadores e contagens; gráficos visuais avançados permanecem planejados. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Gestor recebe HTTP 200 com total, agrupamentos e generatedAt UTC coerentes com uma amostra conhecida. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Cidadão recebe HTTP 403 e nenhuma informação gerencial. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Conjunto vazio retorna zeros e coleções coerentes, sem erro ou divisão por zero; gráficos não implementados são identificados como pendência. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        6
+                                    ],
+                      "childIds":  [
+                                       52,
+                                       53,
+                                       54
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/17",
+                      "rev":  2
+                  },
+                  {
+                      "id":  18,
+                      "type":  "Feature",
+                      "title":  "FEA-12 Relatórios Operacionais",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003ePlanejar relatórios operacionais consultáveis e exportáveis a partir de dados consolidados. Atualmente existem endpoint de indicadores e relatórios acadêmicos reproduzíveis em Oracle/MongoDB, mas não existe endpoint de geração/exportação de arquivo no produto. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Os indicadores e scripts acadêmicos existentes produzem resultados sobre dados fictícios e rastreáveis. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A ausência de exportação no produto é registrada como pendência e não é demonstrada como funcionalidade concluída. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementada, a exportação deverá respeitar filtros, autorização de gestor, formato definido e ausência de dados pessoais desnecessários. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        6
+                                    ],
+                      "childIds":  [
+                                       55,
+                                       56,
+                                       57
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/18",
+                      "rev":  2
+                  },
+                  {
+                      "id":  19,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-001 Informar Nome Completo",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero informar meu nome no cadastro para que minha conta tenha identificação de exibição. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Nome com 2 a 120 caracteres é aceito. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Nome ausente ou fora do limite retorna HTTP 400 com erro no campo name. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- O nome persistido é retornado sem qualquer dado de senha. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        7
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/19",
+                      "rev":  3
+                  },
+                  {
+                      "id":  20,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-002 Informar E-mail",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero informar um e-mail válido e único para utilizá-lo como identificador de login. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- E-mail válido é normalizado antes da persistência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Formato inválido retorna HTTP 400. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- E-mail já cadastrado retorna HTTP 409 EMAIL_ALREADY_EXISTS e não cria segunda conta. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        7
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/20",
+                      "rev":  3
+                  },
+                  {
+                      "id":  21,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-003 Informar Senha",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero definir uma senha no cadastro para autenticar minha conta com segurança. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Senha entre 8 e 128 caracteres, contendo letra e número, é aceita. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Senha fraca retorna HTTP 400 com erro por campo. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A senha é armazenada somente como hash e nunca aparece em resposta ou log. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        7
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/21",
+                      "rev":  3
+                  },
+                  {
+                      "id":  22,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-004 Persistir Cadastro",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero persistir o cadastro de forma idempotente para manter conta única e recuperável no SQL Server. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Cadastro válido persiste uma Account com UUID, papel CIDADAO e timestamps UTC. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Mesma chave e corpo reproduzem a resposta sem duplicação. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Mesma chave com corpo diferente retorna HTTP 409 IDEMPOTENCY_CONFLICT. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        7
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/22",
+                      "rev":  3
+                  },
+                  {
+                      "id":  23,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-005 Validar Credenciais",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero validar e-mail e senha de uma conta ativa sem revelar qual credencial está incorreta. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Credenciais corretas de conta ativa são aceitas. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Senha incorreta, e-mail inexistente ou conta inativa retorna HTTP 401 com mensagem genérica. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Nenhum token é emitido em tentativa recusada. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        8
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/23",
+                      "rev":  4
+                  },
+                  {
+                      "id":  24,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-006 Realizar Login",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário, quero realizar login para receber uma sessão autenticada e acessar recursos permitidos ao meu papel. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Login válido retorna accessToken, Bearer, expiresIn e usuário público. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- JWT usa RS256 e contém sub, roles, iss, aud, exp e jti válidos. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- O mesmo token válido é aceito pelas APIs .NET e Java. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        8
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/24",
+                      "rev":  3
+                  },
+                  {
+                      "id":  25,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-007 Encerrar Sessão",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário Mobile, quero encerrar a sessão para remover o token local e impedir novo acesso pelas rotas protegidas. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Logout remove token e dados de usuário do armazenamento seguro. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Após logout, rota protegida redireciona para login. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- O MVP deixa explícito que o JWT já emitido permanece válido no servidor até expirar. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        8
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/25",
+                      "rev":  3
+                  },
+                  {
+                      "id":  26,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-008 Recuperar Senha",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário, quero recuperar acesso caso esqueça a senha. Este fluxo está planejado, mas não existe endpoint, envio de e-mail ou tela de recuperação no MVP implementado. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- A funcionalidade permanece identificada como não implementada e não é simulada na demonstração. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Nenhum endpoint público revela se um e-mail está cadastrado. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementada, deverá usar token temporário, expiração, uso único e senha armazenada somente como hash. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        8
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/26",
+                      "rev":  3
+                  },
+                  {
+                      "id":  27,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-009 Selecionar Categoria",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero selecionar uma categoria ativa ao registrar a ocorrência para orientar sua triagem. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- O formulário lista categorias ativas retornadas pela API Java. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Categoria ativa é persistida no registro. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Categoria inexistente ou inativa é recusada sem criar ocorrência. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        9
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/27",
+                      "rev":  3
+                  },
+                  {
+                      "id":  28,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-010 Informar Descrição",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero descrever o problema urbano para fornecer contexto à gestão e à sugestão de IA. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Descrição entre 20 e 2000 caracteres é aceita. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Descrição ausente ou fora do limite retorna HTTP 400. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- O texto é tratado como dado não confiável e não executa instruções. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        9
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/28",
+                      "rev":  3
+                  },
+                  {
+                      "id":  29,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-011 Informar Endereço",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero informar o endereço textual da ocorrência para localizar o problema sem depender de GPS. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Logradouro, número, bairro, cidade e UF válidos são obrigatórios. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Complemento e CEP são opcionais. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Campos inválidos retornam HTTP 400 e não persistem ocorrência parcial. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        9
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/29",
+                      "rev":  3
+                  },
+                  {
+                      "id":  30,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-012 Registrar Ocorrência",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão autenticado, quero concluir o registro para obter um protocolo UUID e acompanhar a ocorrência. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Criação válida retorna HTTP 201 e Location. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Status inicial é ABERTA e prioridade omitida assume MEDIA. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Ocorrência, histórico CRIACAO e outbox são gravados atomicamente. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        9
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/30",
+                      "rev":  3
+                  },
+                  {
+                      "id":  31,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-013 Selecionar Imagem",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero futuramente selecionar fotografia opcional para complementar a ocorrência. Seleção de imagem não está implementada no app atual. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- O fluxo sem imagem permanece utilizável. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- O app atual não apresenta seleção fictícia nem afirma upload concluído. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementado, o seletor deverá solicitar permissão e permitir cancelamento sem perder o formulário. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        10
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/31",
+                      "rev":  3
+                  },
+                  {
+                      "id":  32,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-014 Validar Formato",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero futuramente validar formato e tamanho da imagem antes do upload. Não existe processamento de arquivo implementado no MVP. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- A limitação atual é registrada como pendência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementado, somente tipos e limites explicitamente permitidos serão aceitos. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Arquivo inválido será rejeitado sem associação e sem execução de conteúdo. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        10
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/32",
+                      "rev":  3
+                  },
+                  {
+                      "id":  33,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-015 Associar Imagem à Ocorrência",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero futuramente associar referência segura da imagem à ocorrência correta, sem armazenar binário ou caminho inseguro no domínio atual. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Não existe associação no schema/API atual e isso não é apresentado como concluído. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementada, a associação exigirá ocorrência visível ao usuário. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Falha no armazenamento não deverá corromper a ocorrência nem criar referência órfã. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        10
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/33",
+                      "rev":  3
+                  },
+                  {
+                      "id":  34,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-016 Informar CEP",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero informar CEP opcional no endereço para complementar a localização textual. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- CEP vazio é convertido para null. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- CEP informado no formato 00000-000 é aceito. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Formato diferente retorna validação sem alegar consulta automática a serviço externo. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        11
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/34",
+                      "rev":  3
+                  },
+                  {
+                      "id":  35,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-017 Validar Endereço",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero validar a estrutura obrigatória do endereço antes de persistir a ocorrência. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Logradouro, número, bairro, cidade e UF são validados. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- UF deve possuir duas letras válidas conforme contrato. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A validação é estrutural; geocodificação e confirmação externa do endereço não estão implementadas. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        11
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/35",
+                      "rev":  3
+                  },
+                  {
+                      "id":  36,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-018 Exibir Localização",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário autorizado, quero visualizar o endereço textual no detalhe da ocorrência para compreender sua localização. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Detalhe autorizado retorna os campos de endereço persistidos. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Ocorrência alheia permanece oculta ao cidadão com HTTP 404. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A tela não apresenta mapa ou coordenadas inexistentes. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        11
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/36",
+                      "rev":  3
+                  },
+                  {
+                      "id":  37,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-019 Analisar Descrição",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo sistema, quero recuperar contexto do corpus e analisar a descrição após o evento de criação para produzir sugestão assistiva. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Consumidor processa o eventId uma única vez. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Descrição é tratada como dado e o contexto registra fontes recuperadas. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Modelo indisponível gera MODEL_NOT_CONFIGURED sem bloquear triagem manual. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        12
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/37",
+                      "rev":  3
+                  },
+                  {
+                      "id":  38,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-020 Sugerir Categoria",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo gestor ou cidadão, quero receber uma categoria sugerida para apoiar a classificação sem retirar a decisão humana. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Categoria sugerida pertence ao catálogo permitido. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Sugestão não altera a ocorrência antes de ACEITAR. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Saída inválida resulta em FALHOU e não persiste categoria indevida. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        12
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/38",
+                      "rev":  3
+                  },
+                  {
+                      "id":  39,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-021 Exibir Sugestão",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário autorizado, quero visualizar estado, categoria, justificativa e fontes da sugestão no detalhe da ocorrência. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Detalhe exibe PENDENTE, PRONTA, ACEITA, REJEITADA ou FALHOU conforme persistência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Somente proprietário ou gestor visualiza a sugestão. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Falha é informada sem impedir ações manuais. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        12
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/39",
+                      "rev":  3
+                  },
+                  {
+                      "id":  40,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-022 Avaliar Criticidade",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo sistema, quero avaliar sinais de criticidade usando critérios versionados para fundamentar a prioridade sugerida. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- A avaliação usa descrição e contexto recuperado. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A justificativa é persistida com a sugestão. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Texto malicioso não altera regras, enums ou permissões. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        13
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/40",
+                      "rev":  3
+                  },
+                  {
+                      "id":  41,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-023 Definir Prioridade",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo sistema, quero produzir prioridade sugerida dentro do enum do domínio, sujeita à revisão humana. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Somente BAIXA, MEDIA, ALTA ou CRITICA é aceita. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Aceite humano aplica o valor e registra histórico. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Rejeição mantém a prioridade atual e registra a decisão. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        13
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/41",
+                      "rev":  3
+                  },
+                  {
+                      "id":  42,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-024 Exibir Prioridade",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário autorizado, quero distinguir prioridade atual e prioridade sugerida para decidir conscientemente. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Detalhe identifica a prioridade efetiva da ocorrência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Sugestão pronta mostra prioridade sugerida separadamente. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A interface não representa sugestão como decisão já aplicada. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        13
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/42",
+                      "rev":  3
+                  },
+                  {
+                      "id":  43,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-025 Gerar Resumo",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo sistema, quero gerar resumo conciso da descrição para apoiar leitura rápida durante a triagem. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Resumo respeita o limite de 500 caracteres. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Resumo deriva do relato e contexto sem inventar ação oficial. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Falha de geração mantém o relato original disponível. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        14
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/43",
+                      "rev":  3
+                  },
+                  {
+                      "id":  44,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-026 Armazenar Resumo",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero persistir o resumo com metadados da sugestão para rastreabilidade. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Resumo é associado à ocorrência correta. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Persistência inclui fontes, modelo, promptVersion e status. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Deduplicação impede segunda sugestão para o mesmo evento. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        14
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/44",
+                      "rev":  3
+                  },
+                  {
+                      "id":  45,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-027 Exibir Resumo",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário autorizado, quero visualizar o resumo no detalhe sem perder acesso à descrição original. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Resumo pronto aparece no bloco de sugestão. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Descrição original permanece visível e inalterada. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Resumo ausente ou com falha produz estado explícito, não texto fictício. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        14
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/45",
+                      "rev":  3
+                  },
+                  {
+                      "id":  46,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-028 Consultar Ocorrências",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário autenticado, quero listar ocorrências visíveis ao meu papel com paginação. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Cidadão lista somente ocorrências próprias. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Gestor lista a fila completa. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Page e size válidos retornam totais e ordenação coerentes. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        15
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/46",
+                      "rev":  3
+                  },
+                  {
+                      "id":  47,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-029 Aplicar Filtros",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo gestor ou cidadão, quero filtrar a listagem por status, categoria, prioridade e busca textual dentro da minha visibilidade. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Filtros permitidos combinam com paginação. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Filtro não amplia a visibilidade do cidadão. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Parâmetro inválido retorna HTTP 400 sem consulta insegura. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        15
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/47",
+                      "rev":  3
+                  },
+                  {
+                      "id":  48,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-030 Exibir Detalhes",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo usuário autorizado, quero abrir o detalhe atualizado da ocorrência com endereço, histórico e sugestão. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Proprietário ou gestor recebe HTTP 200. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Outro cidadão recebe HTTP 404. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Resposta contém version para alterações otimistas e não expõe segredo. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        15
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/48",
+                      "rev":  3
+                  },
+                  {
+                      "id":  49,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-031 Alterar Status",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo ator autorizado, quero alterar status somente pelas transições permitidas da máquina de estados. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Transição válida usa version atual e retorna HTTP 200. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Transição não listada retorna INVALID_TRANSITION. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Estado terminal não aceita nova transição. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        16
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/49",
+                      "rev":  3
+                  },
+                  {
+                      "id":  50,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-032 Registrar Histórico",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero registrar cada mudança relevante em trilha append-only para auditoria operacional. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Registro contém ator, papel, ação, estados, nota e timestamp UTC. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Histórico é gravado na mesma transação da alteração. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Não existe endpoint público para editar ou excluir histórico. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        16
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/50",
+                      "rev":  3
+                  },
+                  {
+                      "id":  51,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-033 Notificar Atualização",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo cidadão, quero perceber a atualização da ocorrência ao consultar o app. O MVP atualiza listagem e detalhe sob demanda; push, e-mail e notificação em tempo real não estão implementados. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Após atualização persistida, nova consulta retorna o status atual. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- A interface atualiza o conteúdo após refresh ou nova navegação. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Nenhuma notificação push ou e-mail é apresentada como disponível. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        16
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/51",
+                      "rev":  3
+                  },
+                  {
+                      "id":  52,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-034 Exibir Indicadores",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo gestor, quero consultar totais por status e categoria, tempo de triagem e estatísticas de IA. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Endpoint retorna HTTP 200 ao GESTOR. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Contagens conferem com conjunto conhecido. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- CIDADAO recebe HTTP 403. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        17
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/52",
+                      "rev":  3
+                  },
+                  {
+                      "id":  53,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-035 Exibir Gráficos",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo gestor, quero futuramente visualizar gráficos dos indicadores. O Mobile atual apresenta números e agrupamentos, mas não possui biblioteca ou componentes de gráficos avançados. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Indicadores numéricos existentes permanecem disponíveis. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Ausência de gráficos é registrada como pendência, sem captura simulada. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementados, gráficos devem ter rótulos e não depender apenas de cor. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        17
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/53",
+                      "rev":  3
+                  },
+                  {
+                      "id":  54,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-036 Consolidar Dados",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo plataforma, quero consolidar agregações do domínio Java sem copiar credenciais ou dados pessoais desnecessários. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Agregações usam ocorrências persistidas no Oracle. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Totais por status e categoria são consistentes com o total geral. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Conjunto vazio retorna estrutura válida com zeros. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        17
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/54",
+                      "rev":  3
+                  },
+                  {
+                      "id":  55,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-037 Gerar Relatório",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo gestor, quero futuramente gerar relatório operacional a partir de filtros. O produto ainda não expõe geração de relatório; existem somente indicadores e scripts acadêmicos Oracle/MongoDB. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- A limitação atual é documentada e não marcada como concluída. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Scripts acadêmicos existentes geram resultados reproduzíveis com dados fictícios. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementado, o relatório respeitará autorização e filtros definidos. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        18
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/55",
+                      "rev":  3
+                  },
+                  {
+                      "id":  56,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-038 Exportar Relatório",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo gestor, quero futuramente exportar relatório em formato definido. Não existe endpoint ou arquivo exportável no produto atual. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Nenhuma exportação é simulada na entrega atual. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Quando implementada, a exportação será restrita a GESTOR e conterá apenas dados necessários. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Falha de geração não deve produzir arquivo parcial apresentado como válido. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        18
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/56",
+                      "rev":  3
+                  },
+                  {
+                      "id":  57,
+                      "type":  "Product Backlog Item",
+                      "title":  "PBI-039 Consultar Histórico",
+                      "state":  "New",
+                      "areaPath":  "GlobalSolution-CityTech",
+                      "iterationPath":  "GlobalSolution-CityTech",
+                      "description":  "\u003cp\u003eComo gestor, quero consultar histórico operacional das ocorrências para acompanhar mudanças e fundamentar relatórios. \u003c/p\u003e",
+                      "acceptanceCriteria":  "\u003cp\u003e- Gestor consulta histórico paginado de qualquer ocorrência. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Cidadão consulta apenas histórico de ocorrência própria. \u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e- Eventos aparecem em ordem decrescente e permanecem imutáveis. \u003c/p\u003e",
+                      "tags":  "",
+                      "parentIds":  [
+                                        18
+                                    ],
+                      "childIds":  [
+
+                                   ],
+                      "testedFeatureIds":  [
+
+                                           ],
+                      "url":  "https://dev.azure.com/RM561694/936bbff8-146e-489c-843a-0f55b84a64bd/_apis/wit/workItems/57",
+                      "rev":  3
+                  }
+              ]
+}

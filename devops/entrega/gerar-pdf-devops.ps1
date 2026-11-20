@@ -58,6 +58,11 @@ $videoCell = if ([string]::IsNullOrWhiteSpace($VideoUrl)) {
 } else {
     '<a href="' + $VideoUrl + '">' + $VideoUrl + '</a>'
 }
+$videoStatusRow = if ([string]::IsNullOrWhiteSpace($VideoUrl)) {
+    '<tr><td>Vídeo narrado 720p no YouTube</td><td><span class="badge b-pend">PENDENTE</span></td><td>Roteiro em <code>devops/roteiro-video.md</code></td></tr>'
+} else {
+    '<tr><td>Vídeo de apresentação no YouTube</td><td><span class="badge b-ok">COMPROVADO</span></td><td><a href="' + $VideoUrl + '">' + $VideoUrl + '</a></td></tr>'
+}
 
 $html = New-Object Text.StringBuilder
 function Add([string]$text) { [void]$html.AppendLine($text) }
@@ -235,7 +240,7 @@ Add "<tr><td>Script de provisionamento</td><td><span class=\"ok\">provision-azur
 Add '<tr><td>Suporte a chaves JWT por ambiente</td><td><span class="ok">implementado e testado</span> (<code>JWT_PRIVATE_KEY_PEM</code>/<code>JWT_PUBLIC_KEY_PEM</code>)</td></tr>'
 Add '<tr><td>Simulação local do stage CI</td><td><span class="ok">build 0 avisos/0 erros e DDL gerado</span> com SQL Server real; corpo idêntico ao <code>script-bd.sql</code> versionado</td></tr>'
 Add '<tr><td>Ferramentas da pipeline</td><td><span class="ok">manifesto <code>dotnet-ef</code> 10.0.15 restaurado</span> e <code>bash -n</code> aprovado nos 7 blocos de script</td></tr>'
-Add '<tr><td>Provisionamento com Azure CLI simulado</td><td><span class="ok">42/42 verificações em 12 cenários</span> (recursos existentes, inexistentes e falhas reais), sem tocar no Azure</td></tr>'
+Add '<tr><td>Provisionamento com Azure CLI simulado</td><td><span class="ok">48/48 verificações em 13 cenários</span> (recursos existentes, inexistentes, política regional e falhas reais), sem tocar no Azure</td></tr>'
 Add '<tr><td>Consultas reais de existência (somente leitura)</td><td><span class="ok">Resource Group classificado como existente; plano, SQL e App Service como inexistentes</span>, sem exceção — exatamente o caso que falhava antes</td></tr>'
 Add '<tr><td>Exemplos JSON de CRUD por tabela</td><td><span class="ok">válidos</span> (<code>scripts/crud/*.json</code>)</td></tr>'
 Add '</tbody></table>'
@@ -252,7 +257,7 @@ Add '<tr><td>Repositório no Azure Repos</td><td><span class="badge b-prep">PREP
 Add '<tr><td>Deploy automático e aplicação no ar</td><td><span class="badge b-prep">PREPARADO</span></td><td>Depende da execução da pipeline</td></tr>'
 Add '<tr><td>CRUD em duas tabelas na nuvem</td><td><span class="badge b-prep">PREPARADO</span></td><td>Roteiro SQL/HTTP pronto</td></tr>'
 Add '<tr><td>Acesso do professor (Basic + Project Admin)</td><td><span class="badge b-pend">PENDENTE</span></td><td>E-mail institucional não informado</td></tr>'
-Add '<tr><td>Vídeo narrado 720p no YouTube</td><td><span class="badge b-pend">PENDENTE</span></td><td>Roteiro em <code>devops/roteiro-video.md</code></td></tr>'
+Add $videoStatusRow
 Add '</tbody></table>'
 
 if ($captures.Count -gt 0) {
@@ -325,7 +330,8 @@ if ($pdfBytes.Length -lt 5 -or [Text.Encoding]::ASCII.GetString($pdfBytes, 0, 5)
 }
 
 $txtPath = Join-Path $OutputDirectory 'CityTech_RM561694.txt'
-$identification = @'
+$videoText = if ([string]::IsNullOrWhiteSpace($VideoUrl)) { 'PENDENTE' } else { $VideoUrl }
+$identification = @"
 CityTech — DevOps Tools & Cloud Computing
 Global Solution FIAP 2026/2 — CitizenTech
 
@@ -334,7 +340,8 @@ Vitor Madrigrano — RM 564191 — 2TDSR
 Lucas Lopes — RM 563544 — 2TDSA
 
 Azure DevOps: https://dev.azure.com/RM561694 (projeto GlobalSolution-CityTech)
-'@
+Vídeo: $videoText
+"@
 [IO.File]::WriteAllText($txtPath, $identification + [Environment]::NewLine, (New-Object Text.UTF8Encoding($false)))
 
 Write-Host "PDF: $pdfPath ($($pdfBytes.Length) bytes)"

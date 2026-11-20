@@ -1,0 +1,9 @@
+CityTech — DevOps Tools & Cloud Computing
+Global Solution FIAP 2026/2 — CitizenTech
+
+Thiago Sposito — RM 561694 — 2TDSR
+Vitor Madrigrano — RM 564191 — 2TDSR
+Lucas Lopes — RM 563544 — 2TDSA
+
+Azure DevOps: https://dev.azure.com/RM561694 (projeto GlobalSolution-CityTech)
+Vídeo: https://youtu.be/ZeVsvk4luIM

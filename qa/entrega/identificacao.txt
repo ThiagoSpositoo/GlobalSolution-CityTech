@@ -1,0 +1,9 @@
+CityTech
+Compliance, Quality Assurance & Tests
+
+Thiago Sposito — RM 561694 — 2TDSR
+Vitor Madrigrano — RM 564191 — 2TDSR
+Lucas Lopes — RM 563544 — 2TDSA
+
+GitHub: https://github.com/ThiagoSpositoo/GlobalSolution-CityTech
+Azure DevOps: https://dev.azure.com/RM561694/GlobalSolution-CityTech

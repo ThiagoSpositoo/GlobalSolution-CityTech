@@ -282,6 +282,27 @@ $t11 = Invoke-Scenario -Name 'T11' -State @{
 Assert-That 'T11' 'exit code 0' ($t11.ExitCode -eq 0) "exit $($t11.ExitCode) | $($t11.Output)"
 Assert-That 'T11' 'reconhece o login existente' ($t11.Output -match 'login admin: citytechadmin')
 
+# --- T12: região bloqueada pela política -----------------------------------------
+Write-Host ''
+Write-Host '[T12] Região bloqueada pela política: deve falhar antes de criar'
+$t12 = Invoke-Scenario -Name 'T12' -State @{
+    allowedLocations = @('eastus', 'eastus2', 'canadacentral')
+}
+Assert-That 'T12' 'exit code diferente de 0' ($t12.ExitCode -ne 0) "exit $($t12.ExitCode)"
+Assert-That 'T12' 'lista as regiões permitidas' ($t12.Output -match 'eastus, eastus2, canadacentral')
+Assert-That 'T12' 'não criou nenhum recurso' (-not ($t12.LogText -match '\screate\s')) $t12.LogText
+
+# --- T13: região sem App Service --------------------------------------------------
+Write-Host ''
+Write-Host '[T13] Região sem App Service: deve falhar antes de criar'
+$t13 = Invoke-Scenario -Name 'T13' -State @{
+    webLocations = @('East US')
+    sqlLocations = @('Brazil South', 'East US')
+}
+Assert-That 'T13' 'exit code diferente de 0' ($t13.ExitCode -ne 0) "exit $($t13.ExitCode)"
+Assert-That 'T13' 'identifica indisponibilidade do App Service' ($t13.Output -match 'App Service não está disponível')
+Assert-That 'T13' 'não criou nenhum recurso' (-not ($t13.LogText -match '\screate\s')) $t13.LogText
+
 # --- resumo ----------------------------------------------------------------------
 Write-Host ''
 Write-Host '=== Resumo ===' -ForegroundColor Cyan

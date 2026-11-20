@@ -1,0 +1,565 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-11-19T23:08:21.9681798Z",
+    "organization":  "RM561694",
+    "project":  "GlobalSolution-CityTech",
+    "counts":  {
+                   "epics":  5,
+                   "features":  12,
+                   "productBacklogItems":  39,
+                   "testCases":  24,
+                   "passedChecks":  75,
+                   "failedChecks":  0
+               },
+    "results":  [
+                    {
+                        "check":  "documentation",
+                        "id":  7,
+                        "type":  "Feature",
+                        "title":  "FEA-01 Cadastro de Usuário",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  8,
+                        "type":  "Feature",
+                        "title":  "FEA-02 Login e Autenticação",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  9,
+                        "type":  "Feature",
+                        "title":  "FEA-03 Cadastro de Ocorrência",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  10,
+                        "type":  "Feature",
+                        "title":  "FEA-04 Anexo de Imagens",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  11,
+                        "type":  "Feature",
+                        "title":  "FEA-05 Geolocalização e Endereço",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  12,
+                        "type":  "Feature",
+                        "title":  "FEA-06 Classificação Automática",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  13,
+                        "type":  "Feature",
+                        "title":  "FEA-07 Priorização Automática",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  14,
+                        "type":  "Feature",
+                        "title":  "FEA-08 Resumo Automático",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  15,
+                        "type":  "Feature",
+                        "title":  "FEA-09 Consulta de Ocorrências",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  16,
+                        "type":  "Feature",
+                        "title":  "FEA-10 Atualização de Status",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  17,
+                        "type":  "Feature",
+                        "title":  "FEA-11 Dashboard Gerencial",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  18,
+                        "type":  "Feature",
+                        "title":  "FEA-12 Relatórios Operacionais",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  19,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-001 Informar Nome Completo",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  20,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-002 Informar E-mail",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  21,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-003 Informar Senha",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  22,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-004 Persistir Cadastro",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  23,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-005 Validar Credenciais",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  24,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-006 Realizar Login",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  25,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-007 Encerrar Sessão",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  26,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-008 Recuperar Senha",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  27,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-009 Selecionar Categoria",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  28,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-010 Informar Descrição",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  29,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-011 Informar Endereço",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  30,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-012 Registrar Ocorrência",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  31,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-013 Selecionar Imagem",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  32,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-014 Validar Formato",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  33,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-015 Associar Imagem à Ocorrência",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  34,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-016 Informar CEP",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  35,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-017 Validar Endereço",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  36,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-018 Exibir Localização",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  37,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-019 Analisar Descrição",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  38,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-020 Sugerir Categoria",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  39,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-021 Exibir Sugestão",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  40,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-022 Avaliar Criticidade",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  41,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-023 Definir Prioridade",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  42,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-024 Exibir Prioridade",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  43,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-025 Gerar Resumo",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  44,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-026 Armazenar Resumo",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  45,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-027 Exibir Resumo",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  46,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-028 Consultar Ocorrências",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  47,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-029 Aplicar Filtros",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  48,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-030 Exibir Detalhes",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  49,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-031 Alterar Status",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  50,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-032 Registrar Histórico",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  51,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-033 Notificar Atualização",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  52,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-034 Exibir Indicadores",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  53,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-035 Exibir Gráficos",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  54,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-036 Consolidar Dados",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  55,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-037 Gerar Relatório",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  56,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-038 Exportar Relatório",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "documentation",
+                        "id":  57,
+                        "type":  "Product Backlog Item",
+                        "title":  "PBI-039 Consultar Histórico",
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-REG-01",
+                        "id":  58,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-REG-02",
+                        "id":  59,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-AUTH-01",
+                        "id":  60,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-AUTH-02",
+                        "id":  61,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-OCC-01",
+                        "id":  62,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-OCC-02",
+                        "id":  63,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-IMG-01",
+                        "id":  64,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-IMG-02",
+                        "id":  65,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-LOC-01",
+                        "id":  66,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-LOC-02",
+                        "id":  67,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-CAT-01",
+                        "id":  68,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-CAT-02",
+                        "id":  69,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-PRI-01",
+                        "id":  70,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-PRI-02",
+                        "id":  71,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-SUM-01",
+                        "id":  72,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-SUM-02",
+                        "id":  73,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-QUERY-01",
+                        "id":  74,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-QUERY-02",
+                        "id":  75,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-STATUS-01",
+                        "id":  76,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-STATUS-02",
+                        "id":  77,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-DASH-01",
+                        "id":  78,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-DASH-02",
+                        "id":  79,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-REPORT-01",
+                        "id":  80,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    },
+                    {
+                        "check":  "test-case",
+                        "code":  "TC-REPORT-02",
+                        "id":  81,
+                        "exists":  true,
+                        "linkedToExpectedFeature":  true,
+                        "passed":  true
+                    }
+                ]
+}

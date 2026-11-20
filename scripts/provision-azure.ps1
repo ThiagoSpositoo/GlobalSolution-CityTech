@@ -299,7 +299,12 @@ function Get-PolicyAllowedLocations {
     }
 
     $assignments = @()
-    try { $assignments = @($result.StdOut | ConvertFrom-Json) } catch { return @() }
+    try {
+        # No PowerShell 5.1, ConvertFrom-Json mantém o array JSON como um único
+        # Object[] no pipeline. O foreach explícito normaliza cada atribuição.
+        $parsedAssignments = $result.StdOut | ConvertFrom-Json
+        foreach ($item in $parsedAssignments) { $assignments += $item }
+    } catch { return @() }
 
     $effective = $null
     foreach ($assignment in $assignments) {
@@ -337,12 +342,17 @@ function Get-ProviderLocations {
     $result = Invoke-AzNative -Arguments @(
         'provider', 'show',
         '--namespace', $Namespace,
-        '--query', "resourceTypes[?resourceType=='$ResourceType'].locations[0]",
+        '--query', "resourceTypes[?resourceType=='$ResourceType'].locations | [0]",
         '--output', 'json'
     )
     if ($result.ExitCode -ne 0) { return @() }
     if ([string]::IsNullOrWhiteSpace($result.StdOut)) { return @() }
-    try { return @($result.StdOut | ConvertFrom-Json) } catch { return @() }
+    try {
+        $parsedLocations = $result.StdOut | ConvertFrom-Json
+        $locations = @()
+        foreach ($item in $parsedLocations) { $locations += [string]$item }
+        return @($locations)
+    } catch { return @() }
 }
 
 function Assert-LocationAllowed {

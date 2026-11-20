@@ -1,6 +1,6 @@
 # Test Cases — catálogo planejado
 
-**Estado: 59 casos planejados na Etapa 3B; nenhum executado.** O catálogo completo, com preparação, passos e resultado esperado, está em [docs/rastreabilidade.md](../../docs/rastreabilidade.md), seção 3.
+**Estado: 59 cenários amplos na Etapa 3B e 24 casos estruturados/revisados contra as 12 Features reais, criados no Azure com IDs 58–81; nenhum resultado manual está disponível nos artefatos locais.** O catálogo usado pelos scripts está em [`qa/data/test-cases.json`](../data/test-cases.json), com um positivo e um negativo por Feature. TC-IMG-01/02 e TC-REPORT-01/02 estão bloqueados por funcionalidades não implementadas.
 
 ## Campos obrigatórios no Azure Test Plans
 
@@ -12,17 +12,13 @@
 - Steps numerados: ação do testador e resposta esperada do sistema.
 - Resultado real, aprovado/reprovado/bloqueado, evidência e bug vinculado.
 
-## Distribuição planejada
+## Distribuição do catálogo automatizável
 
 | Área | Prefixo | Casos |
 |---|---|---:|
-| Autenticação e operação .NET | `TC-AUTH`, `TC-OPS` | 11 |
-| Ocorrências Java | `TC-OCC` | 10 |
-| Acompanhamentos .NET | `TC-FOLLOW` | 8 |
-| Gestão e indicadores | `TC-MGR` | 4 |
-| IA e evento | `TC-AI` | 5 |
-| Mobile | `TC-MOB` | 7 |
-| Dados Oracle/Mongo | `TC-DATA` | 6 |
-| DevOps, QA e entrega | `TC-DEV`, `TC-QA` | 8 |
+| Cadastro/autenticação/proteções | `TC-REG`, `TC-AUTH`, `TC-PROT` | 6 |
+| Categorias/ocorrências/histórico | `TC-CAT`, `TC-OCC`, `TC-HIST` | 6 |
+| Acompanhamento/gestão/indicadores | `TC-FOL`, `TC-MGR`, `TC-IND` | 6 |
+| IA/Mobile/qualidade | `TC-AI`, `TC-MOB`, `TC-QA` | 6 |
 
 Os prefixos são identificadores locais de planejamento. A execução manual no Test Plans é obrigatória para QA; testes xUnit/Maven não a substituem. Cobrir autenticação/permissão, validações, CRUD persistido, falhas de rede, idempotência, rate limit e revisão de IA quando pertinente.

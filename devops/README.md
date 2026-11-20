@@ -32,7 +32,7 @@ Organização Azure DevOps: <https://dev.azure.com/RM561694> · Projeto: `Global
 | DEV-17 | Variáveis de ambiente nas pipelines, sem senha exposta | PREPARADO | Variable group `citytech-prod` + segredos no App Service |
 | DEV-18 | Desenho macro com fluxo e legenda | COMPROVADO | `docs/diagramas/devops-cloud.mmd` e seção 3 abaixo |
 | DEV-20 | ≥2 tabelas com CRUD e persistência na nuvem | PREPARADO | `accounts` e `follow_ups`; roteiro SQL/HTTP na seção 8 |
-| DEV-V01…V08 | Vídeo 720p narrado, contínuo, com todos os itens | PENDENTE | Roteiro pronto em [`roteiro-video.md`](roteiro-video.md); gravação é do grupo |
+| DEV-V01…V08 | Vídeo 720p narrado, contínuo, com todos os itens | PREPARADO | Vídeo publicado: <https://youtu.be/ZeVsvk4luIM>; link acessível, conteúdo/resolução devem ser conferidos pelo grupo |
 
 Nada acima foi executado na Azure nesta sessão: o ambiente não possui `az login`, PAT do Azure DevOps
 nem autorização para criar recursos pagos.
@@ -230,7 +230,7 @@ az resource list --resource-group rg-citytech-devops --query "[].{nome:name, tip
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\tests\Invoke-ProvisionAzureMockTests.ps1
 ```
 
-Executa 12 cenários contra um `az` simulado (nada existe, tudo existe, retomada parcial, aviso em stderr,
+Executa 13 cenários contra um `az` simulado (nada existe, tudo existe, retomada parcial, aviso em stderr,
 `AuthorizationFailed`, sem login, grupo ausente em recurso filho, dry-run, assinatura inexistente,
 firewall divergente, login admin divergente).
 
@@ -510,7 +510,7 @@ az boards work-item update --id $taskId --state Done --output table
 | Simulação local do stage CI (build Release + geração do DDL com SQL Server real) | build 0 avisos/0 erros; DDL gerado com sucesso |
 | `bash -n` nos 7 blocos `bash` da pipeline e em `provision-azure.sh` (Git Bash) | sintaxe válida |
 | Parser PowerShell (`provision-azure.ps1`, `demo-crud-cloud.ps1`) | sem erro de sintaxe |
-| Testes do provisionamento com Azure CLI simulado (`scripts/tests/`) | **42/42 verificações aprovadas** em 12 cenários; nenhum comando real do Azure |
+| Testes do provisionamento com Azure CLI simulado (`scripts/tests/`) | **48/48 verificações aprovadas** em 13 cenários; nenhum comando real do Azure |
 | Consultas reais de existência (somente leitura) | RG `rg-citytech-devops` classificado como existente; plano, servidor SQL, banco e App Service como inexistentes, **sem exceção** |
 | `bash -n scripts/provision-azure.sh` | sintaxe válida |
 | JSON (`azure-config.example.json`, `scripts/crud/*.json`) | parse válido |

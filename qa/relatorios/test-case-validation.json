@@ -1,0 +1,655 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-11-19T23:04:16.8899221Z",
+    "mode":  "validate-only",
+    "organization":  "RM561694",
+    "project":  "GlobalSolution-CityTech",
+    "remoteMutation":  false,
+    "minimumPatchValidated":  true,
+    "request":  {
+                    "method":  "POST",
+                    "workItemType":  "Test Case",
+                    "validateOnly":  true,
+                    "contentType":  "application/json-patch+json",
+                    "fields":  [
+                                   "System.Title",
+                                   "System.Description",
+                                   "Microsoft.VSTS.TCM.Steps",
+                                   "System.Tags"
+                               ],
+                    "relation":  "Microsoft.VSTS.Common.TestedBy-Reverse"
+                },
+    "summary":  {
+                    "total":  24,
+                    "validated":  24,
+                    "failed":  0,
+                    "codesAlreadyExisting":  0,
+                    "duplicateExistingCodes":  0
+                },
+    "results":  [
+                    {
+                        "code":  "TC-REG-01",
+                        "title":  "TC-REG-01 - Cadastrar cidadão com dados válidos",
+                        "featureId":  7,
+                        "featureTitle":  "FEA-01 Cadastro de Usuário",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-REG-02",
+                        "title":  "TC-REG-02 - Rejeitar cadastro inválido, duplicado ou com promoção",
+                        "featureId":  7,
+                        "featureTitle":  "FEA-01 Cadastro de Usuário",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-AUTH-01",
+                        "title":  "TC-AUTH-01 - Realizar login, acessar sessão e sair",
+                        "featureId":  8,
+                        "featureTitle":  "FEA-02 Login e Autenticação",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-AUTH-02",
+                        "title":  "TC-AUTH-02 - Rejeitar credencial e token inválidos",
+                        "featureId":  8,
+                        "featureTitle":  "FEA-02 Login e Autenticação",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-OCC-01",
+                        "title":  "TC-OCC-01 - Registrar ocorrência urbana válida",
+                        "featureId":  9,
+                        "featureTitle":  "FEA-03 Cadastro de Ocorrência",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-OCC-02",
+                        "title":  "TC-OCC-02 - Rejeitar ocorrência com dados inválidos",
+                        "featureId":  9,
+                        "featureTitle":  "FEA-03 Cadastro de Ocorrência",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-IMG-01",
+                        "title":  "TC-IMG-01 - Associar imagem válida opcional à ocorrência",
+                        "featureId":  10,
+                        "featureTitle":  "FEA-04 Anexo de Imagens",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-IMG-02",
+                        "title":  "TC-IMG-02 - Rejeitar imagem inválida ou acesso indevido",
+                        "featureId":  10,
+                        "featureTitle":  "FEA-04 Anexo de Imagens",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-LOC-01",
+                        "title":  "TC-LOC-01 - Registrar e exibir endereço textual",
+                        "featureId":  11,
+                        "featureTitle":  "FEA-05 Geolocalização e Endereço",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-LOC-02",
+                        "title":  "TC-LOC-02 - Rejeitar endereço estruturalmente inválido",
+                        "featureId":  11,
+                        "featureTitle":  "FEA-05 Geolocalização e Endereço",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-CAT-01",
+                        "title":  "TC-CAT-01 - Sugerir categoria com fontes e revisão humana",
+                        "featureId":  12,
+                        "featureTitle":  "FEA-06 Classificação Automática",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-CAT-02",
+                        "title":  "TC-CAT-02 - Conter falha ou categoria inválida da IA",
+                        "featureId":  12,
+                        "featureTitle":  "FEA-06 Classificação Automática",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-PRI-01",
+                        "title":  "TC-PRI-01 - Sugerir e aceitar prioridade válida",
+                        "featureId":  13,
+                        "featureTitle":  "FEA-07 Priorização Automática",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-PRI-02",
+                        "title":  "TC-PRI-02 - Rejeitar prioridade inválida ou revisão repetida",
+                        "featureId":  13,
+                        "featureTitle":  "FEA-07 Priorização Automática",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-SUM-01",
+                        "title":  "TC-SUM-01 - Gerar, armazenar e exibir resumo",
+                        "featureId":  14,
+                        "featureTitle":  "FEA-08 Resumo Automático",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-SUM-02",
+                        "title":  "TC-SUM-02 - Rejeitar resumo inválido ou inventado",
+                        "featureId":  14,
+                        "featureTitle":  "FEA-08 Resumo Automático",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-QUERY-01",
+                        "title":  "TC-QUERY-01 - Consultar, filtrar e detalhar ocorrências visíveis",
+                        "featureId":  15,
+                        "featureTitle":  "FEA-09 Consulta de Ocorrências",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-QUERY-02",
+                        "title":  "TC-QUERY-02 - Bloquear consulta alheia e parâmetros inválidos",
+                        "featureId":  15,
+                        "featureTitle":  "FEA-09 Consulta de Ocorrências",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-STATUS-01",
+                        "title":  "TC-STATUS-01 - Atualizar status em transições válidas",
+                        "featureId":  16,
+                        "featureTitle":  "FEA-10 Atualização de Status",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-STATUS-02",
+                        "title":  "TC-STATUS-02 - Bloquear transição, papel ou versão inválidos",
+                        "featureId":  16,
+                        "featureTitle":  "FEA-10 Atualização de Status",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-DASH-01",
+                        "title":  "TC-DASH-01 - Exibir indicadores gerenciais consolidados",
+                        "featureId":  17,
+                        "featureTitle":  "FEA-11 Dashboard Gerencial",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-DASH-02",
+                        "title":  "TC-DASH-02 - Restringir dashboard e tratar base vazia",
+                        "featureId":  17,
+                        "featureTitle":  "FEA-11 Dashboard Gerencial",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-REPORT-01",
+                        "title":  "TC-REPORT-01 - Gerar e exportar relatório operacional autorizado",
+                        "featureId":  18,
+                        "featureTitle":  "FEA-12 Relatórios Operacionais",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    },
+                    {
+                        "code":  "TC-REPORT-02",
+                        "title":  "TC-REPORT-02 - Bloquear relatório indevido ou exportação inválida",
+                        "featureId":  18,
+                        "featureTitle":  "FEA-12 Relatórios Operacionais",
+                        "existingIds":  [
+
+                                        ],
+                        "duplicateExistingCode":  false,
+                        "operationCount":  5,
+                        "paths":  [
+                                      "/fields/System.Title",
+                                      "/fields/System.Description",
+                                      "/fields/Microsoft.VSTS.TCM.Steps",
+                                      "/fields/System.Tags",
+                                      "/relations/-"
+                                  ],
+                        "steps":  3,
+                        "status":  "validated",
+                        "httpStatus":  200,
+                        "message":  "Patch completo aceito com validateOnly=true; nenhum Work Item foi criado.",
+                        "typeName":  "",
+                        "diagnostics":  [
+
+                                        ]
+                    }
+                ]
+}

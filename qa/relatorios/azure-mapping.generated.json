@@ -1,0 +1,85 @@
+{
+    "schemaVersion":  1,
+    "sourceGeneratedAtUtc":  "2026-11-19T22:08:39.1445074Z",
+    "organization":  "RM561694",
+    "project":  "GlobalSolution-CityTech",
+    "expectedCounts":  {
+                           "epics":  5,
+                           "features":  12,
+                           "productBacklogItems":  39
+                       },
+    "features":  [
+                     {
+                         "featureKey":  null,
+                         "id":  7,
+                         "title":  "FEA-01 Cadastro de Usuário",
+                         "rev":  2
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  8,
+                         "title":  "FEA-02 Login e Autenticação",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  9,
+                         "title":  "FEA-03 Cadastro de Ocorrência",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  10,
+                         "title":  "FEA-04 Anexo de Imagens",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  11,
+                         "title":  "FEA-05 Geolocalização e Endereço",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  12,
+                         "title":  "FEA-06 Classificação Automática",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  13,
+                         "title":  "FEA-07 Priorização Automática",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  14,
+                         "title":  "FEA-08 Resumo Automático",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  15,
+                         "title":  "FEA-09 Consulta de Ocorrências",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  16,
+                         "title":  "FEA-10 Atualização de Status",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  17,
+                         "title":  "FEA-11 Dashboard Gerencial",
+                         "rev":  1
+                     },
+                     {
+                         "featureKey":  null,
+                         "id":  18,
+                         "title":  "FEA-12 Relatórios Operacionais",
+                         "rev":  1
+                     }
+                 ]
+}

@@ -1,0 +1,1021 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-11-19T23:05:49.1830401Z",
+    "mode":  "apply-requested",
+    "sourceInventoryGeneratedAtUtc":  "2026-11-19T23:04:18.0874576Z",
+    "organization":  "RM561694",
+    "project":  "GlobalSolution-CityTech",
+    "summary":  {
+                    "documentationCandidates":  0,
+                    "documentationFieldUpdates":  0,
+                    "testCasesPlanned":  24,
+                    "existingContentConflictsPreserved":  7,
+                    "unresolvedConflicts":  0
+                },
+    "conflicts":  [
+                      {
+                          "id":  7,
+                          "field":  "System.Description",
+                          "action":  "preserve-existing",
+                          "title":  "FEA-01 Cadastro de Usuário"
+                      },
+                      {
+                          "id":  7,
+                          "field":  "Microsoft.VSTS.Common.AcceptanceCriteria",
+                          "action":  "preserve-existing",
+                          "title":  "FEA-01 Cadastro de Usuário"
+                      },
+                      {
+                          "id":  8,
+                          "field":  "System.Description",
+                          "action":  "preserve-existing",
+                          "title":  "FEA-02 Login e Autenticação"
+                      },
+                      {
+                          "id":  8,
+                          "field":  "Microsoft.VSTS.Common.AcceptanceCriteria",
+                          "action":  "preserve-existing",
+                          "title":  "FEA-02 Login e Autenticação"
+                      },
+                      {
+                          "id":  9,
+                          "field":  "System.Description",
+                          "action":  "preserve-existing",
+                          "title":  "FEA-03 Cadastro de Ocorrência"
+                      },
+                      {
+                          "id":  10,
+                          "field":  "System.Description",
+                          "action":  "preserve-existing",
+                          "title":  "FEA-04 Anexo de Imagens"
+                      },
+                      {
+                          "id":  11,
+                          "field":  "System.Description",
+                          "action":  "preserve-existing",
+                          "title":  "FEA-05 Geolocalização e Endereço"
+                      }
+                  ],
+    "operations":  [
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-REG-01",
+                           "title":  "TC-REG-01 - Cadastrar cidadão com dados válidos",
+                           "featureId":  7,
+                           "featureTitle":  "FEA-01 Cadastro de Usuário",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-REG-01 - Cadastrar cidadão com dados válidos"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar cria\u0026#231;\u0026#227;o idempotente de conta exclusivamente CIDADAO sem exposi\u0026#231;\u0026#227;o de senha.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e API .NET e SQL Server dispon\u0026#237;veis; e-mail fict\u0026#237;cio in\u0026#233;dito; Idempotency-Key in\u0026#233;dita.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Nome Pessoa QA, qa.registro@example.test, SenhaForte123 e chave UUID.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 201, conta CIDADAO persistida uma vez e resposta sem senha/hash.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar POST /api/v1/auth/register com corpo e chave válidos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 201 com ID, nome, e-mail, papel CIDADAO e createdAt.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Repetir a requisição com a mesma chave e corpo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna a resposta estável com Idempotent-Replayed e não duplica a conta.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Inspecionar resposta e persistência controlada.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Não há senha/hash na resposta e existe uma única conta com hash armazenado.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-REG-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/7",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 7 - FEA-01 Cadastro de Usuário"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-REG-02",
+                           "title":  "TC-REG-02 - Rejeitar cadastro inválido, duplicado ou com promoção",
+                           "featureId":  7,
+                           "featureTitle":  "FEA-01 Cadastro de Usuário",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-REG-02 - Rejeitar cadastro inválido, duplicado ou com promoção"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar campos, unicidade e impossibilidade de criar gestor pelo cadastro p\u0026#250;blico.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e API .NET dispon\u0026#237;vel; e-mail qa.existente@example.test j\u0026#225; cadastrado.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Nome curto, e-mail inv\u0026#225;lido/duplicado, senha fraca e role=GESTOR em tentativas separadas.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 400/409, nenhum gestor e nenhuma conta adicional.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar campos fora das regras.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 400 VALIDATION_ERROR com os campos inválidos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Cadastrar o e-mail existente com chave nova.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 409 EMAIL_ALREADY_EXISTS e mantém uma conta.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar role=GESTOR.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Não cria nem promove gestor e não aceita elevação de privilégio.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-REG-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/7",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 7 - FEA-01 Cadastro de Usuário"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-AUTH-01",
+                           "title":  "TC-AUTH-01 - Realizar login, acessar sessão e sair",
+                           "featureId":  8,
+                           "featureTitle":  "FEA-02 Login e Autenticação",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-AUTH-01 - Realizar login, acessar sessão e sair"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar login real, JWT RS256 compartilhado e logout local.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Conta ativa; APIs .NET/Java dispon\u0026#237;veis; app ou cliente HTTP configurado.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e E-mail e senha v\u0026#225;lidos.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Login 200, rotas protegidas acess\u0026#237;veis e sess\u0026#227;o removida no logout.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar POST /api/v1/auth/login.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 200 com Bearer, expiração e usuário público.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Usar o token em /auth/me e rota Java permitida.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;As duas APIs validam o token e retornam 200.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Executar logout no app e abrir rota protegida.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Token local é removido e o usuário volta ao login.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-AUTH-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/8",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 8 - FEA-02 Login e Autenticação"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-AUTH-02",
+                           "title":  "TC-AUTH-02 - Rejeitar credencial e token inválidos",
+                           "featureId":  8,
+                           "featureTitle":  "FEA-02 Login e Autenticação",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-AUTH-02 - Rejeitar credencial e token inválidos"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar que falhas de autentica\u0026#231;\u0026#227;o n\u0026#227;o liberam acesso nem revelam cadastro.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e APIs dispon\u0026#237;veis; tokens de teste expirado e adulterado.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Senha errada, e-mail inexistente, token ausente, expirado e adulterado.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 401 sem dados protegidos; recupera\u0026#231;\u0026#227;o de senha permanece indispon\u0026#237;vel no MVP.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Tentar login com senha errada e e-mail inexistente.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Ambos retornam 401 com mensagem genérica equivalente.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Chamar rotas protegidas sem token, com token expirado e adulterado.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Java e .NET retornam 401 sem efeito.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Procurar fluxo de recuperação no app/API atual.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;O fluxo não é apresentado como implementado e o caso é registrado como pendência do PBI-008.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-AUTH-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/8",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 8 - FEA-02 Login e Autenticação"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-OCC-01",
+                           "title":  "TC-OCC-01 - Registrar ocorrência urbana válida",
+                           "featureId":  9,
+                           "featureTitle":  "FEA-03 Cadastro de Ocorrência",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-OCC-01 - Registrar ocorrência urbana válida"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar cria\u0026#231;\u0026#227;o persistida com categoria, descri\u0026#231;\u0026#227;o e endere\u0026#231;o textual.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Cidad\u0026#227;o autenticado; categoria ativa; Java, Oracle e RabbitMQ dispon\u0026#237;veis.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e T\u0026#237;tulo e descri\u0026#231;\u0026#227;o v\u0026#225;lidos, categoryId ativo, prioridade MEDIA e endere\u0026#231;o fict\u0026#237;cio.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 201 com Location, status ABERTA, hist\u0026#243;rico e outbox.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar POST /api/v1/occurrences com payload válido.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 201, UUID, Location, prioridade e status ABERTA.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar o detalhe como proprietário.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna os dados persistidos e version=0.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar evidência controlada de histórico/outbox.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Há CRIACAO e OccurrenceCreated.v1 vinculados à ocorrência.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-OCC-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/9",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 9 - FEA-03 Cadastro de Ocorrência"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-OCC-02",
+                           "title":  "TC-OCC-02 - Rejeitar ocorrência com dados inválidos",
+                           "featureId":  9,
+                           "featureTitle":  "FEA-03 Cadastro de Ocorrência",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-OCC-02 - Rejeitar ocorrência com dados inválidos"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar limites, categoria e endere\u0026#231;o sem persist\u0026#234;ncia parcial.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Cidad\u0026#227;o autenticado; API Java dispon\u0026#237;vel.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e T\u0026#237;tulo curto, descri\u0026#231;\u0026#227;o vazia, categoria inativa/inexistente e UF inv\u0026#225;lida.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 400/409 e nenhuma ocorr\u0026#234;ncia criada.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar campos textuais fora dos limites.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 400 VALIDATION_ERROR com erros por campo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar categoria inexistente ou inativa.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 400/409 e não cria ocorrência.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Conferir listagem do cidadão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Nenhum registro parcial das tentativas recusadas aparece.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-OCC-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/9",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 9 - FEA-03 Cadastro de Ocorrência"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-IMG-01",
+                           "title":  "TC-IMG-01 - Associar imagem válida opcional à ocorrência",
+                           "featureId":  10,
+                           "featureTitle":  "FEA-04 Anexo de Imagens",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-IMG-01 - Associar imagem válida opcional à ocorrência"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar o comportamento-alvo de sele\u0026#231;\u0026#227;o, valida\u0026#231;\u0026#227;o e v\u0026#237;nculo seguro de fotografia.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Somente executar quando sele\u0026#231;\u0026#227;o, armazenamento e API de anexos estiverem implementados; no build atual registrar Bloqueado.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Imagem fict\u0026#237;cia em tipo e tamanho permitidos e ocorr\u0026#234;ncia pr\u0026#243;pria.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Imagem validada e associada uma vez; ocorr\u0026#234;ncia tamb\u0026#233;m funciona sem imagem.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Confirmar se o build sob teste possui seletor e endpoint de anexos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;No build atual, registrar Bloqueado sem simular resultado; em build futuro, prosseguir.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Selecionar imagem válida e concluir o registro.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Arquivo é armazenado com referência segura e associado à ocorrência correta.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Abrir o detalhe autorizado.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Anexo aparece sem expor caminho interno ou permitir acesso de terceiro.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-IMG-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/10",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 10 - FEA-04 Anexo de Imagens"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-IMG-02",
+                           "title":  "TC-IMG-02 - Rejeitar imagem inválida ou acesso indevido",
+                           "featureId":  10,
+                           "featureTitle":  "FEA-04 Anexo de Imagens",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-IMG-02 - Rejeitar imagem inválida ou acesso indevido"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar formato, tamanho, propriedade e aus\u0026#234;ncia de refer\u0026#234;ncia \u0026#243;rf\u0026#227;.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Somente executar quando anexos estiverem implementados; no build atual registrar Bloqueado.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Arquivo com tipo/tamanho proibido e tentativa por outro cidad\u0026#227;o.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Arquivo recusado, sem associa\u0026#231;\u0026#227;o, sem execu\u0026#231;\u0026#227;o de conte\u0026#250;do e sem acesso por terceiro.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar arquivo fora dos limites permitidos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna validação e não cria referência.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Interromper/falhar o armazenamento durante o vínculo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Ocorrência permanece íntegra e não surge referência órfã.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Tentar consultar anexo de ocorrência alheia.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Acesso é negado sem revelar o conteúdo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-IMG-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/10",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 10 - FEA-04 Anexo de Imagens"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-LOC-01",
+                           "title":  "TC-LOC-01 - Registrar e exibir endereço textual",
+                           "featureId":  11,
+                           "featureTitle":  "FEA-05 Geolocalização e Endereço",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-LOC-01 - Registrar e exibir endereço textual"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar localiza\u0026#231;\u0026#227;o por endere\u0026#231;o estruturado sem depender de GPS ou mapa.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Cidad\u0026#227;o autenticado; categoria ativa.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Logradouro, n\u0026#250;mero, bairro, cidade, SP e CEP 01000-000.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Ocorr\u0026#234;ncia criada e detalhe exibindo o endere\u0026#231;o textual persistido.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Criar ocorrência com endereço completo válido.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 201 e persiste todos os campos informados.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Abrir o detalhe no Mobile/API.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Endereço textual é exibido corretamente.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Verificar recursos de localização.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Nenhum mapa, coordenada ou validação externa inexistente é alegado.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-LOC-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/11",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 11 - FEA-05 Geolocalização e Endereço"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-LOC-02",
+                           "title":  "TC-LOC-02 - Rejeitar endereço estruturalmente inválido",
+                           "featureId":  11,
+                           "featureTitle":  "FEA-05 Geolocalização e Endereço",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-LOC-02 - Rejeitar endereço estruturalmente inválido"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar campos obrigat\u0026#243;rios, UF e CEP opcional.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Cidad\u0026#227;o autenticado; API Java dispon\u0026#237;vel.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Logradouro ausente, UF inv\u0026#225;lida e CEP fora do formato.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 400 e nenhuma ocorr\u0026#234;ncia parcial.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Omitir um campo obrigatório do endereço.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 400 com indicação do campo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar UF ou CEP em formato inválido.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 400 VALIDATION_ERROR.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Reenviar com CEP vazio e demais campos válidos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;CEP vira null e a criação pode prosseguir.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-LOC-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/11",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 11 - FEA-05 Geolocalização e Endereço"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-CAT-01",
+                           "title":  "TC-CAT-01 - Sugerir categoria com fontes e revisão humana",
+                           "featureId":  12,
+                           "featureTitle":  "FEA-06 Classificação Automática",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-CAT-01 - Sugerir categoria com fontes e revisão humana"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar classifica\u0026#231;\u0026#227;o consultiva via evento, RAG e cat\u0026#225;logo permitido.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Java, Oracle e RabbitMQ dispon\u0026#237;veis; consumidor ativo; modelo configurado para caminho PRONTA.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Ocorr\u0026#234;ncia fict\u0026#237;cia com descri\u0026#231;\u0026#227;o claramente associada a VIAS.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Sugest\u0026#227;o PRONTA com categoria v\u0026#225;lida, fontes e nenhuma altera\u0026#231;\u0026#227;o autom\u0026#225;tica.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Criar a ocorrência e aguardar o consumo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Evento é processado uma vez e surge sugestão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar o detalhe.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Categoria sugerida pertence ao catálogo e inclui fontes/metadados.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Aceitar a sugestão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Categoria é aplicada com revisão humana e histórico.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-CAT-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/12",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 12 - FEA-06 Classificação Automática"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-CAT-02",
+                           "title":  "TC-CAT-02 - Conter falha ou categoria inválida da IA",
+                           "featureId":  12,
+                           "featureTitle":  "FEA-06 Classificação Automática",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-CAT-02 - Conter falha ou categoria inválida da IA"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Garantir fallback manual, valida\u0026#231;\u0026#227;o de enum e resist\u0026#234;ncia a instru\u0026#231;\u0026#227;o maliciosa.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Consumidor ativo; modelo indispon\u0026#237;vel ou resposta controlada inv\u0026#225;lida.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Descri\u0026#231;\u0026#227;o maliciosa e sa\u0026#237;da com categoria fora do cat\u0026#225;logo.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Estado FALHOU, nenhuma altera\u0026#231;\u0026#227;o autom\u0026#225;tica e ocorr\u0026#234;ncia tri\u0026#225;vel manualmente.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Processar ocorrência sem ChatModel configurado.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Registra FALHOU/MODEL_NOT_CONFIGURED sem bloquear a ocorrência.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Produzir resposta controlada com categoria inválida.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Validação rejeita a saída e não persiste categoria indevida.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Tentar revisar sugestão não pronta.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 409 e mantém classificação atual.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-CAT-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/12",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 12 - FEA-06 Classificação Automática"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-PRI-01",
+                           "title":  "TC-PRI-01 - Sugerir e aceitar prioridade válida",
+                           "featureId":  13,
+                           "featureTitle":  "FEA-07 Priorização Automática",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-PRI-01 - Sugerir e aceitar prioridade válida"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar prioridade assistiva separada da prioridade efetiva at\u0026#233; revis\u0026#227;o.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Sugest\u0026#227;o PRONTA para ocorr\u0026#234;ncia pr\u0026#243;pria; version atual.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e SuggestedPriority ALTA e decis\u0026#227;o ACEITAR.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Prioridade sugerida exibida separadamente e aplicada ap\u0026#243;s aceite com hist\u0026#243;rico.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar detalhe antes da revisão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Mostra prioridade atual e suggestedPriority separadas.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar revisão ACEITAR com version atual.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 200 e aplica ALTA.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar histórico.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Registra REVISAO_IA, ator e decisão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-PRI-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/13",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 13 - FEA-07 Priorização Automática"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-PRI-02",
+                           "title":  "TC-PRI-02 - Rejeitar prioridade inválida ou revisão repetida",
+                           "featureId":  13,
+                           "featureTitle":  "FEA-07 Priorização Automática",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-PRI-02 - Rejeitar prioridade inválida ou revisão repetida"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar enum, concorr\u0026#234;ncia e decis\u0026#227;o \u0026#250;nica.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Sugest\u0026#227;o pronta ou j\u0026#225; revisada; vers\u0026#227;o antiga dispon\u0026#237;vel.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Prioridade fora do enum, version antiga e segunda revis\u0026#227;o.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Sa\u0026#237;da inv\u0026#225;lida recusada; HTTP 409 para concorr\u0026#234;ncia ou ALREADY_REVIEWED.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Produzir saída controlada com prioridade desconhecida.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Sugestão não fica PRONTA e não altera ocorrência.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Revisar com version desatualizada.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 409 CONCURRENT_MODIFICATION.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Revisar novamente uma sugestão decidida.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 409 ALREADY_REVIEWED sem novo efeito.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-PRI-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/13",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 13 - FEA-07 Priorização Automática"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-SUM-01",
+                           "title":  "TC-SUM-01 - Gerar, armazenar e exibir resumo",
+                           "featureId":  14,
+                           "featureTitle":  "FEA-08 Resumo Automático",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-SUM-01 - Gerar, armazenar e exibir resumo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar resumo rastre\u0026#225;vel sem substituir a descri\u0026#231;\u0026#227;o original.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Modelo configurado; ocorr\u0026#234;ncia com descri\u0026#231;\u0026#227;o v\u0026#225;lida; consumidor ativo.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Descri\u0026#231;\u0026#227;o fict\u0026#237;cia de problema urbano.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Resumo at\u0026#233; 500 caracteres persistido com fontes e exibido no detalhe.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Criar ocorrência e aguardar sugestão PRONTA.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Resumo é gerado dentro do limite.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar persistência/detalhe.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Resumo, fontes, modelo e promptVersion estão associados à ocorrência.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Comparar com o relato.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Descrição original permanece visível e inalterada.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-SUM-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/14",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 14 - FEA-08 Resumo Automático"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-SUM-02",
+                           "title":  "TC-SUM-02 - Rejeitar resumo inválido ou inventado",
+                           "featureId":  14,
+                           "featureTitle":  "FEA-08 Resumo Automático",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-SUM-02 - Rejeitar resumo inválido ou inventado"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar tamanho, falha de modelo e tratamento de conte\u0026#250;do hostil.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Adaptador controlado capaz de retornar sa\u0026#237;da inv\u0026#225;lida.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Resumo acima do limite, estrutura inv\u0026#225;lida e descri\u0026#231;\u0026#227;o com instru\u0026#231;\u0026#227;o maliciosa.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Sugest\u0026#227;o FALHOU, sem resumo fict\u0026#237;cio e sem execu\u0026#231;\u0026#227;o de instru\u0026#231;\u0026#245;es.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retornar resumo acima do limite.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Validação recusa a saída.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Indisponibilizar o modelo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Registra falha explícita e mantém a descrição.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar o detalhe.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Não exibe resumo inventado como se estivesse pronto.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-SUM-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/14",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 14 - FEA-08 Resumo Automático"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-QUERY-01",
+                           "title":  "TC-QUERY-01 - Consultar, filtrar e detalhar ocorrências visíveis",
+                           "featureId":  15,
+                           "featureTitle":  "FEA-09 Consulta de Ocorrências",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-QUERY-01 - Consultar, filtrar e detalhar ocorrências visíveis"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar pagina\u0026#231;\u0026#227;o, filtros e detalhe conforme papel.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Dataset fict\u0026#237;cio com v\u0026#225;rios status/categorias; tokens de cidad\u0026#227;o e gestor.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e page=0, size=10, status, categoryId, priority e q.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 200 com totais, filtros corretos e detalhe atualizado.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Listar como cidadão com paginação.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna somente ocorrências próprias e metadados coerentes.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Aplicar filtros permitidos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Todos os itens retornados atendem aos filtros.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Abrir detalhe próprio e listar como gestor.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Detalhe retorna 200 e gestor visualiza a fila completa.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-QUERY-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/15",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 15 - FEA-09 Consulta de Ocorrências"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-QUERY-02",
+                           "title":  "TC-QUERY-02 - Bloquear consulta alheia e parâmetros inválidos",
+                           "featureId":  15,
+                           "featureTitle":  "FEA-09 Consulta de Ocorrências",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-QUERY-02 - Bloquear consulta alheia e parâmetros inválidos"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar propriedade e limites da consulta.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Ocorr\u0026#234;ncia do cidad\u0026#227;o A; cidad\u0026#227;o B autenticado.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e ID de A usado por B; page=-1, size=0/101 e sort desconhecido.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 404 para recurso alheio e 400 para par\u0026#226;metros inv\u0026#225;lidos.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Como B, consultar detalhe de A.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 404 sem dados.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar paginação fora dos limites.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 400 VALIDATION_ERROR.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar sort fora da whitelist.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 400 e não executa ordenação arbitrária.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-QUERY-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/15",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 15 - FEA-09 Consulta de Ocorrências"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-STATUS-01",
+                           "title":  "TC-STATUS-01 - Atualizar status em transições válidas",
+                           "featureId":  16,
+                           "featureTitle":  "FEA-10 Atualização de Status",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-STATUS-01 - Atualizar status em transições válidas"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar m\u0026#225;quina de estados, versionamento e hist\u0026#243;rico.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Gestor autenticado; ocorr\u0026#234;ncia ABERTA; version atual.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e ABERTA para EM_TRIAGEM e EM_TRIAGEM para EM_ANDAMENTO com notas.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 200, version incrementada e hist\u0026#243;rico para cada mudan\u0026#231;a.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Triar a ocorrência e iniciar EM_TRIAGEM.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 200 e registra estado anterior/novo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Avançar para EM_ANDAMENTO com version atual.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 200 e incrementa version.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Atualizar a tela/listagem.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Novo status aparece por consulta; não se alega push.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-STATUS-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/16",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 16 - FEA-10 Atualização de Status"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-STATUS-02",
+                           "title":  "TC-STATUS-02 - Bloquear transição, papel ou versão inválidos",
+                           "featureId":  16,
+                           "featureTitle":  "FEA-10 Atualização de Status",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-STATUS-02 - Bloquear transição, papel ou versão inválidos"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Garantir integridade do ciclo operacional.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Ocorr\u0026#234;ncia ABERTA; tokens cidad\u0026#227;o/gestor; version antiga.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e ABERTA para RESOLVIDA, triagem por cidad\u0026#227;o e version desatualizada.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 409/403 e nenhuma altera\u0026#231;\u0026#227;o.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Tentar ABERTA para RESOLVIDA.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 409 INVALID_TRANSITION.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Tentar triagem como cidadão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 403.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Alterar com version antiga.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 409 CONCURRENT_MODIFICATION e preserva o status atual.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-STATUS-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/16",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 16 - FEA-10 Atualização de Status"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-DASH-01",
+                           "title":  "TC-DASH-01 - Exibir indicadores gerenciais consolidados",
+                           "featureId":  17,
+                           "featureTitle":  "FEA-11 Dashboard Gerencial",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-DASH-01 - Exibir indicadores gerenciais consolidados"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Comprovar totais e agrupamentos usando amostra conhecida.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Gestor autenticado; dataset fict\u0026#237;cio com contagens conhecidas.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e GET /api/v1/manager/indicators.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 200 com total, status, categorias, IA e generatedAt coerentes.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Registrar valores esperados do dataset.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Há referência objetiva para comparação.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar indicadores como gestor.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 200 e todos os agrupamentos previstos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Comparar resposta e Mobile.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Contagens conferem; o app exibe indicadores numéricos sem alegar gráficos avançados.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-DASH-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/17",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 17 - FEA-11 Dashboard Gerencial"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-DASH-02",
+                           "title":  "TC-DASH-02 - Restringir dashboard e tratar base vazia",
+                           "featureId":  17,
+                           "featureTitle":  "FEA-11 Dashboard Gerencial",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-DASH-02 - Restringir dashboard e tratar base vazia"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar autoriza\u0026#231;\u0026#227;o e estabilidade das agrega\u0026#231;\u0026#245;es.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Tokens de cidad\u0026#227;o/gestor; ambiente isolado sem ocorr\u0026#234;ncias.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Consulta por cidad\u0026#227;o e consulta gerencial com base vazia.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e HTTP 403 ao cidad\u0026#227;o; HTTP 200 com zeros ao gestor.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar endpoint como cidadão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 403 sem indicadores.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Consultar como gestor no conjunto vazio.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna total zero, agrupamentos coerentes e sem divisão por zero.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Inspecionar apresentação.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Não há gráfico fictício nem dado pessoal desnecessário.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-DASH-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/17",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 17 - FEA-11 Dashboard Gerencial"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-REPORT-01",
+                           "title":  "TC-REPORT-01 - Gerar e exportar relatório operacional autorizado",
+                           "featureId":  18,
+                           "featureTitle":  "FEA-12 Relatórios Operacionais",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-REPORT-01 - Gerar e exportar relatório operacional autorizado"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar o comportamento-alvo de relat\u0026#243;rio filtrado e export\u0026#225;vel.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Somente executar no produto quando gera\u0026#231;\u0026#227;o/exporta\u0026#231;\u0026#227;o estiver implementada; no build atual registrar Bloqueado. Scripts acad\u0026#234;micos podem ser verificados separadamente.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Gestor, per\u0026#237;odo e filtros definidos; formato de exporta\u0026#231;\u0026#227;o permitido.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Relat\u0026#243;rio consistente e arquivo \u0026#237;ntegro contendo somente dados autorizados.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Confirmar se existe endpoint/tela de geração no build.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;No build atual, registrar Bloqueado sem inventar arquivo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Em build futuro, gerar relatório com filtros conhecidos.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Totais conferem com os dados consolidados.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Exportar e reabrir o arquivo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Arquivo íntegro, formato correto e sem dados pessoais desnecessários.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-REPORT-01; Positivo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/18",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 18 - FEA-12 Relatórios Operacionais"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       },
+                       {
+                           "kind":  "create-test-case-if-absent",
+                           "code":  "TC-REPORT-02",
+                           "title":  "TC-REPORT-02 - Bloquear relatório indevido ou exportação inválida",
+                           "featureId":  18,
+                           "featureTitle":  "FEA-12 Relatórios Operacionais",
+                           "patch":  [
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Title",
+                                             "value":  "TC-REPORT-02 - Bloquear relatório indevido ou exportação inválida"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Description",
+                                             "value":  "\u003cp\u003e\u003cstrong\u003eObjetivo:\u003c/strong\u003e Validar papel, filtros, falha de gera\u0026#231;\u0026#227;o e transpar\u0026#234;ncia da pend\u0026#234;ncia.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePreparação:\u003c/strong\u003e Somente executar quando relat\u0026#243;rio de produto existir; cidad\u0026#227;o e gestor dispon\u0026#237;veis.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEntradas:\u003c/strong\u003e Cidad\u0026#227;o solicitando relat\u0026#243;rio, filtro inv\u0026#225;lido e falha durante exporta\u0026#231;\u0026#227;o.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eSaída esperada:\u003c/strong\u003e Acesso negado ou valida\u0026#231;\u0026#227;o; nenhum arquivo parcial apresentado como v\u0026#225;lido.\u003c/p\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/Microsoft.VSTS.TCM.Steps",
+                                             "value":  "\u003csteps id=\"0\" last=\"4\"\u003e\u003cstep id=\"2\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Solicitar relatório como cidadão.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna 403 ou ação indisponível.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"3\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Enviar filtro/formato inválido.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Retorna validação sem gerar arquivo.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003cstep id=\"4\" type=\"ActionStep\"\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Simular falha durante exportação.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cparameterizedString isformatted=\"true\"\u003e\u0026lt;DIV\u0026gt;Não publica arquivo parcial; no build atual o caso permanece Bloqueado.\u0026lt;/DIV\u0026gt;\u003c/parameterizedString\u003e\u003cdescription/\u003e\u003c/step\u003e\u003c/steps\u003e"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/fields/System.Tags",
+                                             "value":  "CityTech; QA-FIAP; TC-REPORT-02; Negativo"
+                                         },
+                                         {
+                                             "op":  "add",
+                                             "path":  "/relations/-",
+                                             "value":  {
+                                                           "rel":  "Microsoft.VSTS.Common.TestedBy-Reverse",
+                                                           "url":  "https://dev.azure.com/RM561694/GlobalSolution-CityTech/_apis/wit/workItems/18",
+                                                           "attributes":  {
+                                                                              "comment":  "Testa a Feature 18 - FEA-12 Relatórios Operacionais"
+                                                                          }
+                                                       }
+                                         }
+                                     ]
+                       }
+                   ]
+}

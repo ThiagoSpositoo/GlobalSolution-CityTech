@@ -144,7 +144,7 @@ if ($invocation -like 'provider show*') {
     }
 
     $quoted = @(@($locations) | ForEach-Object { '"' + [string]$_ + '"' }) -join ','
-    Write-Output ('[[' + $quoted + ']]')
+    Write-Output ('[' + $quoted + ']')
     exit 0
 }
 

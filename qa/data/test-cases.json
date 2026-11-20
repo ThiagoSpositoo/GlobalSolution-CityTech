@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed-against-real-features-not-executed",
+  "sourceGeneratedAtUtc": "2026-11-19T22:08:39.1445074Z",
+  "notes": [
+    "Há um caso positivo e um negativo para cada uma das 12 Features reais.",
+    "Casos de anexos e relatórios/exportação descrevem o comportamento-alvo e devem permanecer Bloqueados enquanto as funcionalidades não estiverem implementadas.",
+    "Geolocalização está limitada a endereço textual; recuperação de senha, push, gráficos avançados e LLM externo não são alegados como concluídos."
+  ],
+  "testCases": [
+    {
+      "code": "TC-REG-01", "featureKey": "citizen-registration", "type": "Positivo", "title": "Cadastrar cidadão com dados válidos",
+      "objective": "Comprovar criação idempotente de conta exclusivamente CIDADAO sem exposição de senha.",
+      "preconditions": "API .NET e SQL Server disponíveis; e-mail fictício inédito; Idempotency-Key inédita.",
+      "inputs": "Nome Pessoa QA, qa.registro@example.test, SenhaForte123 e chave UUID.",
+      "expectedOutput": "HTTP 201, conta CIDADAO persistida uma vez e resposta sem senha/hash.",
+      "steps": [
+        { "action": "Enviar POST /api/v1/auth/register com corpo e chave válidos.", "expected": "Retorna 201 com ID, nome, e-mail, papel CIDADAO e createdAt." },
+        { "action": "Repetir a requisição com a mesma chave e corpo.", "expected": "Retorna a resposta estável com Idempotent-Replayed e não duplica a conta." },
+        { "action": "Inspecionar resposta e persistência controlada.", "expected": "Não há senha/hash na resposta e existe uma única conta com hash armazenado." }
+      ]
+    },
+    {
+      "code": "TC-REG-02", "featureKey": "citizen-registration", "type": "Negativo", "title": "Rejeitar cadastro inválido, duplicado ou com promoção",
+      "objective": "Validar campos, unicidade e impossibilidade de criar gestor pelo cadastro público.",
+      "preconditions": "API .NET disponível; e-mail qa.existente@example.test já cadastrado.",
+      "inputs": "Nome curto, e-mail inválido/duplicado, senha fraca e role=GESTOR em tentativas separadas.",
+      "expectedOutput": "HTTP 400/409, nenhum gestor e nenhuma conta adicional.",
+      "steps": [
+        { "action": "Enviar campos fora das regras.", "expected": "Retorna 400 VALIDATION_ERROR com os campos inválidos." },
+        { "action": "Cadastrar o e-mail existente com chave nova.", "expected": "Retorna 409 EMAIL_ALREADY_EXISTS e mantém uma conta." },
+        { "action": "Enviar role=GESTOR.", "expected": "Não cria nem promove gestor e não aceita elevação de privilégio." }
+      ]
+    },
+    {
+      "code": "TC-AUTH-01", "featureKey": "login-authentication", "type": "Positivo", "title": "Realizar login, acessar sessão e sair",
+      "objective": "Comprovar login real, JWT RS256 compartilhado e logout local.",
+      "preconditions": "Conta ativa; APIs .NET/Java disponíveis; app ou cliente HTTP configurado.",
+      "inputs": "E-mail e senha válidos.",
+      "expectedOutput": "Login 200, rotas protegidas acessíveis e sessão removida no logout.",
+      "steps": [
+        { "action": "Enviar POST /api/v1/auth/login.", "expected": "Retorna 200 com Bearer, expiração e usuário público." },
+        { "action": "Usar o token em /auth/me e rota Java permitida.", "expected": "As duas APIs validam o token e retornam 200." },
+        { "action": "Executar logout no app e abrir rota protegida.", "expected": "Token local é removido e o usuário volta ao login." }
+      ]
+    },
+    {
+      "code": "TC-AUTH-02", "featureKey": "login-authentication", "type": "Negativo", "title": "Rejeitar credencial e token inválidos",
+      "objective": "Comprovar que falhas de autenticação não liberam acesso nem revelam cadastro.",
+      "preconditions": "APIs disponíveis; tokens de teste expirado e adulterado.",
+      "inputs": "Senha errada, e-mail inexistente, token ausente, expirado e adulterado.",
+      "expectedOutput": "HTTP 401 sem dados protegidos; recuperação de senha permanece indisponível no MVP.",
+      "steps": [
+        { "action": "Tentar login com senha errada e e-mail inexistente.", "expected": "Ambos retornam 401 com mensagem genérica equivalente." },
+        { "action": "Chamar rotas protegidas sem token, com token expirado e adulterado.", "expected": "Java e .NET retornam 401 sem efeito." },
+        { "action": "Procurar fluxo de recuperação no app/API atual.", "expected": "O fluxo não é apresentado como implementado e o caso é registrado como pendência do PBI-008." }
+      ]
+    },
+    {
+      "code": "TC-OCC-01", "featureKey": "occurrence-registration", "type": "Positivo", "title": "Registrar ocorrência urbana válida",
+      "objective": "Comprovar criação persistida com categoria, descrição e endereço textual.",
+      "preconditions": "Cidadão autenticado; categoria ativa; Java, Oracle e RabbitMQ disponíveis.",
+      "inputs": "Título e descrição válidos, categoryId ativo, prioridade MEDIA e endereço fictício.",
+      "expectedOutput": "HTTP 201 com Location, status ABERTA, histórico e outbox.",
+      "steps": [
+        { "action": "Enviar POST /api/v1/occurrences com payload válido.", "expected": "Retorna 201, UUID, Location, prioridade e status ABERTA." },
+        { "action": "Consultar o detalhe como proprietário.", "expected": "Retorna os dados persistidos e version=0." },
+        { "action": "Consultar evidência controlada de histórico/outbox.", "expected": "Há CRIACAO e OccurrenceCreated.v1 vinculados à ocorrência." }
+      ]
+    },
+    {
+      "code": "TC-OCC-02", "featureKey": "occurrence-registration", "type": "Negativo", "title": "Rejeitar ocorrência com dados inválidos",
+      "objective": "Validar limites, categoria e endereço sem persistência parcial.",
+      "preconditions": "Cidadão autenticado; API Java disponível.",
+      "inputs": "Título curto, descrição vazia, categoria inativa/inexistente e UF inválida.",
+      "expectedOutput": "HTTP 400/409 e nenhuma ocorrência criada.",
+      "steps": [
+        { "action": "Enviar campos textuais fora dos limites.", "expected": "Retorna 400 VALIDATION_ERROR com erros por campo." },
+        { "action": "Enviar categoria inexistente ou inativa.", "expected": "Retorna 400/409 e não cria ocorrência." },
+        { "action": "Conferir listagem do cidadão.", "expected": "Nenhum registro parcial das tentativas recusadas aparece." }
+      ]
+    },
+    {
+      "code": "TC-IMG-01", "featureKey": "image-attachments", "type": "Positivo", "title": "Associar imagem válida opcional à ocorrência",
+      "objective": "Validar o comportamento-alvo de seleção, validação e vínculo seguro de fotografia.",
+      "preconditions": "Somente executar quando seleção, armazenamento e API de anexos estiverem implementados; no build atual registrar Bloqueado.",
+      "inputs": "Imagem fictícia em tipo e tamanho permitidos e ocorrência própria.",
+      "expectedOutput": "Imagem validada e associada uma vez; ocorrência também funciona sem imagem.",
+      "steps": [
+        { "action": "Confirmar se o build sob teste possui seletor e endpoint de anexos.", "expected": "No build atual, registrar Bloqueado sem simular resultado; em build futuro, prosseguir." },
+        { "action": "Selecionar imagem válida e concluir o registro.", "expected": "Arquivo é armazenado com referência segura e associado à ocorrência correta." },
+        { "action": "Abrir o detalhe autorizado.", "expected": "Anexo aparece sem expor caminho interno ou permitir acesso de terceiro." }
+      ]
+    },
+    {
+      "code": "TC-IMG-02", "featureKey": "image-attachments", "type": "Negativo", "title": "Rejeitar imagem inválida ou acesso indevido",
+      "objective": "Validar formato, tamanho, propriedade e ausência de referência órfã.",
+      "preconditions": "Somente executar quando anexos estiverem implementados; no build atual registrar Bloqueado.",
+      "inputs": "Arquivo com tipo/tamanho proibido e tentativa por outro cidadão.",
+      "expectedOutput": "Arquivo recusado, sem associação, sem execução de conteúdo e sem acesso por terceiro.",
+      "steps": [
+        { "action": "Enviar arquivo fora dos limites permitidos.", "expected": "Retorna validação e não cria referência." },
+        { "action": "Interromper/falhar o armazenamento durante o vínculo.", "expected": "Ocorrência permanece íntegra e não surge referência órfã." },
+        { "action": "Tentar consultar anexo de ocorrência alheia.", "expected": "Acesso é negado sem revelar o conteúdo." }
+      ]
+    },
+    {
+      "code": "TC-LOC-01", "featureKey": "location-address", "type": "Positivo", "title": "Registrar e exibir endereço textual",
+      "objective": "Comprovar localização por endereço estruturado sem depender de GPS ou mapa.",
+      "preconditions": "Cidadão autenticado; categoria ativa.",
+      "inputs": "Logradouro, número, bairro, cidade, SP e CEP 01000-000.",
+      "expectedOutput": "Ocorrência criada e detalhe exibindo o endereço textual persistido.",
+      "steps": [
+        { "action": "Criar ocorrência com endereço completo válido.", "expected": "Retorna 201 e persiste todos os campos informados." },
+        { "action": "Abrir o detalhe no Mobile/API.", "expected": "Endereço textual é exibido corretamente." },
+        { "action": "Verificar recursos de localização.", "expected": "Nenhum mapa, coordenada ou validação externa inexistente é alegado." }
+      ]
+    },
+    {
+      "code": "TC-LOC-02", "featureKey": "location-address", "type": "Negativo", "title": "Rejeitar endereço estruturalmente inválido",
+      "objective": "Validar campos obrigatórios, UF e CEP opcional.",
+      "preconditions": "Cidadão autenticado; API Java disponível.",
+      "inputs": "Logradouro ausente, UF inválida e CEP fora do formato.",
+      "expectedOutput": "HTTP 400 e nenhuma ocorrência parcial.",
+      "steps": [
+        { "action": "Omitir um campo obrigatório do endereço.", "expected": "Retorna 400 com indicação do campo." },
+        { "action": "Enviar UF ou CEP em formato inválido.", "expected": "Retorna 400 VALIDATION_ERROR." },
+        { "action": "Reenviar com CEP vazio e demais campos válidos.", "expected": "CEP vira null e a criação pode prosseguir." }
+      ]
+    },
+    {
+      "code": "TC-CAT-01", "featureKey": "ai-category-classification", "type": "Positivo", "title": "Sugerir categoria com fontes e revisão humana",
+      "objective": "Comprovar classificação consultiva via evento, RAG e catálogo permitido.",
+      "preconditions": "Java, Oracle e RabbitMQ disponíveis; consumidor ativo; modelo configurado para caminho PRONTA.",
+      "inputs": "Ocorrência fictícia com descrição claramente associada a VIAS.",
+      "expectedOutput": "Sugestão PRONTA com categoria válida, fontes e nenhuma alteração automática.",
+      "steps": [
+        { "action": "Criar a ocorrência e aguardar o consumo.", "expected": "Evento é processado uma vez e surge sugestão." },
+        { "action": "Consultar o detalhe.", "expected": "Categoria sugerida pertence ao catálogo e inclui fontes/metadados." },
+        { "action": "Aceitar a sugestão.", "expected": "Categoria é aplicada com revisão humana e histórico." }
+      ]
+    },
+    {
+      "code": "TC-CAT-02", "featureKey": "ai-category-classification", "type": "Negativo", "title": "Conter falha ou categoria inválida da IA",
+      "objective": "Garantir fallback manual, validação de enum e resistência a instrução maliciosa.",
+      "preconditions": "Consumidor ativo; modelo indisponível ou resposta controlada inválida.",
+      "inputs": "Descrição maliciosa e saída com categoria fora do catálogo.",
+      "expectedOutput": "Estado FALHOU, nenhuma alteração automática e ocorrência triável manualmente.",
+      "steps": [
+        { "action": "Processar ocorrência sem ChatModel configurado.", "expected": "Registra FALHOU/MODEL_NOT_CONFIGURED sem bloquear a ocorrência." },
+        { "action": "Produzir resposta controlada com categoria inválida.", "expected": "Validação rejeita a saída e não persiste categoria indevida." },
+        { "action": "Tentar revisar sugestão não pronta.", "expected": "Retorna 409 e mantém classificação atual." }
+      ]
+    },
+    {
+      "code": "TC-PRI-01", "featureKey": "ai-priority", "type": "Positivo", "title": "Sugerir e aceitar prioridade válida",
+      "objective": "Comprovar prioridade assistiva separada da prioridade efetiva até revisão.",
+      "preconditions": "Sugestão PRONTA para ocorrência própria; version atual.",
+      "inputs": "SuggestedPriority ALTA e decisão ACEITAR.",
+      "expectedOutput": "Prioridade sugerida exibida separadamente e aplicada após aceite com histórico.",
+      "steps": [
+        { "action": "Consultar detalhe antes da revisão.", "expected": "Mostra prioridade atual e suggestedPriority separadas." },
+        { "action": "Enviar revisão ACEITAR com version atual.", "expected": "Retorna 200 e aplica ALTA." },
+        { "action": "Consultar histórico.", "expected": "Registra REVISAO_IA, ator e decisão." }
+      ]
+    },
+    {
+      "code": "TC-PRI-02", "featureKey": "ai-priority", "type": "Negativo", "title": "Rejeitar prioridade inválida ou revisão repetida",
+      "objective": "Validar enum, concorrência e decisão única.",
+      "preconditions": "Sugestão pronta ou já revisada; versão antiga disponível.",
+      "inputs": "Prioridade fora do enum, version antiga e segunda revisão.",
+      "expectedOutput": "Saída inválida recusada; HTTP 409 para concorrência ou ALREADY_REVIEWED.",
+      "steps": [
+        { "action": "Produzir saída controlada com prioridade desconhecida.", "expected": "Sugestão não fica PRONTA e não altera ocorrência." },
+        { "action": "Revisar com version desatualizada.", "expected": "Retorna 409 CONCURRENT_MODIFICATION." },
+        { "action": "Revisar novamente uma sugestão decidida.", "expected": "Retorna 409 ALREADY_REVIEWED sem novo efeito." }
+      ]
+    },
+    {
+      "code": "TC-SUM-01", "featureKey": "ai-summary", "type": "Positivo", "title": "Gerar, armazenar e exibir resumo",
+      "objective": "Comprovar resumo rastreável sem substituir a descrição original.",
+      "preconditions": "Modelo configurado; ocorrência com descrição válida; consumidor ativo.",
+      "inputs": "Descrição fictícia de problema urbano.",
+      "expectedOutput": "Resumo até 500 caracteres persistido com fontes e exibido no detalhe.",
+      "steps": [
+        { "action": "Criar ocorrência e aguardar sugestão PRONTA.", "expected": "Resumo é gerado dentro do limite." },
+        { "action": "Consultar persistência/detalhe.", "expected": "Resumo, fontes, modelo e promptVersion estão associados à ocorrência." },
+        { "action": "Comparar com o relato.", "expected": "Descrição original permanece visível e inalterada." }
+      ]
+    },
+    {
+      "code": "TC-SUM-02", "featureKey": "ai-summary", "type": "Negativo", "title": "Rejeitar resumo inválido ou inventado",
+      "objective": "Validar tamanho, falha de modelo e tratamento de conteúdo hostil.",
+      "preconditions": "Adaptador controlado capaz de retornar saída inválida.",
+      "inputs": "Resumo acima do limite, estrutura inválida e descrição com instrução maliciosa.",
+      "expectedOutput": "Sugestão FALHOU, sem resumo fictício e sem execução de instruções.",
+      "steps": [
+        { "action": "Retornar resumo acima do limite.", "expected": "Validação recusa a saída." },
+        { "action": "Indisponibilizar o modelo.", "expected": "Registra falha explícita e mantém a descrição." },
+        { "action": "Consultar o detalhe.", "expected": "Não exibe resumo inventado como se estivesse pronto." }
+      ]
+    },
+    {
+      "code": "TC-QUERY-01", "featureKey": "occurrence-query", "type": "Positivo", "title": "Consultar, filtrar e detalhar ocorrências visíveis",
+      "objective": "Comprovar paginação, filtros e detalhe conforme papel.",
+      "preconditions": "Dataset fictício com vários status/categorias; tokens de cidadão e gestor.",
+      "inputs": "page=0, size=10, status, categoryId, priority e q.",
+      "expectedOutput": "HTTP 200 com totais, filtros corretos e detalhe atualizado.",
+      "steps": [
+        { "action": "Listar como cidadão com paginação.", "expected": "Retorna somente ocorrências próprias e metadados coerentes." },
+        { "action": "Aplicar filtros permitidos.", "expected": "Todos os itens retornados atendem aos filtros." },
+        { "action": "Abrir detalhe próprio e listar como gestor.", "expected": "Detalhe retorna 200 e gestor visualiza a fila completa." }
+      ]
+    },
+    {
+      "code": "TC-QUERY-02", "featureKey": "occurrence-query", "type": "Negativo", "title": "Bloquear consulta alheia e parâmetros inválidos",
+      "objective": "Validar propriedade e limites da consulta.",
+      "preconditions": "Ocorrência do cidadão A; cidadão B autenticado.",
+      "inputs": "ID de A usado por B; page=-1, size=0/101 e sort desconhecido.",
+      "expectedOutput": "HTTP 404 para recurso alheio e 400 para parâmetros inválidos.",
+      "steps": [
+        { "action": "Como B, consultar detalhe de A.", "expected": "Retorna 404 sem dados." },
+        { "action": "Enviar paginação fora dos limites.", "expected": "Retorna 400 VALIDATION_ERROR." },
+        { "action": "Enviar sort fora da whitelist.", "expected": "Retorna 400 e não executa ordenação arbitrária." }
+      ]
+    },
+    {
+      "code": "TC-STATUS-01", "featureKey": "status-management", "type": "Positivo", "title": "Atualizar status em transições válidas",
+      "objective": "Comprovar máquina de estados, versionamento e histórico.",
+      "preconditions": "Gestor autenticado; ocorrência ABERTA; version atual.",
+      "inputs": "ABERTA para EM_TRIAGEM e EM_TRIAGEM para EM_ANDAMENTO com notas.",
+      "expectedOutput": "HTTP 200, version incrementada e histórico para cada mudança.",
+      "steps": [
+        { "action": "Triar a ocorrência e iniciar EM_TRIAGEM.", "expected": "Retorna 200 e registra estado anterior/novo." },
+        { "action": "Avançar para EM_ANDAMENTO com version atual.", "expected": "Retorna 200 e incrementa version." },
+        { "action": "Atualizar a tela/listagem.", "expected": "Novo status aparece por consulta; não se alega push." }
+      ]
+    },
+    {
+      "code": "TC-STATUS-02", "featureKey": "status-management", "type": "Negativo", "title": "Bloquear transição, papel ou versão inválidos",
+      "objective": "Garantir integridade do ciclo operacional.",
+      "preconditions": "Ocorrência ABERTA; tokens cidadão/gestor; version antiga.",
+      "inputs": "ABERTA para RESOLVIDA, triagem por cidadão e version desatualizada.",
+      "expectedOutput": "HTTP 409/403 e nenhuma alteração.",
+      "steps": [
+        { "action": "Tentar ABERTA para RESOLVIDA.", "expected": "Retorna 409 INVALID_TRANSITION." },
+        { "action": "Tentar triagem como cidadão.", "expected": "Retorna 403." },
+        { "action": "Alterar com version antiga.", "expected": "Retorna 409 CONCURRENT_MODIFICATION e preserva o status atual." }
+      ]
+    },
+    {
+      "code": "TC-DASH-01", "featureKey": "management-dashboard", "type": "Positivo", "title": "Exibir indicadores gerenciais consolidados",
+      "objective": "Comprovar totais e agrupamentos usando amostra conhecida.",
+      "preconditions": "Gestor autenticado; dataset fictício com contagens conhecidas.",
+      "inputs": "GET /api/v1/manager/indicators.",
+      "expectedOutput": "HTTP 200 com total, status, categorias, IA e generatedAt coerentes.",
+      "steps": [
+        { "action": "Registrar valores esperados do dataset.", "expected": "Há referência objetiva para comparação." },
+        { "action": "Consultar indicadores como gestor.", "expected": "Retorna 200 e todos os agrupamentos previstos." },
+        { "action": "Comparar resposta e Mobile.", "expected": "Contagens conferem; o app exibe indicadores numéricos sem alegar gráficos avançados." }
+      ]
+    },
+    {
+      "code": "TC-DASH-02", "featureKey": "management-dashboard", "type": "Negativo", "title": "Restringir dashboard e tratar base vazia",
+      "objective": "Validar autorização e estabilidade das agregações.",
+      "preconditions": "Tokens de cidadão/gestor; ambiente isolado sem ocorrências.",
+      "inputs": "Consulta por cidadão e consulta gerencial com base vazia.",
+      "expectedOutput": "HTTP 403 ao cidadão; HTTP 200 com zeros ao gestor.",
+      "steps": [
+        { "action": "Consultar endpoint como cidadão.", "expected": "Retorna 403 sem indicadores." },
+        { "action": "Consultar como gestor no conjunto vazio.", "expected": "Retorna total zero, agrupamentos coerentes e sem divisão por zero." },
+        { "action": "Inspecionar apresentação.", "expected": "Não há gráfico fictício nem dado pessoal desnecessário." }
+      ]
+    },
+    {
+      "code": "TC-REPORT-01", "featureKey": "operational-reports", "type": "Positivo", "title": "Gerar e exportar relatório operacional autorizado",
+      "objective": "Validar o comportamento-alvo de relatório filtrado e exportável.",
+      "preconditions": "Somente executar no produto quando geração/exportação estiver implementada; no build atual registrar Bloqueado. Scripts acadêmicos podem ser verificados separadamente.",
+      "inputs": "Gestor, período e filtros definidos; formato de exportação permitido.",
+      "expectedOutput": "Relatório consistente e arquivo íntegro contendo somente dados autorizados.",
+      "steps": [
+        { "action": "Confirmar se existe endpoint/tela de geração no build.", "expected": "No build atual, registrar Bloqueado sem inventar arquivo." },
+        { "action": "Em build futuro, gerar relatório com filtros conhecidos.", "expected": "Totais conferem com os dados consolidados." },
+        { "action": "Exportar e reabrir o arquivo.", "expected": "Arquivo íntegro, formato correto e sem dados pessoais desnecessários." }
+      ]
+    },
+    {
+      "code": "TC-REPORT-02", "featureKey": "operational-reports", "type": "Negativo", "title": "Bloquear relatório indevido ou exportação inválida",
+      "objective": "Validar papel, filtros, falha de geração e transparência da pendência.",
+      "preconditions": "Somente executar quando relatório de produto existir; cidadão e gestor disponíveis.",
+      "inputs": "Cidadão solicitando relatório, filtro inválido e falha durante exportação.",
+      "expectedOutput": "Acesso negado ou validação; nenhum arquivo parcial apresentado como válido.",
+      "steps": [
+        { "action": "Solicitar relatório como cidadão.", "expected": "Retorna 403 ou ação indisponível." },
+        { "action": "Enviar filtro/formato inválido.", "expected": "Retorna validação sem gerar arquivo." },
+        { "action": "Simular falha durante exportação.", "expected": "Não publica arquivo parcial; no build atual o caso permanece Bloqueado." }
+      ]
+    }
+  ]
+}

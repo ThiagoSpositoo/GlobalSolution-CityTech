@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "status": "prepared-from-real-inventory",
+  "sourceGeneratedAtUtc": "2026-11-19T22:08:39.1445074Z",
+  "workItems": [
+    {
+      "id": 7, "type": "Feature", "title": "FEA-01 Cadastro de Usuário", "sourceRev": 2,
+      "description": "Permitir que cidadãos criem uma conta CityTech com nome, e-mail único e senha protegida. O cadastro público cria exclusivamente o papel CIDADAO, exige chave de idempotência e persiste a conta no SQL Server sem devolver senha ou hash.",
+      "acceptanceCriteria": ["Cadastro válido retorna HTTP 201 com ID, nome, e-mail, papel CIDADAO e data de criação.", "Nome, e-mail ou senha inválidos retornam HTTP 400 com erros por campo; e-mail duplicado retorna HTTP 409.", "A repetição com a mesma Idempotency-Key e corpo não duplica a conta, e nenhum segredo aparece na resposta."]
+    },
+    {
+      "id": 8, "type": "Feature", "title": "FEA-02 Login e Autenticação", "sourceRev": 1,
+      "description": "Autenticar contas ativas pela API .NET e emitir JWT RS256 consumido pelo Mobile, .NET e Java. A sessão protege rotas por papel e propriedade; o logout é local. Recuperação de senha não pertence ao MVP implementado e permanece planejada.",
+      "acceptanceCriteria": ["Credenciais válidas retornam HTTP 200 com token Bearer, expiração e dados públicos do usuário.", "Credencial inválida, token ausente, expirado, adulterado ou com claims inválidas retorna HTTP 401 sem revelar se o e-mail existe.", "Logout remove a sessão do app e bloqueia rotas protegidas; recuperação de senha permanece identificada como não implementada."]
+    },
+    {
+      "id": 9, "type": "Feature", "title": "FEA-03 Cadastro de Ocorrência", "sourceRev": 1,
+      "description": "Permitir que um cidadão autenticado registre problema urbano na API Java com título, descrição, categoria ativa, prioridade opcional e endereço textual. A criação persiste no Oracle, inicia em ABERTA, grava histórico e evento de outbox.",
+      "acceptanceCriteria": ["Payload válido retorna HTTP 201, Location, UUID, prioridade definida e status ABERTA.", "Campos inválidos ou categoria inexistente/inativa retornam HTTP 400 ou 409 e não criam ocorrência.", "A ocorrência criada pertence ao sub do JWT, possui histórico CRIACAO e evento OccurrenceCreated.v1 no outbox."]
+    },
+    {
+      "id": 10, "type": "Feature", "title": "FEA-04 Anexo de Imagens", "sourceRev": 1,
+      "description": "Planejar anexos fotográficos opcionais para ocorrências com seleção, validação e armazenamento seguro. Esta Feature não está implementada no backend nem no Mobile atual; o cadastro textual funciona sem imagem e nenhum upload deve ser apresentado como concluído.",
+      "acceptanceCriteria": ["O cadastro de ocorrência continua funcional sem imagem, pois o anexo é opcional.", "Antes da implementação, tentativas de upload não devem ser simuladas nem persistidas como se houvesse armazenamento.", "Quando implementada, a solução deverá validar tipo, tamanho e vínculo, armazenar somente referência segura e rejeitar arquivo inválido sem criar associação."]
+    },
+    {
+      "id": 11, "type": "Feature", "title": "FEA-05 Geolocalização e Endereço", "sourceRev": 1,
+      "description": "Registrar e exibir a localização da ocorrência por endereço textual estruturado: logradouro, número, bairro, cidade, UF e CEP opcional. GPS, mapa, geocodificação e validação externa de CEP não estão implementados.",
+      "acceptanceCriteria": ["Endereço válido é aceito na criação e retornado no detalhe da ocorrência.", "UF inválida, campos obrigatórios ausentes ou CEP informado fora do formato retornam HTTP 400.", "A interface exibe o endereço textual persistido sem alegar coordenadas, mapa ou validação por serviço externo."]
+    },
+    {
+      "id": 12, "type": "Feature", "title": "FEA-06 Classificação Automática", "sourceRev": 1,
+      "description": "Analisar a descrição da ocorrência no consumidor assíncrono e sugerir uma categoria válida com apoio do corpus RAG. A sugestão é consultiva, registra fontes e somente altera a ocorrência após revisão humana; sem modelo externo, o estado FALHOU é explícito.",
+      "acceptanceCriteria": ["Evento consumido produz no máximo uma sugestão por eventId e a categoria sugerida pertence ao catálogo ativo.", "Sugestão pronta registra fontes, modelo e versão do prompt e não altera automaticamente a ocorrência.", "Falha, timeout ou saída inválida gera estado FALHOU e mantém a classificação manual disponível."]
+    },
+    {
+      "id": 13, "type": "Feature", "title": "FEA-07 Priorização Automática", "sourceRev": 1,
+      "description": "Sugerir prioridade BAIXA, MEDIA, ALTA ou CRITICA com base na descrição e nos critérios versionados do corpus. A prioridade de IA permanece separada da prioridade efetiva até decisão humana.",
+      "acceptanceCriteria": ["Sugestão pronta contém somente prioridade permitida e justificativa rastreável.", "Aceitar a sugestão aplica a prioridade com histórico e versionamento; rejeitar mantém o valor atual.", "Saída fora do enum, sugestão já revisada ou versão concorrente é recusada sem alteração indevida."]
+    },
+    {
+      "id": 14, "type": "Feature", "title": "FEA-08 Resumo Automático", "sourceRev": 1,
+      "description": "Gerar e persistir resumo curto da ocorrência como parte da sugestão de IA, usando a descrição como dado não confiável e o contexto recuperado. O resumo auxilia a triagem, não substitui o relato original.",
+      "acceptanceCriteria": ["Sugestão pronta contém resumo dentro do limite do contrato e vinculado à ocorrência correta.", "Resumo, justificativa, fontes, modelo e promptVersion são persistidos e retornados no detalhe.", "Conteúdo malicioso, resposta inválida ou modelo indisponível não executa instruções e resulta em falha controlada."]
+    },
+    {
+      "id": 15, "type": "Feature", "title": "FEA-09 Consulta de Ocorrências", "sourceRev": 1,
+      "description": "Permitir consulta paginada, filtrada e detalhada das ocorrências. Cidadãos veem somente recursos próprios; gestores veem a fila completa. O detalhe reúne endereço, status, categoria, prioridade, versão e sugestão disponível.",
+      "acceptanceCriteria": ["Listagem válida retorna HTTP 200 com paginação, ordenação e filtros permitidos.", "Cidadão recebe somente ocorrências cujo citizenId corresponde ao sub; tentativa de acessar ocorrência alheia retorna HTTP 404.", "Detalhe válido retorna dados atuais e não expõe senha, token ou informação pessoal desnecessária."]
+    },
+    {
+      "id": 16, "type": "Feature", "title": "FEA-10 Atualização de Status", "sourceRev": 1,
+      "description": "Permitir ao gestor conduzir a ocorrência pelas transições autorizadas e ao cidadão confirmar ou reabrir quando a regra permitir. Cada alteração usa versão otimista e registra histórico. Notificação push não está implementada; a atualização fica visível nas consultas e no Mobile.",
+      "acceptanceCriteria": ["Transição permitida retorna HTTP 200, incrementa version e registra ator, estados, nota e instante no histórico.", "Transição inválida retorna HTTP 409; papel insuficiente retorna HTTP 403; versão antiga retorna HTTP 409 sem alterar o estado.", "O status atualizado aparece na consulta e no Mobile; nenhuma notificação push é alegada no escopo atual."]
+    },
+    {
+      "id": 17, "type": "Feature", "title": "FEA-11 Dashboard Gerencial", "sourceRev": 1,
+      "description": "Disponibilizar ao gestor indicadores agregados de ocorrências por status e categoria, tempo médio de triagem e estatísticas de IA. O Mobile atual apresenta indicadores e contagens; gráficos visuais avançados permanecem planejados.",
+      "acceptanceCriteria": ["Gestor recebe HTTP 200 com total, agrupamentos e generatedAt UTC coerentes com uma amostra conhecida.", "Cidadão recebe HTTP 403 e nenhuma informação gerencial.", "Conjunto vazio retorna zeros e coleções coerentes, sem erro ou divisão por zero; gráficos não implementados são identificados como pendência."]
+    },
+    {
+      "id": 18, "type": "Feature", "title": "FEA-12 Relatórios Operacionais", "sourceRev": 1,
+      "description": "Planejar relatórios operacionais consultáveis e exportáveis a partir de dados consolidados. Atualmente existem endpoint de indicadores e relatórios acadêmicos reproduzíveis em Oracle/MongoDB, mas não existe endpoint de geração/exportação de arquivo no produto.",
+      "acceptanceCriteria": ["Os indicadores e scripts acadêmicos existentes produzem resultados sobre dados fictícios e rastreáveis.", "A ausência de exportação no produto é registrada como pendência e não é demonstrada como funcionalidade concluída.", "Quando implementada, a exportação deverá respeitar filtros, autorização de gestor, formato definido e ausência de dados pessoais desnecessários."]
+    },
+
+    {
+      "id": 19, "type": "Product Backlog Item", "title": "PBI-001 Informar Nome Completo", "sourceRev": 2,
+      "description": "Como cidadão, quero informar meu nome no cadastro para que minha conta tenha identificação de exibição.",
+      "acceptanceCriteria": ["Nome com 2 a 120 caracteres é aceito.", "Nome ausente ou fora do limite retorna HTTP 400 com erro no campo name.", "O nome persistido é retornado sem qualquer dado de senha."]
+    },
+    {
+      "id": 20, "type": "Product Backlog Item", "title": "PBI-002 Informar E-mail", "sourceRev": 2,
+      "description": "Como cidadão, quero informar um e-mail válido e único para utilizá-lo como identificador de login.",
+      "acceptanceCriteria": ["E-mail válido é normalizado antes da persistência.", "Formato inválido retorna HTTP 400.", "E-mail já cadastrado retorna HTTP 409 EMAIL_ALREADY_EXISTS e não cria segunda conta."]
+    },
+    {
+      "id": 21, "type": "Product Backlog Item", "title": "PBI-003 Informar Senha", "sourceRev": 2,
+      "description": "Como cidadão, quero definir uma senha no cadastro para autenticar minha conta com segurança.",
+      "acceptanceCriteria": ["Senha entre 8 e 128 caracteres, contendo letra e número, é aceita.", "Senha fraca retorna HTTP 400 com erro por campo.", "A senha é armazenada somente como hash e nunca aparece em resposta ou log."]
+    },
+    {
+      "id": 22, "type": "Product Backlog Item", "title": "PBI-004 Persistir Cadastro", "sourceRev": 2,
+      "description": "Como plataforma, quero persistir o cadastro de forma idempotente para manter conta única e recuperável no SQL Server.",
+      "acceptanceCriteria": ["Cadastro válido persiste uma Account com UUID, papel CIDADAO e timestamps UTC.", "Mesma chave e corpo reproduzem a resposta sem duplicação.", "Mesma chave com corpo diferente retorna HTTP 409 IDEMPOTENCY_CONFLICT."]
+    },
+    {
+      "id": 23, "type": "Product Backlog Item", "title": "PBI-005 Validar Credenciais", "sourceRev": 3,
+      "description": "Como plataforma, quero validar e-mail e senha de uma conta ativa sem revelar qual credencial está incorreta.",
+      "acceptanceCriteria": ["Credenciais corretas de conta ativa são aceitas.", "Senha incorreta, e-mail inexistente ou conta inativa retorna HTTP 401 com mensagem genérica.", "Nenhum token é emitido em tentativa recusada."]
+    },
+    {
+      "id": 24, "type": "Product Backlog Item", "title": "PBI-006 Realizar Login", "sourceRev": 2,
+      "description": "Como usuário, quero realizar login para receber uma sessão autenticada e acessar recursos permitidos ao meu papel.",
+      "acceptanceCriteria": ["Login válido retorna accessToken, Bearer, expiresIn e usuário público.", "JWT usa RS256 e contém sub, roles, iss, aud, exp e jti válidos.", "O mesmo token válido é aceito pelas APIs .NET e Java."]
+    },
+    {
+      "id": 25, "type": "Product Backlog Item", "title": "PBI-007 Encerrar Sessão", "sourceRev": 2,
+      "description": "Como usuário Mobile, quero encerrar a sessão para remover o token local e impedir novo acesso pelas rotas protegidas.",
+      "acceptanceCriteria": ["Logout remove token e dados de usuário do armazenamento seguro.", "Após logout, rota protegida redireciona para login.", "O MVP deixa explícito que o JWT já emitido permanece válido no servidor até expirar."]
+    },
+    {
+      "id": 26, "type": "Product Backlog Item", "title": "PBI-008 Recuperar Senha", "sourceRev": 2,
+      "description": "Como usuário, quero recuperar acesso caso esqueça a senha. Este fluxo está planejado, mas não existe endpoint, envio de e-mail ou tela de recuperação no MVP implementado.",
+      "acceptanceCriteria": ["A funcionalidade permanece identificada como não implementada e não é simulada na demonstração.", "Nenhum endpoint público revela se um e-mail está cadastrado.", "Quando implementada, deverá usar token temporário, expiração, uso único e senha armazenada somente como hash."]
+    },
+    {
+      "id": 27, "type": "Product Backlog Item", "title": "PBI-009 Selecionar Categoria", "sourceRev": 2,
+      "description": "Como cidadão, quero selecionar uma categoria ativa ao registrar a ocorrência para orientar sua triagem.",
+      "acceptanceCriteria": ["O formulário lista categorias ativas retornadas pela API Java.", "Categoria ativa é persistida no registro.", "Categoria inexistente ou inativa é recusada sem criar ocorrência."]
+    },
+    {
+      "id": 28, "type": "Product Backlog Item", "title": "PBI-010 Informar Descrição", "sourceRev": 2,
+      "description": "Como cidadão, quero descrever o problema urbano para fornecer contexto à gestão e à sugestão de IA.",
+      "acceptanceCriteria": ["Descrição entre 20 e 2000 caracteres é aceita.", "Descrição ausente ou fora do limite retorna HTTP 400.", "O texto é tratado como dado não confiável e não executa instruções."]
+    },
+    {
+      "id": 29, "type": "Product Backlog Item", "title": "PBI-011 Informar Endereço", "sourceRev": 2,
+      "description": "Como cidadão, quero informar o endereço textual da ocorrência para localizar o problema sem depender de GPS.",
+      "acceptanceCriteria": ["Logradouro, número, bairro, cidade e UF válidos são obrigatórios.", "Complemento e CEP são opcionais.", "Campos inválidos retornam HTTP 400 e não persistem ocorrência parcial."]
+    },
+    {
+      "id": 30, "type": "Product Backlog Item", "title": "PBI-012 Registrar Ocorrência", "sourceRev": 2,
+      "description": "Como cidadão autenticado, quero concluir o registro para obter um protocolo UUID e acompanhar a ocorrência.",
+      "acceptanceCriteria": ["Criação válida retorna HTTP 201 e Location.", "Status inicial é ABERTA e prioridade omitida assume MEDIA.", "Ocorrência, histórico CRIACAO e outbox são gravados atomicamente."]
+    },
+    {
+      "id": 31, "type": "Product Backlog Item", "title": "PBI-013 Selecionar Imagem", "sourceRev": 2,
+      "description": "Como cidadão, quero futuramente selecionar fotografia opcional para complementar a ocorrência. Seleção de imagem não está implementada no app atual.",
+      "acceptanceCriteria": ["O fluxo sem imagem permanece utilizável.", "O app atual não apresenta seleção fictícia nem afirma upload concluído.", "Quando implementado, o seletor deverá solicitar permissão e permitir cancelamento sem perder o formulário."]
+    },
+    {
+      "id": 32, "type": "Product Backlog Item", "title": "PBI-014 Validar Formato", "sourceRev": 2,
+      "description": "Como plataforma, quero futuramente validar formato e tamanho da imagem antes do upload. Não existe processamento de arquivo implementado no MVP.",
+      "acceptanceCriteria": ["A limitação atual é registrada como pendência.", "Quando implementado, somente tipos e limites explicitamente permitidos serão aceitos.", "Arquivo inválido será rejeitado sem associação e sem execução de conteúdo."]
+    },
+    {
+      "id": 33, "type": "Product Backlog Item", "title": "PBI-015 Associar Imagem à Ocorrência", "sourceRev": 2,
+      "description": "Como plataforma, quero futuramente associar referência segura da imagem à ocorrência correta, sem armazenar binário ou caminho inseguro no domínio atual.",
+      "acceptanceCriteria": ["Não existe associação no schema/API atual e isso não é apresentado como concluído.", "Quando implementada, a associação exigirá ocorrência visível ao usuário.", "Falha no armazenamento não deverá corromper a ocorrência nem criar referência órfã."]
+    },
+    {
+      "id": 34, "type": "Product Backlog Item", "title": "PBI-016 Informar CEP", "sourceRev": 2,
+      "description": "Como cidadão, quero informar CEP opcional no endereço para complementar a localização textual.",
+      "acceptanceCriteria": ["CEP vazio é convertido para null.", "CEP informado no formato 00000-000 é aceito.", "Formato diferente retorna validação sem alegar consulta automática a serviço externo."]
+    },
+    {
+      "id": 35, "type": "Product Backlog Item", "title": "PBI-017 Validar Endereço", "sourceRev": 2,
+      "description": "Como plataforma, quero validar a estrutura obrigatória do endereço antes de persistir a ocorrência.",
+      "acceptanceCriteria": ["Logradouro, número, bairro, cidade e UF são validados.", "UF deve possuir duas letras válidas conforme contrato.", "A validação é estrutural; geocodificação e confirmação externa do endereço não estão implementadas."]
+    },
+    {
+      "id": 36, "type": "Product Backlog Item", "title": "PBI-018 Exibir Localização", "sourceRev": 2,
+      "description": "Como usuário autorizado, quero visualizar o endereço textual no detalhe da ocorrência para compreender sua localização.",
+      "acceptanceCriteria": ["Detalhe autorizado retorna os campos de endereço persistidos.", "Ocorrência alheia permanece oculta ao cidadão com HTTP 404.", "A tela não apresenta mapa ou coordenadas inexistentes."]
+    },
+    {
+      "id": 37, "type": "Product Backlog Item", "title": "PBI-019 Analisar Descrição", "sourceRev": 2,
+      "description": "Como sistema, quero recuperar contexto do corpus e analisar a descrição após o evento de criação para produzir sugestão assistiva.",
+      "acceptanceCriteria": ["Consumidor processa o eventId uma única vez.", "Descrição é tratada como dado e o contexto registra fontes recuperadas.", "Modelo indisponível gera MODEL_NOT_CONFIGURED sem bloquear triagem manual."]
+    },
+    {
+      "id": 38, "type": "Product Backlog Item", "title": "PBI-020 Sugerir Categoria", "sourceRev": 2,
+      "description": "Como gestor ou cidadão, quero receber uma categoria sugerida para apoiar a classificação sem retirar a decisão humana.",
+      "acceptanceCriteria": ["Categoria sugerida pertence ao catálogo permitido.", "Sugestão não altera a ocorrência antes de ACEITAR.", "Saída inválida resulta em FALHOU e não persiste categoria indevida."]
+    },
+    {
+      "id": 39, "type": "Product Backlog Item", "title": "PBI-021 Exibir Sugestão", "sourceRev": 2,
+      "description": "Como usuário autorizado, quero visualizar estado, categoria, justificativa e fontes da sugestão no detalhe da ocorrência.",
+      "acceptanceCriteria": ["Detalhe exibe PENDENTE, PRONTA, ACEITA, REJEITADA ou FALHOU conforme persistência.", "Somente proprietário ou gestor visualiza a sugestão.", "Falha é informada sem impedir ações manuais."]
+    },
+    {
+      "id": 40, "type": "Product Backlog Item", "title": "PBI-022 Avaliar Criticidade", "sourceRev": 2,
+      "description": "Como sistema, quero avaliar sinais de criticidade usando critérios versionados para fundamentar a prioridade sugerida.",
+      "acceptanceCriteria": ["A avaliação usa descrição e contexto recuperado.", "A justificativa é persistida com a sugestão.", "Texto malicioso não altera regras, enums ou permissões."]
+    },
+    {
+      "id": 41, "type": "Product Backlog Item", "title": "PBI-023 Definir Prioridade", "sourceRev": 2,
+      "description": "Como sistema, quero produzir prioridade sugerida dentro do enum do domínio, sujeita à revisão humana.",
+      "acceptanceCriteria": ["Somente BAIXA, MEDIA, ALTA ou CRITICA é aceita.", "Aceite humano aplica o valor e registra histórico.", "Rejeição mantém a prioridade atual e registra a decisão."]
+    },
+    {
+      "id": 42, "type": "Product Backlog Item", "title": "PBI-024 Exibir Prioridade", "sourceRev": 2,
+      "description": "Como usuário autorizado, quero distinguir prioridade atual e prioridade sugerida para decidir conscientemente.",
+      "acceptanceCriteria": ["Detalhe identifica a prioridade efetiva da ocorrência.", "Sugestão pronta mostra prioridade sugerida separadamente.", "A interface não representa sugestão como decisão já aplicada."]
+    },
+    {
+      "id": 43, "type": "Product Backlog Item", "title": "PBI-025 Gerar Resumo", "sourceRev": 2,
+      "description": "Como sistema, quero gerar resumo conciso da descrição para apoiar leitura rápida durante a triagem.",
+      "acceptanceCriteria": ["Resumo respeita o limite de 500 caracteres.", "Resumo deriva do relato e contexto sem inventar ação oficial.", "Falha de geração mantém o relato original disponível."]
+    },
+    {
+      "id": 44, "type": "Product Backlog Item", "title": "PBI-026 Armazenar Resumo", "sourceRev": 2,
+      "description": "Como plataforma, quero persistir o resumo com metadados da sugestão para rastreabilidade.",
+      "acceptanceCriteria": ["Resumo é associado à ocorrência correta.", "Persistência inclui fontes, modelo, promptVersion e status.", "Deduplicação impede segunda sugestão para o mesmo evento."]
+    },
+    {
+      "id": 45, "type": "Product Backlog Item", "title": "PBI-027 Exibir Resumo", "sourceRev": 2,
+      "description": "Como usuário autorizado, quero visualizar o resumo no detalhe sem perder acesso à descrição original.",
+      "acceptanceCriteria": ["Resumo pronto aparece no bloco de sugestão.", "Descrição original permanece visível e inalterada.", "Resumo ausente ou com falha produz estado explícito, não texto fictício."]
+    },
+    {
+      "id": 46, "type": "Product Backlog Item", "title": "PBI-028 Consultar Ocorrências", "sourceRev": 2,
+      "description": "Como usuário autenticado, quero listar ocorrências visíveis ao meu papel com paginação.",
+      "acceptanceCriteria": ["Cidadão lista somente ocorrências próprias.", "Gestor lista a fila completa.", "Page e size válidos retornam totais e ordenação coerentes."]
+    },
+    {
+      "id": 47, "type": "Product Backlog Item", "title": "PBI-029 Aplicar Filtros", "sourceRev": 2,
+      "description": "Como gestor ou cidadão, quero filtrar a listagem por status, categoria, prioridade e busca textual dentro da minha visibilidade.",
+      "acceptanceCriteria": ["Filtros permitidos combinam com paginação.", "Filtro não amplia a visibilidade do cidadão.", "Parâmetro inválido retorna HTTP 400 sem consulta insegura."]
+    },
+    {
+      "id": 48, "type": "Product Backlog Item", "title": "PBI-030 Exibir Detalhes", "sourceRev": 2,
+      "description": "Como usuário autorizado, quero abrir o detalhe atualizado da ocorrência com endereço, histórico e sugestão.",
+      "acceptanceCriteria": ["Proprietário ou gestor recebe HTTP 200.", "Outro cidadão recebe HTTP 404.", "Resposta contém version para alterações otimistas e não expõe segredo."]
+    },
+    {
+      "id": 49, "type": "Product Backlog Item", "title": "PBI-031 Alterar Status", "sourceRev": 2,
+      "description": "Como ator autorizado, quero alterar status somente pelas transições permitidas da máquina de estados.",
+      "acceptanceCriteria": ["Transição válida usa version atual e retorna HTTP 200.", "Transição não listada retorna INVALID_TRANSITION.", "Estado terminal não aceita nova transição."]
+    },
+    {
+      "id": 50, "type": "Product Backlog Item", "title": "PBI-032 Registrar Histórico", "sourceRev": 2,
+      "description": "Como plataforma, quero registrar cada mudança relevante em trilha append-only para auditoria operacional.",
+      "acceptanceCriteria": ["Registro contém ator, papel, ação, estados, nota e timestamp UTC.", "Histórico é gravado na mesma transação da alteração.", "Não existe endpoint público para editar ou excluir histórico."]
+    },
+    {
+      "id": 51, "type": "Product Backlog Item", "title": "PBI-033 Notificar Atualização", "sourceRev": 2,
+      "description": "Como cidadão, quero perceber a atualização da ocorrência ao consultar o app. O MVP atualiza listagem e detalhe sob demanda; push, e-mail e notificação em tempo real não estão implementados.",
+      "acceptanceCriteria": ["Após atualização persistida, nova consulta retorna o status atual.", "A interface atualiza o conteúdo após refresh ou nova navegação.", "Nenhuma notificação push ou e-mail é apresentada como disponível."]
+    },
+    {
+      "id": 52, "type": "Product Backlog Item", "title": "PBI-034 Exibir Indicadores", "sourceRev": 2,
+      "description": "Como gestor, quero consultar totais por status e categoria, tempo de triagem e estatísticas de IA.",
+      "acceptanceCriteria": ["Endpoint retorna HTTP 200 ao GESTOR.", "Contagens conferem com conjunto conhecido.", "CIDADAO recebe HTTP 403."]
+    },
+    {
+      "id": 53, "type": "Product Backlog Item", "title": "PBI-035 Exibir Gráficos", "sourceRev": 2,
+      "description": "Como gestor, quero futuramente visualizar gráficos dos indicadores. O Mobile atual apresenta números e agrupamentos, mas não possui biblioteca ou componentes de gráficos avançados.",
+      "acceptanceCriteria": ["Indicadores numéricos existentes permanecem disponíveis.", "Ausência de gráficos é registrada como pendência, sem captura simulada.", "Quando implementados, gráficos devem ter rótulos e não depender apenas de cor."]
+    },
+    {
+      "id": 54, "type": "Product Backlog Item", "title": "PBI-036 Consolidar Dados", "sourceRev": 2,
+      "description": "Como plataforma, quero consolidar agregações do domínio Java sem copiar credenciais ou dados pessoais desnecessários.",
+      "acceptanceCriteria": ["Agregações usam ocorrências persistidas no Oracle.", "Totais por status e categoria são consistentes com o total geral.", "Conjunto vazio retorna estrutura válida com zeros."]
+    },
+    {
+      "id": 55, "type": "Product Backlog Item", "title": "PBI-037 Gerar Relatório", "sourceRev": 2,
+      "description": "Como gestor, quero futuramente gerar relatório operacional a partir de filtros. O produto ainda não expõe geração de relatório; existem somente indicadores e scripts acadêmicos Oracle/MongoDB.",
+      "acceptanceCriteria": ["A limitação atual é documentada e não marcada como concluída.", "Scripts acadêmicos existentes geram resultados reproduzíveis com dados fictícios.", "Quando implementado, o relatório respeitará autorização e filtros definidos."]
+    },
+    {
+      "id": 56, "type": "Product Backlog Item", "title": "PBI-038 Exportar Relatório", "sourceRev": 2,
+      "description": "Como gestor, quero futuramente exportar relatório em formato definido. Não existe endpoint ou arquivo exportável no produto atual.",
+      "acceptanceCriteria": ["Nenhuma exportação é simulada na entrega atual.", "Quando implementada, a exportação será restrita a GESTOR e conterá apenas dados necessários.", "Falha de geração não deve produzir arquivo parcial apresentado como válido."]
+    },
+    {
+      "id": 57, "type": "Product Backlog Item", "title": "PBI-039 Consultar Histórico", "sourceRev": 2,
+      "description": "Como gestor, quero consultar histórico operacional das ocorrências para acompanhar mudanças e fundamentar relatórios.",
+      "acceptanceCriteria": ["Gestor consulta histórico paginado de qualquer ocorrência.", "Cidadão consulta apenas histórico de ocorrência própria.", "Eventos aparecem em ordem decrescente e permanecem imutáveis."]
+    }
+  ]
+}

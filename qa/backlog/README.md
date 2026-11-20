@@ -1,6 +1,6 @@
 # Backlog QA — ligação com o backlog real
 
-**Estado: estrutura local definida na Etapa 3B; ainda não importada para o Azure Boards.**
+**Estado: inventário REST confirmado com 5 Epics, 12 Features e 39 PBIs; mapeamento completo em `qa/data/azure-mapping.json`.**
 
 O backlog funcional completo está em [docs/backlog.md](../../docs/backlog.md): 8 épicos, 21 Features e 60 PBIs com descrições, prioridades P0/P1/P2 e critérios de aceite verificáveis. A [rastreabilidade](../../docs/rastreabilidade.md) liga cada requisito da matriz aos casos de teste planejados.
 
@@ -21,11 +21,12 @@ Epic → Feature → Product Backlog Item → Test Case → Execução no Test P
 | E7 Dados, PL/SQL e MongoDB | F7.1–F7.2 | Banco |
 | E8 Qualidade, DevOps e entrega | F8.1–F8.3 | QA, DevOps |
 
-## O que falta
+## Pendências reais
 
-1. Autorização e acesso ao Azure DevOps para criar os Work Items reais; IDs locais **não** são IDs Azure.
-2. Preencher descrição e aceite de cada item no Boards, mantendo o texto do backlog como referência.
-3. Vincular commits/branches/PRs conforme o trabalho real.
-4. Criar os Test Cases no Test Plans; este diretório não substitui o Boards nem comprova a entrega de QA.
+1. Capturar evidências reais da hierarquia, descrições, aceites e vínculos.
+2. Confirmar Test Plan, Suites e atribuições, se a licença permitir.
+3. Executar os casos implementáveis manualmente e registrar resultados reais.
+4. Manter bloqueados TC-IMG-01/02 e TC-REPORT-01/02 enquanto as funcionalidades correspondentes não existirem.
+5. Confirmar e evidenciar o professor como ADMIN, sem expor dados pessoais desnecessários.
 
 Critérios de aceite definem entrada, ação e resultado observável, sem exigir conhecer a implementação. Não registrar item “concluído” apenas porque a documentação existe.

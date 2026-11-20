@@ -6,7 +6,7 @@ Plataforma CitizenTech de monitoramento colaborativo e zeladoria urbana — Glob
 
 ## Estado do projeto
 
-**Etapas 1–5A/.NET concluídas; vertical 5B/Java e Etapa 7/Mobile implementadas; Oracle e snapshot MongoDB locais validados.** O .NET possui 77 testes aprovados contra SQL Server. O Java possui 41 testes padrão aprovados, 1 AMQP opt-in ignorado por padrão, prova RabbitMQ real e inicialização validada contra Oracle XE 21 com `ddl-auto: validate`. O MongoDB possui 3 collections, 30 documentos comparáveis ao Oracle e 25 assertions aprovadas. Em 18/11, um smoke E2E real comprovou cadastro/login .NET, JWT no Java, ocorrência/Oracle, outbox/RabbitMQ, fallback IA, acompanhamento .NET, gestão, triagem e revisão humana. O Mobile possui 11 rotas; Expo Web e CORS reais estão operacionais, mas navegação manual e Android ainda precisam ser validados. Em QA, o inventário final contém 5 Epics, 12 Features, 39 PBIs e 24 Test Cases (IDs 58–81), com 75 verificações estruturais aprovadas; o PDF/TXT/ZIP de Compliance foi gerado, mas capturas, execução manual no Test Plans e permissão ADMIN do professor não possuem evidência local. **DevOps:** a API .NET foi escolhida para Azure App Service + Azure SQL, com pipeline CI/CD versionada, scripts Azure CLI e DDL gerado pelas migrations; provisionamento, deploy, políticas e vídeo ainda dependem de execução externa autorizada. LLM externo, APK/Firebase e deploy permanecem pendentes.
+**Etapas 1–5A/.NET concluídas; vertical 5B/Java e Etapa 7/Mobile implementadas; Oracle e snapshot MongoDB locais validados.** O .NET possui 77 testes aprovados contra SQL Server. O Java possui 41 testes padrão aprovados, 1 AMQP opt-in ignorado por padrão, prova RabbitMQ real e inicialização validada contra Oracle XE 21 com `ddl-auto: validate`. O MongoDB possui 3 collections, 30 documentos comparáveis ao Oracle e 25 assertions aprovadas. Em 18/11, um smoke E2E real comprovou cadastro/login .NET, JWT no Java, ocorrência/Oracle, outbox/RabbitMQ, fallback IA, acompanhamento .NET, gestão, triagem e revisão humana. O Mobile possui 11 rotas; Expo Web e CORS reais estão operacionais, mas navegação manual e Android ainda precisam ser validados. Em QA, o inventário final contém 5 Epics, 12 Features, 39 PBIs e 24 Test Cases (IDs 58–81), com 75 verificações estruturais aprovadas; o PDF/TXT/ZIP de Compliance foi gerado, mas capturas, execução manual no Test Plans e permissão ADMIN do professor não possuem evidência local. **DevOps:** a API .NET foi escolhida para Azure App Service + Azure SQL, com pipeline CI/CD versionada, scripts Azure CLI e DDL gerado pelas migrations; o vídeo está publicado, enquanto provisionamento, deploy e políticas ainda dependem de execução externa autorizada. LLM externo, APK/Firebase e deploy permanecem pendentes.
 
 Para continuar em outra sessão, leia o [manual permanente](AGENTS.md) e o [progresso/ponto de retomada](docs/progresso.md). O progresso deve ser atualizado ao concluir cada etapa ou encerrar uma sessão com trabalho pendente.
 
@@ -162,7 +162,7 @@ previsto no código e coberto por teste.
 | CRUD JSON por tabela | `scripts/crud/accounts.json`, `scripts/crud/followups.json` | Prontos |
 | CRUD da aplicação publicada | `scripts/demo-crud-cloud.ps1` | Preparado |
 | Boards, Repos e políticas | [devops/README.md](devops/README.md), seção 6 | Comandos prontos; execução pendente |
-| Vídeo e PDF | `devops/roteiro-video.md` e `entregas/CityTech_RM561694.pdf` | Roteiro e PDF prontos; link do vídeo pendente |
+| Vídeo e PDF | `devops/roteiro-video.md` e `entregas/CityTech_RM561694.pdf` | Vídeo publicado e link inserido no PDF |
 
 Fluxo: tarefa no Boards → branch → alteração no código-fonte → commit `AB#id` → PR com revisor → merge na
 `main` → CI (restore, build, 79 testes xUnit, TRX, ZIP e DDL) → CD (Azure SQL + App Service) → validação
@@ -185,7 +185,7 @@ Nome do grupo: CityTech.
 
 GitHub: <https://github.com/ThiagoSpositoo/GlobalSolution-CityTech>.
 Azure DevOps: <https://dev.azure.com/RM561694> (projeto `GlobalSolution-CityTech`) — organização e projeto existentes; push do código, políticas de branch e convite do professor ainda dependem de execução autorizada.
-Entrega DevOps (PDF): [`entregas/CityTech_RM561694.pdf`](entregas/CityTech_RM561694.pdf) — link do vídeo no YouTube pendente de gravação.
+Entrega DevOps (PDF): [`entregas/CityTech_RM561694.pdf`](entregas/CityTech_RM561694.pdf) — vídeo: <https://youtu.be/ZeVsvk4luIM>.
 URL pública do deploy e Firebase ainda não existem. Os backends expõem localmente `/api/v1`, health e Swagger; não há usuário/senha versionados.
 
 # GlobalSolution-CityTech

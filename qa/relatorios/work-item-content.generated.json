@@ -1,0 +1,516 @@
+{
+    "schemaVersion":  1,
+    "sourceGeneratedAtUtc":  "2026-11-19T22:08:39.1445074Z",
+    "workItems":  [
+                      {
+                          "id":  7,
+                          "type":  "Feature",
+                          "title":  "FEA-01 Cadastro de Usuário",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  8,
+                          "type":  "Feature",
+                          "title":  "FEA-02 Login e Autenticação",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  9,
+                          "type":  "Feature",
+                          "title":  "FEA-03 Cadastro de Ocorrência",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  10,
+                          "type":  "Feature",
+                          "title":  "FEA-04 Anexo de Imagens",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  11,
+                          "type":  "Feature",
+                          "title":  "FEA-05 Geolocalização e Endereço",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  12,
+                          "type":  "Feature",
+                          "title":  "FEA-06 Classificação Automática",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  13,
+                          "type":  "Feature",
+                          "title":  "FEA-07 Priorização Automática",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  14,
+                          "type":  "Feature",
+                          "title":  "FEA-08 Resumo Automático",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  15,
+                          "type":  "Feature",
+                          "title":  "FEA-09 Consulta de Ocorrências",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  16,
+                          "type":  "Feature",
+                          "title":  "FEA-10 Atualização de Status",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  17,
+                          "type":  "Feature",
+                          "title":  "FEA-11 Dashboard Gerencial",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  18,
+                          "type":  "Feature",
+                          "title":  "FEA-12 Relatórios Operacionais",
+                          "sourceRev":  1,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  19,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-001 Informar Nome Completo",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  20,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-002 Informar E-mail",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  21,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-003 Informar Senha",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  22,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-004 Persistir Cadastro",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  23,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-005 Validar Credenciais",
+                          "sourceRev":  3,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  24,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-006 Realizar Login",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  25,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-007 Encerrar Sessão",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  26,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-008 Recuperar Senha",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  27,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-009 Selecionar Categoria",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  28,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-010 Informar Descrição",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  29,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-011 Informar Endereço",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  30,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-012 Registrar Ocorrência",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  31,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-013 Selecionar Imagem",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  32,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-014 Validar Formato",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  33,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-015 Associar Imagem à Ocorrência",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  34,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-016 Informar CEP",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  35,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-017 Validar Endereço",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  36,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-018 Exibir Localização",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  37,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-019 Analisar Descrição",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  38,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-020 Sugerir Categoria",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  39,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-021 Exibir Sugestão",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  40,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-022 Avaliar Criticidade",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  41,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-023 Definir Prioridade",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  42,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-024 Exibir Prioridade",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  43,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-025 Gerar Resumo",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  44,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-026 Armazenar Resumo",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  45,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-027 Exibir Resumo",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  46,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-028 Consultar Ocorrências",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  47,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-029 Aplicar Filtros",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  48,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-030 Exibir Detalhes",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  49,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-031 Alterar Status",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  50,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-032 Registrar Histórico",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  51,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-033 Notificar Atualização",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  52,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-034 Exibir Indicadores",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  53,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-035 Exibir Gráficos",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  54,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-036 Consolidar Dados",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  55,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-037 Gerar Relatório",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  56,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-038 Exportar Relatório",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      },
+                      {
+                          "id":  57,
+                          "type":  "Product Backlog Item",
+                          "title":  "PBI-039 Consultar Histórico",
+                          "sourceRev":  2,
+                          "description":  "",
+                          "acceptanceCriteria":  [
+
+                                                 ]
+                      }
+                  ]
+}
