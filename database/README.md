@@ -6,7 +6,7 @@ Entrega da disciplina de banco de dados da **Global Solution FIAP 2026/2**.
 
 ## Integrantes
 
-| Integrante | RM |
+| Integrantes | RMs |
 |---|---:|
 | Thiago Sposito | 561694 |
 | Vitor Madrigrano | 564191 |
