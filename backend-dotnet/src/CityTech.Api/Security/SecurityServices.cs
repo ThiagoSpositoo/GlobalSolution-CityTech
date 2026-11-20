@@ -19,13 +19,27 @@ public sealed record JwtOptions(
 {
     public static JwtOptions FromEnvironment()
     {
-        var privatePath = Environment.GetEnvironmentVariable("JWT_PRIVATE_KEY_PATH");
-        var publicPath = Environment.GetEnvironmentVariable("JWT_PUBLIC_KEY_PATH");
+        var privatePem = Environment.GetEnvironmentVariable("JWT_PRIVATE_KEY_PEM");
+        var publicPem = Environment.GetEnvironmentVariable("JWT_PUBLIC_KEY_PEM");
+        string? privatePath;
+        string? publicPath;
+
+        if (!string.IsNullOrWhiteSpace(privatePem) && !string.IsNullOrWhiteSpace(publicPem))
+        {
+            (privatePath, publicPath) = MaterializePem(privatePem, publicPem);
+        }
+        else
+        {
+            privatePath = Environment.GetEnvironmentVariable("JWT_PRIVATE_KEY_PATH");
+            publicPath = Environment.GetEnvironmentVariable("JWT_PUBLIC_KEY_PATH");
+        }
+
         if (string.IsNullOrWhiteSpace(privatePath) || !File.Exists(privatePath)
             || string.IsNullOrWhiteSpace(publicPath) || !File.Exists(publicPath))
         {
             throw new InvalidOperationException(
-                "Defina JWT_PRIVATE_KEY_PATH e JWT_PUBLIC_KEY_PATH apontando para chaves PEM locais.");
+                "Defina JWT_PRIVATE_KEY_PEM e JWT_PUBLIC_KEY_PEM (nuvem) ou " +
+                "JWT_PRIVATE_KEY_PATH e JWT_PUBLIC_KEY_PATH apontando para chaves PEM locais.");
         }
 
         return new JwtOptions(
@@ -38,6 +52,43 @@ public sealed record JwtOptions(
                 && minutes is > 0 and <= 1440
                     ? minutes
                     : 60);
+    }
+
+    /// <summary>
+    /// Materializa PEMs recebidos por variável de ambiente (App Service/Key Vault) em arquivos
+    /// temporários legíveis apenas pelo processo, mantendo o restante do código baseado em caminho.
+    /// </summary>
+    public static (string PrivateKeyPath, string PublicKeyPath) MaterializePem(
+        string privatePem,
+        string publicPem,
+        string? directory = null)
+    {
+        if (!privatePem.Contains("PRIVATE KEY", StringComparison.Ordinal))
+        {
+            throw new InvalidOperationException("JWT_PRIVATE_KEY_PEM não contém uma chave privada PEM válida.");
+        }
+
+        if (!publicPem.Contains("PUBLIC KEY", StringComparison.Ordinal))
+        {
+            throw new InvalidOperationException("JWT_PUBLIC_KEY_PEM não contém uma chave pública PEM válida.");
+        }
+
+        var target = directory ?? Path.Combine(Path.GetTempPath(), "citytech-jwt");
+        Directory.CreateDirectory(target);
+
+        var privatePath = Path.Combine(target, "jwt-private.pem");
+        var publicPath = Path.Combine(target, "jwt-public.pem");
+        var encoding = new System.Text.UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+        File.WriteAllText(privatePath, privatePem, encoding);
+        File.WriteAllText(publicPath, publicPem, encoding);
+
+        if (!OperatingSystem.IsWindows())
+        {
+            File.SetUnixFileMode(privatePath, UnixFileMode.UserRead | UnixFileMode.UserWrite);
+            File.SetUnixFileMode(publicPath, UnixFileMode.UserRead | UnixFileMode.UserWrite);
+        }
+
+        return (privatePath, publicPath);
     }
 }
 

@@ -6,7 +6,7 @@ Plataforma CitizenTech de monitoramento colaborativo e zeladoria urbana — Glob
 
 ## Estado do projeto
 
-**Etapas 1–5A/.NET concluídas; vertical 5B/Java e Etapa 7/Mobile implementadas; Oracle e snapshot MongoDB locais validados.** O .NET possui 77 testes aprovados contra SQL Server. O Java possui 41 testes padrão aprovados, 1 AMQP opt-in ignorado por padrão, prova RabbitMQ real e inicialização validada contra Oracle XE 21 com `ddl-auto: validate`. O MongoDB possui 3 collections, 30 documentos comparáveis ao Oracle e 25 assertions aprovadas. Em 18/11, um smoke E2E real comprovou cadastro/login .NET, JWT no Java, ocorrência/Oracle, outbox/RabbitMQ, fallback IA, acompanhamento .NET, gestão, triagem e revisão humana. O Mobile possui 11 rotas; Expo Web e CORS reais estão operacionais, mas navegação manual e Android ainda precisam ser validados. LLM externo, Azure, APK/Firebase e deploy permanecem pendentes.
+**Etapas 1–5A/.NET concluídas; vertical 5B/Java e Etapa 7/Mobile implementadas; Oracle e snapshot MongoDB locais validados.** O .NET possui 77 testes aprovados contra SQL Server. O Java possui 41 testes padrão aprovados, 1 AMQP opt-in ignorado por padrão, prova RabbitMQ real e inicialização validada contra Oracle XE 21 com `ddl-auto: validate`. O MongoDB possui 3 collections, 30 documentos comparáveis ao Oracle e 25 assertions aprovadas. Em 18/11, um smoke E2E real comprovou cadastro/login .NET, JWT no Java, ocorrência/Oracle, outbox/RabbitMQ, fallback IA, acompanhamento .NET, gestão, triagem e revisão humana. O Mobile possui 11 rotas; Expo Web e CORS reais estão operacionais, mas navegação manual e Android ainda precisam ser validados. Em QA, o inventário final contém 5 Epics, 12 Features, 39 PBIs e 24 Test Cases (IDs 58–81), com 75 verificações estruturais aprovadas; o PDF/TXT/ZIP de Compliance foi gerado, mas capturas, execução manual no Test Plans e permissão ADMIN do professor não possuem evidência local. **DevOps:** a API .NET foi escolhida para Azure App Service + Azure SQL, com pipeline CI/CD versionada, scripts Azure CLI e DDL gerado pelas migrations; provisionamento, deploy, políticas e vídeo ainda dependem de execução externa autorizada. LLM externo, APK/Firebase e deploy permanecem pendentes.
 
 Para continuar em outra sessão, leia o [manual permanente](AGENTS.md) e o [progresso/ponto de retomada](docs/progresso.md). O progresso deve ser atualizado ao concluir cada etapa ou encerrar uma sessão com trabalho pendente.
 
@@ -38,6 +38,9 @@ Categorias iniciais: vias/buracos, iluminação, acessibilidade, descarte irregu
 - [Decisões de integração e riscos](docs/decisoes-e-riscos.md)
 - [Rastreabilidade e casos de teste planejados](docs/rastreabilidade.md)
 - [Planejamento QA](qa/README.md)
+- [Entrega DevOps: Azure, pipeline CI/CD e comandos](devops/README.md)
+- [Roteiro do vídeo DevOps](devops/roteiro-video.md)
+- [Diagrama macro da entrega DevOps](docs/diagramas/devops-cloud.mmd)
 - [Entregáveis e apresentações](docs/entregas/README.md)
 
 ## Organização das sete disciplinas
@@ -83,20 +86,23 @@ Categorias iniciais: vias/buracos, iluminação, acessibilidade, descarte irregu
 │   ├── test-cases/
 │   └── evidencias/
 ├── devops/
+│   ├── entrega/
 │   └── pipelines/
 ├── scripts/
+│   └── crud/
 ├── dockerfiles/
 ├── docs/
 │   ├── diagramas/
 │   └── entregas/
 ├── docker-compose.yml
+├── azure-pipeline.yml
 ├── .env.example
 ├── .editorconfig
 ├── .gitattributes
 └── .gitignore
 ```
 
-Os README das áreas documentam responsabilidades e estado. .NET, Java e Mobile contêm implementação e testes reais; o Java empacota também o corpus versionado de `ai/corpus`. O DDL/PLSQL Oracle está em `database/oracle/` e o snapshot MongoDB comparável em `database/mongodb/`. `azure-pipeline.yml`, Dockerfiles e entregáveis externos ainda serão criados nas etapas autorizadas correspondentes.
+Os README das áreas documentam responsabilidades e estado. .NET, Java e Mobile contêm implementação e testes reais; o Java empacota também o corpus versionado de `ai/corpus`. O DDL/PLSQL Oracle está em `database/oracle/` e o snapshot MongoDB comparável em `database/mongodb/`. A entrega DevOps está em `azure-pipeline.yml`, `scripts/` (provisionamento e DDL) e `devops/` (runbook, roteiro do vídeo e gerador do PDF); Dockerfiles não são usados porque o deploy é nativo no App Service.
 
 ## Ambiente e execução
 
@@ -141,6 +147,30 @@ backend-java/run-local.sh
 
 Confirme `http://localhost:8081/health/live`, `http://localhost:8080/actuator/health`, Swagger .NET em `http://localhost:8081/swagger` e Swagger Java em `http://localhost:8080/swagger-ui.html`.
 
+## Entrega DevOps — Azure App Service + Azure SQL
+
+Solução avaliada: **API .NET 10**, publicada por zip deploy no **App Service Linux (plano B1)** com banco
+**Azure SQL (Basic)**. O Java continua dono das ocorrências, mas não é publicado nesta entrega porque exige
+Oracle e RabbitMQ; por isso `POST /api/v1/followups` e `/health/ready` respondem 503 na nuvem, comportamento
+previsto no código e coberto por teste.
+
+| Item | Onde está | Estado |
+|---|---|---|
+| Pipeline CI/CD (`azure-pipeline.yml` na raiz) | raiz | Preparada e validada; não executada no Azure Pipelines |
+| Provisionamento Azure CLI | `scripts/provision-azure.ps1` (PowerShell 5.1) e `scripts/provision-azure.sh` | Validados em dry-run; recursos não criados |
+| DDL do banco | `scripts/script-bd.sql` | Gerado por `dotnet ef migrations script --idempotent` |
+| CRUD JSON por tabela | `scripts/crud/accounts.json`, `scripts/crud/followups.json` | Prontos |
+| CRUD da aplicação publicada | `scripts/demo-crud-cloud.ps1` | Preparado |
+| Boards, Repos e políticas | [devops/README.md](devops/README.md), seção 6 | Comandos prontos; execução pendente |
+| Vídeo e PDF | `devops/roteiro-video.md` e `entregas/CityTech_RM561694.pdf` | Roteiro e PDF prontos; link do vídeo pendente |
+
+Fluxo: tarefa no Boards → branch → alteração no código-fonte → commit `AB#id` → PR com revisor → merge na
+`main` → CI (restore, build, 79 testes xUnit, TRX, ZIP e DDL) → CD (Azure SQL + App Service) → validação
+HTTPS. Diagrama macro em [docs/diagramas/devops-cloud.mmd](docs/diagramas/devops-cloud.mmd).
+
+Comandos completos, com resultado esperado e o que fazer em caso de falha, estão no
+[runbook DevOps](devops/README.md). O provisionamento exige `az login` e autorização de custo (~US$ 18/mês).
+
 ## Identidade e impacto
 
 Azul, branco e verde; estilo moderno, profissional e acessível. ODS principal proposto: **11 — Cidades e comunidades sustentáveis**, com contribuição a espaços públicos acessíveis e gestão participativa. Metas e indicadores propostos estão na arquitetura; impacto real ainda não foi medido.
@@ -149,11 +179,13 @@ Azul, branco e verde; estilo moderno, profissional e acessível. ODS principal p
 
 Nome do grupo: CityTech.
 
-- Thiago Sposito — RM 561694
-- Vitor Madrigrano — RM 564191
-- Lucas Lopes — RM 563544
-- Turmas do grupo: 2TDSA / 2TDSR
+- Thiago Sposito — RM 561694 — 2TDSR
+- Vitor Madrigrano — RM 564191 — 2TDSR
+- Lucas Lopes — RM 563544 — 2TDSA
 
-A associação individual entre integrante e turma e o representante permanecem pendentes de conferência. GitHub: <https://github.com/ThiagoSpositoo/GlobalSolution-CityTech>. Links Azure DevOps, deploy, Firebase e vídeos ainda não foram registrados neste README. Os backends expõem localmente seus endpoints `/api/v1`, health e Swagger; não há usuário/senha versionados nem URL pública.
+GitHub: <https://github.com/ThiagoSpositoo/GlobalSolution-CityTech>.
+Azure DevOps: <https://dev.azure.com/RM561694> (projeto `GlobalSolution-CityTech`) — organização e projeto existentes; push do código, políticas de branch e convite do professor ainda dependem de execução autorizada.
+Entrega DevOps (PDF): [`entregas/CityTech_RM561694.pdf`](entregas/CityTech_RM561694.pdf) — link do vídeo no YouTube pendente de gravação.
+URL pública do deploy e Firebase ainda não existem. Os backends expõem localmente `/api/v1`, health e Swagger; não há usuário/senha versionados.
 
 # GlobalSolution-CityTech

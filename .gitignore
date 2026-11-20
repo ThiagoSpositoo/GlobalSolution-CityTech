@@ -17,7 +17,11 @@ secrets/
 *.keystore
 **/service-account*.json
 **/serviceAccount*.json
+**/azure-config.local.json
+**/azure-config.*.local.json
 **/*.local.sql
+# HTML intermediário do gerador de PDF (o PDF final fica em entregas/)
+devops/entrega/*.html
 **/*.secret.sql
 **/*-local-secrets.sh
 

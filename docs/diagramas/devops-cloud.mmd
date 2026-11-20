@@ -1,0 +1,43 @@
+flowchart LR
+    subgraph DEV["Desenvolvimento"]
+        GIT["Repositório Git local<br/>branch main + feature"]
+        BOARD["Azure Boards<br/>Task + link AB#"]
+    end
+
+    subgraph AZDO["Azure DevOps - RM561694 / GlobalSolution-CityTech"]
+        REPOS["Azure Repos privado<br/>código-fonte .NET"]
+        POLICY["Políticas da main<br/>PR + revisor + Work Item"]
+        PIPE["azure-pipeline.yml"]
+        CI["Stage CI<br/>restore, build, 79 testes xUnit,<br/>TRX, ZIP e script-bd.sql"]
+        CD["Stage CD<br/>deployment job citytech-production"]
+    end
+
+    subgraph AZURE["Azure - Resource Group rg-citytech-devops"]
+        SQL[("Azure SQL<br/>accounts, follow_ups,<br/>idempotency_records")]
+        APP["App Service Linux B1<br/>API .NET 10<br/>/swagger, /health/live"]
+    end
+
+    subgraph EXT["Componentes não publicados nesta entrega"]
+        JAVA["API Java<br/>Oracle + RabbitMQ"]
+    end
+
+    USUARIO["Cidadão / gestor<br/>Swagger, Mobile, curl"]
+
+    GIT -->|"commit + push"| REPOS
+    BOARD -->|"AB#id no commit e no PR"| REPOS
+    REPOS -->|"merge na main dispara"| PIPE
+    POLICY -.->|"bloqueia push direto"| REPOS
+    PIPE --> CI
+    CI -->|"artefatos app e database"| CD
+    CD -->|"aplica DDL idempotente"| SQL
+    CD -->|"publica o mesmo ZIP"| APP
+    APP -->|"EF Core / connection string"| SQL
+    APP -.->|"JAVA_API_BASE_URL<br/>opcional, não publicado"| JAVA
+    USUARIO -->|HTTPS| APP
+
+    classDef ok fill:#e6f4ea,stroke:#1e7d32,color:#0b3d16;
+    classDef pipe fill:#e8f0fe,stroke:#1a56c4,color:#102a5c;
+    classDef ext fill:#fff4e5,stroke:#b26a00,color:#4a2c00;
+    class CI,CD,PIPE,REPOS,POLICY pipe;
+    class SQL,APP ok;
+    class JAVA ext;

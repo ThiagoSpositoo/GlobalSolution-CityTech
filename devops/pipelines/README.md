@@ -1,5 +1,16 @@
-# Pipelines — reserva
+# Pipelines — apoio
 
-Templates futuros podem ficar aqui, mas o arquivo de entrada YAML exigido é **`azure-pipeline.yml` na raiz**.
+O arquivo exigido pelo enunciado é **`azure-pipeline.yml` na raiz** do repositório usado pelo Azure Repos.
+Ele contém CI e CD completos (build, testes, artefatos, Azure SQL e App Service).
 
-Nenhum pipeline fictício foi criado. Criar CI/CD quando existir projeto compilável e testes significativos. Publicar pacote e resultados; CD recebe artefato da CI bem-sucedida. Não configurar conexão Azure nem variáveis secretas sem autorização.
+Esta pasta é reservada a templates reutilizáveis. Não há template aqui porque a pipeline é única e pequena;
+duplicar o YAML criaria duas fontes de verdade.
+
+Quando fizer sentido extrair etapas, os candidatos são:
+
+- `templates/dotnet-build.yml` — restore, build e testes com TRX;
+- `templates/sql-ephemeral.yml` — container SQL Server para testes de integração;
+- `templates/deploy-appservice.yml` — deploy do artefato no App Service.
+
+Qualquer extração deve manter `azure-pipeline.yml` na raiz como ponto de entrada e ser validada com uma
+execução real antes de substituir o conteúdo atual.

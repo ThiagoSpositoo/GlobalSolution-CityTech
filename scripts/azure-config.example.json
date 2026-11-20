@@ -1,0 +1,17 @@
+{
+  "subscriptionId": "00000000-0000-0000-0000-000000000000",
+  "resourceGroup": "rg-citytech-devops",
+  "location": "brazilsouth",
+  "webAppName": "citytech-api-TROCAR",
+  "appServicePlanName": "",
+  "sqlServerName": "citytech-sql-TROCAR",
+  "sqlDatabaseName": "citytechdb",
+  "sqlAdminUser": "citytechadmin",
+  "sqlAdminPassword": "TROCAR-POR-SENHA-FORTE",
+  "jwtPrivateKeyPath": "C:\\Users\\sposi\\.citytech\\keys\\jwt-private.pem",
+  "jwtPublicKeyPath": "C:\\Users\\sposi\\.citytech\\keys\\jwt-public.pem",
+  "jwtIssuer": "citytech-identity",
+  "jwtAudience": "citytech-api",
+  "jwtKeyId": "citytech-cloud-v1",
+  "javaApiBaseUrl": ""
+}

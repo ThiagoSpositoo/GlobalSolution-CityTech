@@ -1,0 +1,61 @@
+{
+  "tabela": "follow_ups",
+  "finalidade": "Acompanhamentos do cidadão sobre uma ocorrência do Java (relação follow_ups.user_id -> accounts.id).",
+  "api": "https://citytech-api-TROCAR.azurewebsites.net",
+  "observacao": "POST exige que a ocorrência exista no Java (JAVA_API_BASE_URL). GET/PATCH/DELETE operam somente no SQL Server/Azure SQL com o JWT do dono do acompanhamento.",
+  "operacoes": {
+    "create": {
+      "metodo": "POST",
+      "caminho": "/api/v1/followups",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <JWT>",
+        "Idempotency-Key": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+      },
+      "request": {
+        "occurrenceId": "3f1d9a44-8f2b-4a1e-9d55-6c7b8a9d0e11",
+        "note": "Acompanhamento criado na demonstração DevOps."
+      },
+      "response_201": {
+        "id": "9b2f0f0e-5b1c-4a2b-8f3d-2c1b0a9d8e7f",
+        "occurrenceId": "3f1d9a44-8f2b-4a1e-9d55-6c7b8a9d0e11",
+        "note": "Acompanhamento criado na demonstração DevOps.",
+        "createdAt": "2026-11-19T23:00:00Z",
+        "updatedAt": "2026-11-19T23:00:00Z",
+        "version": 0
+      },
+      "resposta_sem_java": {
+        "status": 503,
+        "code": "OCCURRENCE_SERVICE_UNAVAILABLE",
+        "descricao": "Acontece quando o Java não está publicado; use o INSERT SQL abaixo para a evidência em nuvem."
+      }
+    },
+    "read": {
+      "metodo": "GET",
+      "caminho": "/api/v1/followups?page=0&size=20&sort=createdAt,desc",
+      "headers": { "Authorization": "Bearer <JWT>" }
+    },
+    "update": {
+      "metodo": "PATCH",
+      "caminho": "/api/v1/followups/{id}",
+      "headers": { "Authorization": "Bearer <JWT>" },
+      "request": {
+        "note": "Observação atualizada na demonstração DevOps.",
+        "version": 0
+      }
+    },
+    "delete": {
+      "metodo": "DELETE",
+      "caminho": "/api/v1/followups/{id}",
+      "headers": { "Authorization": "Bearer <JWT>" },
+      "response_204": "sem corpo"
+    },
+    "create_sql": {
+      "descricao": "Alternativa para criar o acompanhamento diretamente no Azure SQL quando o Java não está publicado. Substitua os dois GUIDs por valores reais (conta criada pela API e ocorrência do Java).",
+      "sql": "INSERT INTO follow_ups (id, user_id, occurrence_id, note, created_at, updated_at, version) VALUES (NEWID(), '<ID_DA_CONTA>', '<ID_DA_OCORRENCIA>', N'Acompanhamento criado via SQL para evidência DevOps', SYSUTCDATETIME(), SYSUTCDATETIME(), 0);"
+    },
+    "select_persistencia": {
+      "sql": "SELECT f.id, f.user_id, a.email, f.occurrence_id, f.note, f.version, f.created_at FROM follow_ups f INNER JOIN accounts a ON a.id = f.user_id ORDER BY f.created_at DESC;"
+    }
+  }
+}

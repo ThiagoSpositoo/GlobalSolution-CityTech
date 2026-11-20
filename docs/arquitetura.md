@@ -165,6 +165,31 @@ A área .NET contém 77 testes reais; o Java contém 41 testes padrão mais um c
 - Fotos são opcionais: só adicionar upload com limites, validação e armazenamento definido; não tornar essa dependência bloqueadora do fluxo mínimo.
 - API acessível no emulador/celular não é `localhost` do PC. Planejar rede local para desenvolvimento e URLs HTTPS estáveis para distribuição.
 
-## 6. Pontos ainda abertos
+## 6. Implantação em nuvem (entrega DevOps)
+
+Decisão registrada em 19/11/2026 para a disciplina DevOps: publicar a **API .NET** no **Azure App Service
+Linux (plano B1)** com banco **Azure SQL (Basic)**, provisionados por scripts Azure CLI versionados e
+entregues por pipeline YAML multi-stage (`azure-pipeline.yml` na raiz).
+
+Motivos da escolha em relação ao Java:
+
+1. o .NET emite o próprio JWT RS256 e depende apenas do banco para subir;
+2. o banco é SQL Server, coberto pelo Azure SQL sem reescrever schema ou dialeto;
+3. possui 79 testes automatizados, incluindo integração com SQL Server real, que rodam na CI em container efêmero;
+4. o Java exigiria Oracle (sem oferta gerenciada barata na Azure) e RabbitMQ, elevando custo e risco de falha no deploy.
+
+Consequências e limites:
+
+- O Java continua dono das ocorrências. Como não é publicado nesta entrega, `POST /api/v1/followups` e
+  `/health/ready` retornam 503 na nuvem — comportamento já coberto por teste, não uma falha de deploy.
+- O CRUD de `follow_ups` é demonstrado por SQL direto no Azure SQL (exigência do enunciado) e por
+  `GET/PATCH/DELETE` da API, que não consultam o Java.
+- Chaves JWT são lidas de `JWT_PRIVATE_KEY_PEM`/`JWT_PUBLIC_KEY_PEM` no App Service (materializadas em arquivo
+  temporário no startup) ou de caminhos locais `JWT_*_KEY_PATH` em desenvolvimento. Nenhuma chave é versionada.
+- O DDL aplicado no Azure SQL é o script idempotente gerado pelas migrations EF Core, publicado como artefato
+  `database` pela CI; a aplicação é publicada como artefato `app`. O CD não recompila nada.
+- Diagrama e fluxo completo: `docs/diagramas/devops-cloud.mmd` e [devops/README.md](../devops/README.md).
+
+## 7. Pontos ainda abertos
 
 Ambiente Oracle institucional e versão; contas e acesso dos professores; licença/acesso Test Plans; provedor IA; orçamento e destino Java/RabbitMQ/Oracle; build APK local versus EAS autorizado; divisão funcional confirmada pelos docentes. O XE 21 local resolve desenvolvimento/validação, não comprova acesso institucional. Esses pontos não foram silenciosamente tratados como resolvidos.

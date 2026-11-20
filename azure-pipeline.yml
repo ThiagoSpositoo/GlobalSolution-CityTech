@@ -1,0 +1,207 @@
+# CityTech — pipeline CI/CD da API .NET (Azure DevOps, Azure Repos privado).
+#
+# Nome exigido pela disciplina DevOps: azure-pipeline.yml na raiz do repositório usado pelo Azure Repos.
+#
+# CI (stage CI): dispara automaticamente quando há merge na main, restaura dependências, compila,
+# executa os 79 testes xUnit contra um SQL Server efêmero, publica o TRX, gera o ZIP da aplicação
+# e o DDL idempotente do banco.
+# CD (stage CD): depende da CI, baixa exatamente os artefatos aprovados, aplica o DDL no Azure SQL
+# e publica o mesmo ZIP no App Service Linux. Ao final, valida a versão publicada por HTTPS.
+#
+# Variáveis sensíveis vêm do variable group `citytech-prod` (nunca escritas neste arquivo).
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - docs/*
+      - qa/*
+      - entregas/*
+
+pr: none
+
+pool:
+  vmImage: ubuntu-24.04
+
+variables:
+  - group: citytech-prod
+  - name: buildConfiguration
+    value: Release
+  - name: dotnetVersion
+    value: 10.0.x
+
+stages:
+  - stage: CI
+    displayName: CI - build, testes e artefatos
+    jobs:
+      - job: Build
+        displayName: Compilar e testar a API .NET
+        timeoutInMinutes: 45
+        steps:
+          - task: UseDotNet@2
+            displayName: Instalar SDK .NET 10
+            inputs:
+              packageType: sdk
+              version: $(dotnetVersion)
+
+          - bash: |
+              set -euo pipefail
+              password="$(openssl rand -hex 24)Aa1!"
+              echo "##vso[task.setvariable variable=ciSqlPassword;issecret=true]$password"
+              docker run -d --name citytech-ci-sql \
+                -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD="$password" \
+                -p 127.0.0.1:1433:1433 \
+                mcr.microsoft.com/mssql/server:2022-latest
+              # A imagem oficial mudou o caminho do sqlcmd entre versões; detecta o disponível.
+              sqlcmd_path=""
+              for candidate in /opt/mssql-tools18/bin/sqlcmd /opt/mssql-tools/bin/sqlcmd; do
+                if docker exec citytech-ci-sql test -x "$candidate"; then
+                  sqlcmd_path="$candidate"
+                  break
+                fi
+              done
+              if [ -z "$sqlcmd_path" ]; then
+                echo "sqlcmd nao encontrado na imagem; log abaixo."
+                docker logs citytech-ci-sql
+                exit 1
+              fi
+              echo "Usando $sqlcmd_path para o readiness check."
+              for attempt in {1..90}; do
+                if docker exec citytech-ci-sql "$sqlcmd_path" \
+                     -S localhost -U sa -P "$password" -C -Q 'SELECT 1' >/dev/null 2>&1; then
+                  echo "SQL Server pronto para os testes de integracao."
+                  exit 0
+                fi
+                sleep 2
+              done
+              echo "SQL Server nao ficou pronto; log abaixo."
+              docker logs citytech-ci-sql
+              exit 1
+            displayName: Subir SQL Server efêmero para os testes de integração
+
+          - bash: |
+              set -euo pipefail
+              dotnet tool restore
+              dotnet restore CityTech.slnx
+              dotnet build CityTech.slnx --no-restore --configuration $(buildConfiguration)
+            displayName: Restaurar dependências e compilar
+            workingDirectory: backend-dotnet
+
+          - bash: |
+              set -euo pipefail
+              dotnet test CityTech.slnx \
+                --no-build --configuration $(buildConfiguration) \
+                --logger 'trx;LogFileName=citytech.trx' \
+                --results-directory "$(Agent.TempDirectory)/test-results"
+            displayName: Executar testes xUnit (TRX)
+            workingDirectory: backend-dotnet
+            env:
+              DOTNET_DB_CONNECTION: Server=127.0.0.1,1433;Database=CityTechCI;User Id=sa;Password=$(ciSqlPassword);Encrypt=True;TrustServerCertificate=True
+
+          - bash: |
+              set -euo pipefail
+              dotnet publish src/CityTech.Api/CityTech.Api.csproj \
+                --no-restore --configuration $(buildConfiguration) \
+                --output "$(Build.ArtifactStagingDirectory)/publish"
+            displayName: Publicar pacote da aplicação
+            workingDirectory: backend-dotnet
+
+          - bash: |
+              set -euo pipefail
+              dotnet ef migrations script --idempotent \
+                --project src/CityTech.Infrastructure \
+                --startup-project src/CityTech.Api \
+                --no-build --configuration $(buildConfiguration) \
+                --output "$(Build.ArtifactStagingDirectory)/script-bd.sql"
+            displayName: Gerar DDL idempotente das migrations
+            workingDirectory: backend-dotnet
+            env:
+              DOTNET_DB_CONNECTION: Server=127.0.0.1,1433;Database=CityTechCI;User Id=sa;Password=$(ciSqlPassword);Encrypt=True;TrustServerCertificate=True
+
+          - task: PublishTestResults@2
+            displayName: Publicar resultados dos testes
+            condition: always()
+            inputs:
+              testResultsFormat: VSTest
+              testResultsFiles: '$(Agent.TempDirectory)/test-results/*.trx'
+              testRunTitle: CityTech .NET xUnit
+              failTaskOnFailedTests: true
+
+          - task: ArchiveFiles@2
+            displayName: Empacotar aplicação publicada
+            inputs:
+              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/publish'
+              includeRootFolder: false
+              archiveType: zip
+              archiveFile: '$(Build.ArtifactStagingDirectory)/citytech-api.zip'
+              replaceExistingArchive: true
+
+          - publish: '$(Build.ArtifactStagingDirectory)/citytech-api.zip'
+            artifact: app
+            displayName: Publicar artefato app
+
+          - publish: '$(Build.ArtifactStagingDirectory)/script-bd.sql'
+            artifact: database
+            displayName: Publicar artefato database
+
+          - bash: docker rm -f citytech-ci-sql || true
+            displayName: Remover SQL Server efêmero
+            condition: always()
+
+  - stage: CD
+    displayName: CD - banco e aplicação na Azure
+    dependsOn: CI
+    condition: succeeded()
+    jobs:
+      - deployment: Deploy
+        displayName: Aplicar banco e publicar App Service
+        environment: citytech-production
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: database
+                  displayName: Baixar DDL aprovado pela CI
+
+                - download: current
+                  artifact: app
+                  displayName: Baixar pacote aprovado pela CI
+
+                - task: SqlAzureDacpacDeployment@1
+                  displayName: Aplicar migrations idempotentes no Azure SQL
+                  inputs:
+                    azureSubscription: '$(azureServiceConnection)'
+                    AuthenticationType: server
+                    ServerName: '$(sqlServerName).database.windows.net'
+                    DatabaseName: '$(sqlDatabaseName)'
+                    SqlUsername: '$(sqlAdminUser)'
+                    SqlPassword: '$(sqlAdminPassword)'
+                    deployType: SqlTask
+                    SqlFile: '$(Pipeline.Workspace)/database/script-bd.sql'
+                    IpDetectionMethod: AutoDetect
+
+                - task: AzureWebApp@1
+                  displayName: Publicar pacote no App Service Linux
+                  inputs:
+                    azureSubscription: '$(azureServiceConnection)'
+                    appType: webAppLinux
+                    appName: '$(webAppName)'
+                    package: '$(Pipeline.Workspace)/app/citytech-api.zip'
+
+                - bash: |
+                    set -euo pipefail
+                    url="https://$(webAppName).azurewebsites.net"
+                    for attempt in {1..30}; do
+                      if curl -fsS "$url/health/live" >/dev/null; then
+                        echo "Aplicacao respondendo em $url"
+                        curl -fsS "$url/api/v1/version" || true
+                        exit 0
+                      fi
+                      sleep 10
+                    done
+                    echo "Aplicacao nao respondeu em 5 minutos."
+                    exit 1
+                  displayName: Validar versão publicada por HTTPS
