@@ -6,7 +6,7 @@ Entrega da disciplina de banco de dados da **Global Solution FIAP 2026/2**.
 
 ## Integrantes
 
-| Integrante | RM |
+| Integrantes | RMs |
 |---|---:|
 | Thiago Sposito | 561694 |
 | Vitor Madrigrano | 564191 |
@@ -115,10 +115,6 @@ O Oracle institucional não foi modificado nesta finalização. A execução int
 - Não executar o instalador em schema com objetos/dados reais.
 - Resultados locais não comprovam automaticamente a execução no Oracle institucional.
 - A relação individual integrante↔turma e o formato exato exibido no Portal devem ser conferidos antes do envio.
-
-## Declaração de uso de IA
-
-OpenCode e modelos de linguagem apoiaram a leitura do enunciado, implementação, revisão e documentação dos scripts. A equipe deve revisar, compreender e conseguir explicar a modelagem, o PL/SQL, as consultas e os testes. Somente resultados efetivamente executados são apresentados como evidência.
 
 ## Outras persistências
 
