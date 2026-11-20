@@ -7,10 +7,6 @@ Capturas obrigatórias do PDF p. 34:
 3. Boards com Test Cases por Feature.
 4. Summary e Steps de **cada Test Case**.
 
-Somar link do projeto com professor ADMIN no PDF único. Para apresentação (p. 35), registrar execuções manuais e relatórios analíticos reais.
-
-Nome sugerido: `<requisito>_<work-item>_<descricao>_<data>.png`. Guardar versão/commit da aplicação. Revisar capturas para remover tokens/segredos antes de versionar; `raw/` é ignorado no Git para materiais ainda não revisados.
-
 ## Capturas versionadas em 19/11/2026
 
 As cinco imagens abaixo são amostras reais do Azure DevOps. Elas comprovam a existência e a estrutura dos itens, mas **não substituem** a captura de cada Feature, PBI e Test Case, nem a execução manual no Test Plans, os relatórios analíticos, os bugs ou a confirmação do professor como ADMIN.
