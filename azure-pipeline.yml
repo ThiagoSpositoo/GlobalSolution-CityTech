@@ -175,7 +175,7 @@ stages:
                 - task: SqlAzureDacpacDeployment@1
                   displayName: Aplicar migrations idempotentes no Azure SQL
                   inputs:
-                    azureSubscription: '$(azureServiceConnection)'
+                    azureSubscription: 'citytech-sql-azure'
                     AuthenticationType: server
                     ServerName: '$(sqlServerName).database.windows.net'
                     DatabaseName: '$(sqlDatabaseName)'
